@@ -396,7 +396,34 @@ body.dark .translation {
   background: var(--button-hover);
   transform: translateY(-2px);
 }
+}
+/* убираем горизонтальный скролл */
+html, body {
+  overflow-x: hidden;
+}
 
+/* на мобильных девайсах делаем нав обычным, не фиксированным */
+@media (max-width: 768px) {
+  #top-nav {
+    position: static !important;
+  }
+  /* и отменяем отступ сверху, если он задавался */
+  body {
+    padding-top: 0 !important;
+  }
+}
+/* Навигация в обычном потоке документа */
+#top-nav {
+  position: static !important;
+  width: 100%;
+  /* при желании: добавить фон/бордер, чтобы отделять от контента */
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--card-shadow);
+}
+
+/* Убираем отступ, который мы добавляли для фиксированного nav */
+body {
+  paddi
   </style>
 
 </head>
