@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Leben in Deutschland</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* ————————————————————————————————————————————
+       Theme variables
+    ———————————————————————————————————————————— */
+    :root {
+      --bg-color: #f5f7fa;
+      --text-color: #111;
+      --card-bg: #fff;
+      --card-shadow: rgba(0,0,0,0.05);
+      --button-bg: #4a90e2;
+      --button-hover: #357ab8;
+    }
+    body.dark {
+      --bg-color: #1e1e28;
+      --text-color: #e0e0e0;
+      --card-bg: #2c2c38;
+      --card-shadow: rgba(0,0,0,0.5);
+      --button-bg: #6a6af5;
+      --button-hover: #5252c2;
+    }
+
+    /* ————————————————————————————————————————————
+       Base styles
+    ———————————————————————————————————————————— */
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .test-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ————————————————————————————————————————————
+       Question card
+    ———————————————————————————————————————————— */
+    .question {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px var(--card-shadow);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .question:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px var(--card-shadow);
+    }
+    .question p {
+      margin: 0 0 0.4rem;
+      line-height: 1.4;
+      font-size: 1.1rem;
+    }
+    .question p em {
+      display: inline;
+      margin: 0;
+      font-style: italic;
+    }
+    .question label {
+      display: block;
+      margin: 0.3rem 0;
+      cursor: pointer;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.5rem;
+      transition: background 0.2s;
+      font-size: 1rem;
+      color: var(--text-color);
+    }
+    .question label:hover {
+      background: #eef2f7;
+    }
+    .question button {
+      background: var(--button-bg);
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 1rem;
+    }
+    .question button:hover {
+      background: var(--button-hover);
+    }
+    .feedback {
+      margin-top: 0.75rem;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .feedback.correct { color: #27ae60; }
+    .feedback.incorrect { color: #c0392b; }
+
+    /* ————————————————————————————————————————————
+       Pagination
+    ———————————————————————————————————————————— */
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+    }
+    .page-btn {
+      background: var(--button-bg);
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .page-btn:hover {
+      background: var(--button-hover);
+      transform: translateY(-2px);
+    }
+
+    /* ————————————————————————————————————————————
+       Theme-toggle button
+    ———————————————————————————————————————————— */
+  #theme-toggle {
+  position: static;
+  margin-left: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.2s;
+}
+body.dark .question p em {
+  color: #cccccc !important;
+}
+    .question p {
+      margin: 0 0 0.4rem;
+      line-height: 1.4;
+      font-size: 1.1rem;
+    }
+    .question label {
+      display: block;
+      margin: 0.3rem 0;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.5rem;
+      transition: background 0.2s;
+      font-size: 1rem;
+      color: var(--text-color);
+    }
+    /* Убираем большие отступы между вопросами */
+.question {
+  margin-bottom: 0.5rem !important;
+  padding: 0.8rem !important;
+}
+
+.question p {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.3 !important;
+}
+
+.question label {
+  display: block !important;
+  margin: 0.1rem 0 !important;
+  padding: 0.2rem 0.4rem !important;
+  border-radius: 0.4rem;
+  font-size: 0.97rem;
+}
+
+.question br {
+  display: block !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+}
+.question p em {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-style: italic;
+  color: #555;
+}
+
+.question br {
+  display: none !important;
+}
+```css
+:root {
+  --banner-bg: #fff;
+  --banner-shadow: rgba(0,0,0,0.1);
+  --banner-text: #333;
+  --button-bg: #4a90e2;
+  --button-hover: #357ab8;
+}
+
+.cookie-banner {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  background: var(--banner-bg);
+  color: var(--banner-text);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px var(--banner-shadow);
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2000;
+  font-size: 0.95rem;
+}
+
+.cookie-banner p {
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.cookie-banner a {
+  color: var(--button-bg);
+  text-decoration: underline;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  margin-top: 0.5rem;
+}
+
+.cookie-buttons button {
+  background: var(--button-bg);
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 0.9rem;
+}
+
+.cookie-buttons button:hover {
+  background: var(--button-hover);
+}
+
+@media (max-width: 600px) {
+  .cookie-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .cookie-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+}
+```
+/* Центрируем баннер посередине экрана */
+.cookie-banner {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  max-width: 400px;
+  width: calc(100% - 2rem);
+  background: var(--banner-bg);
+  color: var(--banner-text);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px var(--banner-shadow);
+  padding: 1rem;
+  display: none;   /* по-умолчанию скрыт, покажем через JS */
+  z-index: 2000;
+  font-size: 0.95rem;
+}
+
+/* Остальные стили оставляем прежними */
+
+/* Полупрозрачный фон-оверлей */
+.cookie-overlay {
+  display: none;              /* будет показываться через JS */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1500;
+}
+
+/* Модальное окно баннера */
+.cookie-banner {
+  display: none;              /* показываем через JS */
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  color: #333;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  padding: 1.5rem;
+  max-width: 400px;
+  width: calc(100% - 2rem);
+  z-index: 1501;
+}
+
+/* Кнопки внутри */
+.cookie-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.cookie-buttons button {
+  flex: 1;
+  margin: 0 0.25rem;
+}
+/* —————— Topbar (Site + Language switcher) —————— */
+.topbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-bg);
+  box-shadow: 0 2px 4px var(--card-shadow);
+  padding: 0.5rem 1rem;
+  z-index: 1002;
+}
+.site-info {
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+.lang-switcher a {
+  margin-left: 0.5rem;
+  color: var(--button-bg);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.lang-switcher a:hover {
+  text-decoration: underline;
+}
+
+/* Отступ контента, чтобы не перекрывала topbar */
+body {
+  padding-top: 3rem; /* или чуть больше, если topbar выше */
+}
+
+.translation {
+  display: inline-block;
+  margin-left: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  background: var(--button-bg);
+  color: #fff;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+  vertical-align: middle;
+  transition: background 0.2s;
+}
+.translation:hover {
+  background: var(--button-hover);
+}
+/* более тёмные “бэйджи” переводов в dark mode */
+body.dark .translation {
+  background: rgba(255, 255, 255, 0.1) !important;  /* почти прозрачный светлый фон */
+  color: #bbbbbb       !important;                  /* светло-серый текст */
+}
+body.dark .translation {
+  background: rgba(50, 50, 60, 0.8) !important;
+  color: #dddddd       !important;
+}
+/* Стили для кнопки навигации вниз */
+.bottom-nav {
+  text-align: center;
+  margin: 2rem 0;
+}
+.bottom-nav .page-btn {
+  background: var(--button-bg);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.bottom-nav .page-btn:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+}
+
+  </style>
+
+</head>
+<body>
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="cookie-banner" style="display:none;">
+  <p>
+    Diese Website verwendet Cookies, um Inhalte zu personalisieren und Zugriffe zu analysieren. 
+    <a href="/datenschutz.html">Mehr erfahren</a>
+  </p>
+  <div class="cookie-buttons">
+    <button id="accept-cookies">Alle akzeptieren</button>
+    <button id="reject-cookies">Alle ablehnen</button>
+    <button id="settings-cookies">Einstellungen</button>
+  </div>
+</div>
+
+
+
+<header class="topbar">
+  <div class="site-info">sprache.online – Leben in Deutschland (Einbürgerungstest)</div>
+  <nav class="lang-switcher">
+  <a href="?lang=uk" data-lang="uk">UA</a>
+  <a href="?lang=en" data-lang="en">EN</a>
+  <a href="?lang=ar" data-lang="ar">AR</a>
+  <a href="?lang=tr" data-lang="tr">TR</a>
+  <a href="?lang=bg" data-lang="bg">BG</a>
+  <a href="?lang=fa" data-lang="fa">FA</a>
+  <a href="?lang=bs" data-lang="bs">BS</a>
+  <a href="?lang=mk" data-lang="mk">MK</a>
+  <a href="?lang=pl" data-lang="pl">PL</a>
+  <a href="?lang=ro" data-lang="ro">RO</a>
+  <a href="?lang=it" data-lang="it">IT</a>
+  <a href="?lang=hi" data-lang="hi">HI</a>
+    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+  </nav>
+</header>
+
+
+
+  <h1>Leben in Deutschland. Allgemeine 300 Fragen </h1>
+  <p align="center">Stand: <a href="https://www.bamf.de/SharedDocs/Anlagen/DE/Integration/Einbuergerung/gesamtfragenkatalog-lebenindeutschland.pdf?__blob=publicationFile&v=19" style="text-decoration: none; color: gray;" target="_blank">07.05.2025</a> pre-alpha version 0.1 (21.05.2025)</p>
+  
+    <div id="cookie-banner" role="dialog" aria-live="polite">
+
+<div class="test-container">
+<!-- Question 31 with full translations -->
+<div class="question" id="q31">
+  <p>
+    <strong>31. Die Zusammenarbeit von Parteien zur Bildung einer Regierung nennt man in Deutschland …</strong><br>
+    <span class="translation lang-uk">Співпраця партій для формування уряду називається у Німеччині …</span>
+    <span class="translation lang-en" style="display:none">The cooperation of parties to form a government is called in Germany …</span>
+    <span class="translation lang-ar" style="display:none">التعاون بين الأحزاب لتشكيل حكومة يسمى في ألمانيا …</span>
+    <span class="translation lang-tr" style="display:none">Almanya’da bir hükümet kurmak için partilerin iş birliğine … denir</span>
+    <span class="translation lang-bg" style="display:none">Сътрудничеството на партиите за формиране на правителство в Германия се нарича …</span>
+    <span class="translation lang-fa" style="display:none">همکاری احزاب برای تشکیل دولت در آلمان … نامیده می‌شود</span>
+    <span class="translation lang-bs" style="display:none">Saradnja stranaka za formiranje vlade se u Njemačkoj naziva …</span>
+    <span class="translation lang-mk" style="display:none">Соработката на партиите за формирање на влада во Германија се вика …</span>
+    <span class="translation lang-pl" style="display:none">Współpraca partii w celu utworzenia rządu w Niemczech nazywa się …</span>
+    <span class="translation lang-ro" style="display:none">Cooperarea partidelor pentru formarea unui guvern în Germania se numește …</span>
+    <span class="translation lang-it" style="display:none">La cooperazione dei partiti per formare un governo in Germania si chiama …</span>
+    <span class="translation lang-hi" style="display:none">जर्मनी में सरकार बनाने के लिए पार्टियों का सहयोग कहा जाता है …</span>
+  </p>
+
+  <label>
+    <input type="radio" name="q31" value="0">
+    Einheit
+    <span class="translation lang-uk">Об’єднання</span>
+    <span class="translation lang-en" style="display:none">unity</span>
+    <span class="translation lang-ar" style="display:none">وحدة</span>
+    <span class="translation lang-tr" style="display:none">birlik</span>
+    <span class="translation lang-bg" style="display:none">единство</span>
+    <span class="translation lang-fa" style="display:none">وحدت</span>
+    <span class="translation lang-bs" style="display:none">jedinstvo</span>
+    <span class="translation lang-mk" style="display:none">единство</span>
+    <span class="translation lang-pl" style="display:none">jedność</span>
+    <span class="translation lang-ro" style="display:none">unitate</span>
+    <span class="translation lang-it" style="display:none">unità</span>
+    <span class="translation lang-hi" style="display:none">एकता</span>
+  </label><br>
+
+  <label>
+    <input type="radio" name="q31" value="1">
+    Koalition
+    <span class="translation lang-uk">Коаліція</span>
+    <span class="translation lang-en" style="display:none">coalition</span>
+    <span class="translation lang-ar" style="display:none">ائتلاف</span>
+    <span class="translation lang-tr" style="display:none">koalisyon</span>
+    <span class="translation lang-bg" style="display:none">коалиция</span>
+    <span class="translation lang-fa" style="display:none">ائتلاف</span>
+    <span class="translation lang-bs" style="display:none">koalicija</span>
+    <span class="translation lang-mk" style="display:none">коалиција</span>
+    <span class="translation lang-pl" style="display:none">koalicja</span>
+    <span class="translation lang-ro" style="display:none">coaliție</span>
+    <span class="translation lang-it" style="display:none">coalizione</span>
+    <span class="translation lang-hi" style="display:none">संघ</span>
+  </label><br>
+
+  <label>
+    <input type="radio" name="q31" value="2">
+    Ministerium
+    <span class="translation lang-uk">Міністерство</span>
+    <span class="translation lang-en" style="display:none">ministry</span>
+    <span class="translation lang-ar" style="display:none">وزارة</span>
+    <span class="translation lang-tr" style="display:none">bakanlık</span>
+    <span class="translation lang-bg" style="display:none">министерство</span>
+    <span class="translation lang-fa" style="display:none">وزارت‌خانه</span>
+    <span class="translation lang-bs" style="display:none">ministarstvo</span>
+    <span class="translation lang-mk" style="display:none">министерство</span>
+    <span class="translation lang-pl" style="display:none">ministerstwo</span>
+    <span class="translation lang-ro" style="display:none">minister</span>
+    <span class="translation lang-it" style="display:none">ministero</span>
+    <span class="translation lang-hi" style="display:none">मंत्रालय</span>
+  </label><br>
+
+  <label>
+    <input type="radio" name="q31" value="3">
+    Fraktion
+    <span class="translation lang-uk">Фракція</span>
+    <span class="translation lang-en" style="display:none">parliamentary group</span>
+    <span class="translation lang-ar" style="display:none">فريق برلماني</span>
+    <span class="translation lang-tr" style="display:none">fraksiyon</span>
+    <span class="translation lang-bg" style="display:none">фракция</span>
+    <span class="translation lang-fa" style="display:none">فراکسیون</span>
+    <span class="translation lang-bs" style="display:none">frakcija</span>
+    <span class="translation lang-mk" style="display:none">фракција</span>
+    <span class="translation lang-pl" style="display:none">frakcja</span>
+    <span class="translation lang-ro" style="display:none">fracțiune</span>
+    <span class="translation lang-it" style="display:none">fazione</span>
+    <span class="translation lang-hi" style="display:none">दल समूह</span>
+  </label><br>
+
+  <button onclick="checkQuestion('q31','1')">Prüfen</button>
+  <div id="fb-q31" class="feedback"></div>
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+</div>
+<div class="bottom-nav">
+  <button class="page-btn" onclick="window.location.href='index.html'">
+     ← 1–30 
+  </button>
+
+  <button class="page-btn" onclick="window.location.href='questions31-60.html'">
+     61–90 →
+  </button>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('theme-toggle');
+      toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+      });
+    });
+  </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Для каждого вопроса перемешиваем варианты ответов
+    document.querySelectorAll('.question').forEach(q => {
+      const labels = Array.from(q.querySelectorAll('label'));
+      const parent = labels[0].parentNode;
+      // Сохраняем кнопку и feedback, чтобы вернуть их в конец
+      const btn = q.querySelector('button');
+      const fb = q.querySelector('.feedback');
+      // Удаляем старые метки
+      labels.forEach(l => parent.removeChild(l));
+      // Перемешиваем массив
+      for (let i = labels.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [labels[i], labels[j]] = [labels[j], labels[i]];
+      }
+      // Вставляем в новом порядке
+      labels.forEach(l => parent.insertBefore(l, btn));
+      // Кнопка и feedback уже на местах
+    });
+  });
+</script>
+<script>
+  function checkQuestion(questionId, correctValue) {
+    const selected = document.querySelector(`input[name="${questionId}"]:checked`);
+    const feedback = document.getElementById(`fb-${questionId}`);
+
+    if (!selected) {
+      feedback.textContent = "❌ Bitte wähle eine Antwort aus. ";
+      feedback.className = "feedback incorrect";
+      return;
+    }
+
+    if (selected.value === correctValue) {
+      feedback.textContent = "✅ Richtig!";
+      feedback.className = "feedback correct";
+    } else {
+      feedback.textContent = "❌ Falsch. ";
+      feedback.className = "feedback incorrect";
+    }
+  }
+</script>
+<script>
+  (function() {
+    // если уже было согласие/отказ — больше не показываем
+    if (localStorage.getItem('cookieConsent')) return;
+
+    const banner = document.getElementById('cookie-banner');
+    banner.style.display = 'flex';
+
+    document.getElementById('accept-cookies').addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      banner.remove();
+      // здесь можно инициализировать non-essential scripts
+    });
+
+    document.getElementById('reject-cookies').addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'rejected');
+      banner.remove();
+    });
+
+    document.getElementById('settings-cookies').addEventListener('click', () => {
+      // раскроете модалку с категориями или просто уведомление
+      alert('Hier können Sie Ihre Cookie-Einstellungen anpassen.');
+    });
+  })();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.querySelector('.cookie-banner');
+  // если пользователь ещё не дал согласие/отказ — показываем баннер
+  if (!localStorage.getItem('cookieConsent')) {
+    banner.style.display = 'flex';
+  }
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.querySelector('.cookie-banner');
+  // Показываем баннер, если ещё нет решения
+  if (!localStorage.getItem('cookieConsent')) {
+    banner.style.display = 'block';
+  }
+
+  // Только на кнопки вешаем hide
+  document.getElementById('accept-cookies').addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'accepted');
+    banner.remove();
+    // здесь можно инициализировать аналитику
+  });
+
+  document.getElementById('reject-cookies').addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'rejected');
+    banner.remove();
+  });
+
+  document.getElementById('settings-cookies').addEventListener('click', () => {
+    alert('Здесь откроются настройки…');
+  });
+});
+</script>
+
+<script>
+(function(){
+  const langs = ['uk','en','ar','tr','bg','fa','bs','mk','pl','ro','it','hi'];
+  const links = document.querySelectorAll('.lang-switcher a');
+
+  function setLang(lang) {
+    if (!langs.includes(lang)) lang = 'uk';
+    history.replaceState(null,'','?lang='+lang);
+    document.querySelectorAll('.translation').forEach(el=>{
+      el.style.display = el.classList.contains('lang-'+lang)
+        ? (el.tagName==='SPAN' ? 'inline-block' : 'block')
+        : 'none';
+    });
+  }
+
+  // при загрузке
+  const params = new URLSearchParams(location.search);
+  setLang(params.get('lang'));
+
+  // переключение по клику
+  links.forEach(a=>{
+    a.addEventListener('click', e=>{
+      e.preventDefault();
+      setLang(a.dataset.lang);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
