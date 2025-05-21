@@ -13,6 +13,23 @@
 
   gtag('config', 'G-Y58Z6NYLLT');
 </script>
+<style>
+  /* ==== Скрываем все <em> (переводы) во всём контейнере с вопросами ==== */
+  .test-container em {
+    display: none !important;
+  }
+
+  /* ==== Если у body есть класс show-trans — показываем их ==== */
+  body.show-trans .test-container em {
+    display: inline !important;
+  }
+
+  /* Для визуального выделения активной кнопки */
+  .lang-btn.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+</style>
   <style>
     /* ————————————————————————————————————————————
        Theme variables
@@ -433,18 +450,48 @@ html, body {
 body {
   padding-top: 0 !important;
 }
-/* 1) Make any question images responsive so they never overflow on mobile */
-.question img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0.5rem auto; /* optional centering/spacing */
+/* --- Убираем любой «автоматический» фон у label при фокусе/checked --- */
+.question label,
+.question label:hover,
+.question label:focus-within {
+  background-color: transparent !important;
+  outline: none !important;
 }
 
-/* 2) Dark-mode translation bubbles: use a lighter grey for good contrast */
-body.dark .question p em,
-body.dark .question label em {
-  color: #bbbbbb !important;
+/* --- Наш фон для выбранного (.selected) --- */
+.question label.selected {
+  background-color: rgba(255,255,255,0.1) !important;
+  /* при желании можно чуть потемнее, например rgba(255,255,255,0.08) */
+}
+
+/* Чтобы переводы (em) не меркли */
+.question label.selected em {
+  color: var(--text-color) !important;
+}
+/* По умолчанию — показываем переводы (ваши <em>) */
+
+/* При наличии на <body> класса show-trans — показываем переводы */
+body.show-trans em {
+  display: inline !important;
+}
+  /* максимально приоритетно скрываем все <em>, если body НЕ имеет класс show-trans */
+  body:not(.show-trans) em {
+    display: none !important;
+  }
+  /* как только к body добавится show-trans — показываем <em> */
+  body.show-trans em {
+    display: inline !important;
+  }
+/* 1. Сбросим всё, что браузер может приплюсовать к label */
+.question label {
+  background-color: transparent !important;
+  outline: none !important;
+}
+
+/* 2. Наш собственный стиль для выделенного label */
+.question label.selected {
+  background-color: rgba(0, 123, 255, 0.15) !important;
+  /* можно поменять цвет и прозрачность по вкусу */
 }
 
   </style>
@@ -465,24 +512,51 @@ body.dark .question label em {
   </div>
 </div>
 
+<script>
+  // Сразу скрываем все <em> на странице
+  document.querySelectorAll('em').forEach(node => node.style.display = 'none');
 
-
+  document.addEventListener('DOMContentLoaded', () => {
+    // Навешиваем переключатель
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const show = btn.dataset.lang !== 'de';
+        document.querySelectorAll('em').forEach(node => {
+          node.style.display = show ? 'inline' : 'none';
+        });
+        // отметить активность кнопок, если нужно
+        document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  });
+</script>
+ <script>
+    // Этот код выполнится до отрисовки остального <body>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('em').forEach(el => el.style.display = 'none');
+    });
+  </script>
 <header class="topbar">
   <div class="site-info">sprache.online – Leben in Deutschland (Einbürgerungstest)</div>
   <nav class="lang-switcher">
-  <a href="?lang=uk" data-lang="uk">UA</a>
-  <a href="?lang=en" data-lang="en">EN</a>
-  <a href="?lang=ar" data-lang="ar">AR</a>
-  <a href="?lang=tr" data-lang="tr">TR</a>
-  <a href="?lang=bg" data-lang="bg">BG</a>
-  <a href="?lang=fa" data-lang="fa">FA</a>
-  <a href="?lang=bs" data-lang="bs">BS</a>
-  <a href="?lang=mk" data-lang="mk">MK</a>
-  <a href="?lang=pl" data-lang="pl">PL</a>
-  <a href="?lang=ro" data-lang="ro">RO</a>
-  <a href="?lang=it" data-lang="it">IT</a>
-  <a href="?lang=hi" data-lang="hi">HI</a>
-    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+  <a href="#" class="lang-btn active" data-lang="de">DE</a>
+  <a href="#" class="lang-btn" data-lang="uk">UA</a>
+  <a href="#" class="lang-btn" data-lang="en">EN</a>
+  <a href="#" class="lang-btn" data-lang="ar">AR</a>
+  <a href="#" class="lang-btn" data-lang="tr">TR</a>
+  <a href="#" class="lang-btn" data-lang="bg">BG</a>
+  <a href="#" class="lang-btn" data-lang="fa">FA</a>
+  <a href="#" class="lang-btn" data-lang="bs">BS</a>
+  <a href="#" class="lang-btn" data-lang="mk">MK</a>
+  <a href="#" class="lang-btn" data-lang="pl">PL</a>
+  <a href="#" class="lang-btn" data-lang="ro">RO</a>
+  <a href="#" class="lang-btn" data-lang="it">IT</a>
+  <a href="#" class="lang-btn" data-lang="hi">HI</a>
+
+
+    <button id="theme-toggle" aria-label="Toggle theme">Night</button>
   </nav>
 </header>
 
@@ -3157,11 +3231,102 @@ body.dark .question label em {
   </button>
 </div>
 <script>
+  (function(){
+    // Функции скрыть/показать
+    const hideTranslations = () => document.querySelectorAll('em').forEach(el => el.style.display = 'none');
+    const showTranslations = () => document.querySelectorAll('em').forEach(el => el.style.display = 'inline');
+
+    // Сразу при загрузке прячем все <em>
+    hideTranslations();
+
+    // Вешаем переключатель на все языковые кнопки
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        if (btn.dataset.lang === 'de') {
+          hideTranslations();
+        } else {
+          showTranslations();
+        }
+        // Отметим активную кнопку визуально (если нужно)
+        document.querySelectorAll('.lang-btn').forEach(x => x.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  })();
+</script>
+<!-- вставьте прямо перед закрывающим </body> -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1) Сразу достаём все <em> и прячем их
+    const ems = Array.from(document.getElementsByTagName('em'));
+    ems.forEach(el => el.style.display = 'none');
+
+    // 2) Вешаем клики на .lang-btn
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const lang = btn.getAttribute('data-lang');
+        const show = lang !== 'de';  // true для всех, кроме DE
+        ems.forEach(el => el.style.display = show ? 'inline' : 'none');
+        // визуально отметить активную кнопку (опционально)
+        document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Для каждой карточки вопроса
+  document.querySelectorAll('.question').forEach(q => {
+    // на её контейнер ставим делегирование события
+    q.addEventListener('click', e => {
+      // если клик был именно по label или внутри него
+      let lbl = e.target.closest('label');
+      if (!lbl || !q.contains(lbl)) return;
+
+      // снимаем выделение со всех <label> в этом вопросе
+      q.querySelectorAll('label').forEach(l => l.classList.remove('selected'));
+
+      // добавляем выделение к текущему
+      lbl.classList.add('selected');
+    });
+  });
+});
+</script>
+
+</body>
+</html>
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const allEm = () => document.querySelectorAll('em');
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          // если выбран не DE — показываем <em>, иначе скрываем
+          const show = btn.dataset.lang !== 'de';
+          allEm().forEach(el => el.style.display = show ? 'inline' : 'none');
+          // визуально помечаем активную кнопку
+          document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    });
+  </script>
+
+
+
+
+<script>
     document.addEventListener('DOMContentLoaded', () => {
       const toggle = document.getElementById('theme-toggle');
       toggle.addEventListener('click', () => {
         document.body.classList.toggle('dark');
-        toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+        toggle.textContent = document.body.classList.contains('dark') ? 'Day' : 'Night';
       });
     });
   </script>
@@ -3296,6 +3461,86 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 })();
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // для каждой группы input[name]
+  document.querySelectorAll('.question').forEach(question => {
+    const inputs = question.querySelectorAll('input[type="radio"]');
+    inputs.forEach(input => {
+      input.addEventListener('change', () => {
+        // Сначала снимаем .selected со всех label в этом вопросе
+        question.querySelectorAll('label').forEach(l => l.classList.remove('selected'));
+        // Добавляем .selected на тот label, что содержит checked input
+        if (input.checked) {
+          input.closest('label').classList.add('selected');
+        }
+      });
+    });
+  });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // по умолчанию — немецкий, прячем переводы
+  document.body.classList.add('de');
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const lang = btn.dataset.lang;
+
+      if (lang === 'de') {
+        document.body.classList.add('de');
+      } else {
+        document.body.classList.remove('de');
+      }
+
+      // тут можно переключать UI-отмеченный активный язык, e.g.:
+      document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+});
+</script>
+  <!-- Скрипт переключения переводов -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // изначально — показываем только оригинал (DE)
+      document.body.classList.remove('show-trans');
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          const lang = btn.dataset.lang;
+          if (lang === 'de') {
+            document.body.classList.remove('show-trans');
+          } else {
+            document.body.classList.add('show-trans');
+          }
+          // отмечаем активную кнопку
+          document.querySelectorAll('.lang-btn').forEach(x => x.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    });
+  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.question').forEach(question => {
+      // для каждого radio в вопросе
+      question.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+          // убираем selected со всех label этого вопроса
+          question.querySelectorAll('label').forEach(lbl => {
+            lbl.classList.remove('selected');
+          });
+          // добавляем selected только label-у родителю этого radio
+          radio.closest('label').classList.add('selected');
+        });
+      });
+    });
+  });
 </script>
 
 </body>
