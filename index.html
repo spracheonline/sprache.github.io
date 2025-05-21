@@ -433,6 +433,19 @@ html, body {
 body {
   padding-top: 0 !important;
 }
+/* 1) Make any question images responsive so they never overflow on mobile */
+.question img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.5rem auto; /* optional centering/spacing */
+}
+
+/* 2) Dark-mode translation bubbles: use a lighter grey for good contrast */
+body.dark .question p em,
+body.dark .question label em {
+  color: #bbbbbb !important;
+}
 
   </style>
 
