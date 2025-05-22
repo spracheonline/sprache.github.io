@@ -545,6 +545,149 @@ body.show-trans em {
   /* или */
   /* object-fit: cover; */
 }
+/* общий контейнер */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+}
+
+/* стиль для текста "Seite X / Y" */
+.pagination .page-info {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* кнопка "Nächste →" */
+.pagination .next-button {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.pagination .next-button:hover {
+  background: var(--color-primary-dark);
+}
+
+/* --- Мобильная адаптация --- */
+@media (max-width: 600px) {
+  .pagination {
+    flex-direction: column;
+    gap: 0.75rem;          /* расстояние между элементами */
+    text-align: center;
+  }
+  .pagination .page-info {
+    order: 2;               /* выводим под кнопкой, если надо */
+  }
+  .pagination .next-button {
+    order: 1;               /* сначала кнопка */
+    width: 100%;            /* на всю ширину */
+    max-width: 300px;       /* но не слишком шире */
+  }
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  gap: 1rem;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--button-bg);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.pagination a:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.pagination a:disabled,
+.pagination a[style*="visibility: hidden"] {
+  opacity: 0.4;
+  pointer-events: none;
+  background: #ccc;
+  box-shadow: none;
+}
+/* --- ВАШ CSS ФАЙЛ Или внутри <style> --- */
+/* Все изображения становятся отзывчивыми */
+.question img {
+  display: block;      /* убираем возможные пробелы внизу */
+  max-width: 100%;     /* не шире контейнера */
+  height: auto;        /* сохраняем пропорции */
+  margin: 0 auto;      /* по желанию: центрируем */
+}
+.test-container,
+.question {
+  overflow: visible;   /* разрешаем показывать всю картинку */
+}
+.question img {
+  /* возможно у вас стоит */
+  /* height: 200px; */
+  /* или */
+  /* object-fit: cover; */
+}
+/* общий контейнер */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+}
+
+/* стиль для текста "Seite X / Y" */
+.pagination .page-info {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* кнопка "Nächste →" */
+.pagination .next-button {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.pagination .next-button:hover {
+  background: var(--color-primary-dark);
+}
+
+/* --- Мобильная адаптация --- */
+@media (max-width: 600px) {
+  .pagination {
+    flex-direction: column;
+    gap: 0.75rem;          /* расстояние между элементами */
+    text-align: center;
+  }
+  .pagination .page-info {
+    order: 2;               /* выводим под кнопкой, если надо */
+  }
+  .pagination .next-button {
+    order: 1;               /* сначала кнопка */
+    width: 100%;            /* на всю ширину */
+    max-width: 300px;       /* но не слишком шире */
+  }
+}
 
   </style>
 
@@ -3912,57 +4055,6 @@ body.show-trans em {
         if (btn.dataset.lang === 'de') {
           hideTranslations();
         } else {/* Красивый стиль для ссылок пагинации */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem 0;
-  gap: 1rem;
-}
-
-.pagination a {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background: var(--button-bg);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-}
-
-.pagination a:hover {
-  background: var(--button-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-.pagination a:disabled,
-.pagination a[style*="visibility: hidden"] {
-  opacity: 0.4;
-  pointer-events: none;
-  background: #ccc;
-  box-shadow: none;
-}
-/* --- ВАШ CSS ФАЙЛ Или внутри <style> --- */
-/* Все изображения становятся отзывчивыми */
-.question img {
-  display: block;      /* убираем возможные пробелы внизу */
-  max-width: 100%;     /* не шире контейнера */
-  height: auto;        /* сохраняем пропорции */
-  margin: 0 auto;      /* по желанию: центрируем */
-}
-.test-container,
-.question {
-  overflow: visible;   /* разрешаем показывать всю картинку */
-}
-.question img {
-  /* возможно у вас стоит */
-  /* height: 200px; */
-  /* или */
-  /* object-fit: cover; */
-}
 
           showTranslations();
         }
@@ -4311,6 +4403,10 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 </script>
 
+<div class="pagination">
+  <div class="page-info">Seite 1 / 2</div>
+  <button class="next-button" onclick="goNextPage()">Nächste →</button>
+</div>
 
 </body>
 </html>
