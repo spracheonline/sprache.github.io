@@ -4161,44 +4161,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 </script>
-<!-- В <head> или перед закрывающим </body> подключаем скрипт -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const perPage = 30;
-  const params  = new URLSearchParams(window.location.search);
-  let page       = parseInt(params.get('page')) || 1;
-
-  const all      = Array.from(document.querySelectorAll('.question'));
-  const total    = all.length;
-  const maxPage  = Math.ceil(total / perPage);
-  page = Math.min(Math.max(page, 1), maxPage);
+  // читаем из #page=...
+  const hash = window.location.hash.slice(1);      // убираем '#'
+  const params = new URLSearchParams(hash);
+  let page = parseInt(params.get('page')) || 1;
+  
+  const allQuestions = Array.from(document.querySelectorAll('.question'));
+  const totalPages   = Math.ceil(allQuestions.length / perPage);
+  page = Math.min(Math.max(page, 1), totalPages);
 
   const start = (page - 1) * perPage;
   const end   = page * perPage;
-  all.forEach((q, i) => q.style.display = (i >= start && i < end) ? '' : 'none');
+  allQuestions.forEach((q, i) => {
+    q.style.display = (i >= start && i < end) ? '' : 'none';
+  });
 
-  // навигация
-  const base = window.location.pathname;
-  const nav  = document.createElement('div');
+  // Строим навигацию
+  const nav = document.createElement('div');
   nav.className = 'pagination';
 
-  const prev = document.createElement('a');
-  prev.href       = `${base}?page=${page-1}`;
-  prev.textContent= '← Vorherige';
-  if (page <= 1) prev.style.visibility = 'hidden';
+  const makeLink = (p, text) => {
+    const a = document.createElement('a');
+    a.href = `#page=${p}`;
+    a.textContent = text;
+    if (p < 1 || p > totalPages) a.style.visibility = 'hidden';
+    return a;
+  };
 
+  const prev = makeLink(page - 1, '← Vorherige');
   const info = document.createElement('span');
-  info.textContent = ` Seite ${page} / ${maxPage} `;
-
-  const next = document.createElement('a');
-  next.href       = `${base}?page=${page+1}`;
-  next.textContent= 'Nächste →';
-  if (page >= maxPage) next.style.visibility = 'hidden';
+  info.textContent = ` Seite ${page} / ${totalPages} `;
+  const next = makeLink(page + 1, 'Nächste →');
 
   nav.append(prev, info, next);
-  document.querySelector('.test-container').append(nav);
+  // Вставляем навигацию в конец контейнера
+  const container = document.querySelector('.test-container') || document.body;
+  container.append(nav);
 });
 </script>
+
 
 </body>
 </html>
