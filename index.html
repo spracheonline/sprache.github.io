@@ -4162,45 +4162,54 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 </script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+(function(){
   const perPage = 30;
-  // читаем из #page=...
-  const hash = window.location.hash.slice(1);      // убираем '#'
-  const params = new URLSearchParams(hash);
-  let page = parseInt(params.get('page')) || 1;
-  
-  const allQuestions = Array.from(document.querySelectorAll('.question'));
-  const totalPages   = Math.ceil(allQuestions.length / perPage);
-  page = Math.min(Math.max(page, 1), totalPages);
-
-  const start = (page - 1) * perPage;
-  const end   = page * perPage;
-  allQuestions.forEach((q, i) => {
-    q.style.display = (i >= start && i < end) ? '' : 'none';
-  });
-
-  // Строим навигацию
-  const nav = document.createElement('div');
-  nav.className = 'pagination';
-
-  const makeLink = (p, text) => {
-    const a = document.createElement('a');
-    a.href = `#page=${p}`;
-    a.textContent = text;
-    if (p < 1 || p > totalPages) a.style.visibility = 'hidden';
-    return a;
-  };
-
-  const prev = makeLink(page - 1, '← Vorherige');
-  const info = document.createElement('span');
-  info.textContent = ` Seite ${page} / ${totalPages} `;
-  const next = makeLink(page + 1, 'Nächste →');
-
-  nav.append(prev, info, next);
-  // Вставляем навигацию в конец контейнера
   const container = document.querySelector('.test-container') || document.body;
-  container.append(nav);
-});
+  const allQuestions = Array.from(document.querySelectorAll('.question'));
+  const totalPages = Math.ceil(allQuestions.length / perPage);
+
+  function renderPage() {
+    // узнаём номер страницы из хэша, например "#page=2"
+    const hash = window.location.hash.slice(1);
+    const params = new URLSearchParams(hash);
+    let page = parseInt(params.get('page')) || 1;
+    page = Math.min(Math.max(page, 1), totalPages);
+
+    // показываем нужные вопросы, прячем остальные
+    const start = (page - 1) * perPage;
+    const end   = page * perPage;
+    allQuestions.forEach((q, i) => {
+      q.style.display = (i >= start && i < end) ? '' : 'none';
+    });
+
+    // удаляем старую навигацию, если была
+    let oldNav = document.querySelector('.pagination');
+    if (oldNav) oldNav.remove();
+
+    // строим новую
+    const nav = document.createElement('div');
+    nav.className = 'pagination';
+
+    const makeLink = (p, text) => {
+      const a = document.createElement('a');
+      a.href = `#page=${p}`;
+      a.textContent = text;
+      if (p < 1 || p > totalPages) a.style.visibility = 'hidden';
+      return a;
+    };
+
+    const prev = makeLink(page - 1, '← Vorherige');
+    const info = document.createElement('span');
+    info.textContent = ` Seite ${page} / ${totalPages} `;
+    const next = makeLink(page + 1, 'Nächste →');
+
+    nav.append(prev, info, next);
+    container.append(nav);
+  }
+
+  window.addEventListener('DOMContentLoaded', renderPage);
+  window.addEventListener('hashchange', renderPage);
+})();
 </script>
 
 
