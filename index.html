@@ -493,6 +493,58 @@ body.show-trans em {
   background-color: rgba(0, 123, 255, 0.15) !important;
   /* можно поменять цвет и прозрачность по вкусу */
 }
+/* Красивый стиль для ссылок пагинации */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  gap: 1rem;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--button-bg);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.pagination a:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.pagination a:disabled,
+.pagination a[style*="visibility: hidden"] {
+  opacity: 0.4;
+  pointer-events: none;
+  background: #ccc;
+  box-shadow: none;
+}
+/* --- ВАШ CSS ФАЙЛ Или внутри <style> --- */
+/* Все изображения становятся отзывчивыми */
+.question img {
+  display: block;      /* убираем возможные пробелы внизу */
+  max-width: 100%;     /* не шире контейнера */
+  height: auto;        /* сохраняем пропорции */
+  margin: 0 auto;      /* по желанию: центрируем */
+}
+.test-container,
+.question {
+  overflow: visible;   /* разрешаем показывать всю картинку */
+}
+.question img {
+  /* возможно у вас стоит */
+  /* height: 200px; */
+  /* или */
+  /* object-fit: cover; */
+}
 
   </style>
 
@@ -3844,11 +3896,6 @@ body.show-trans em {
 
 
 </div>
-<div class="bottom-nav">
-  <button class="page-btn" onclick="window.location.href='questions31-60.html'">
-     31–60 →
-  </button>
-</div>
 <script>
   (function(){
     // Функции скрыть/показать
@@ -3864,7 +3911,59 @@ body.show-trans em {
         e.preventDefault();
         if (btn.dataset.lang === 'de') {
           hideTranslations();
-        } else {
+        } else {/* Красивый стиль для ссылок пагинации */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  gap: 1rem;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--button-bg);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.pagination a:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.pagination a:disabled,
+.pagination a[style*="visibility: hidden"] {
+  opacity: 0.4;
+  pointer-events: none;
+  background: #ccc;
+  box-shadow: none;
+}
+/* --- ВАШ CSS ФАЙЛ Или внутри <style> --- */
+/* Все изображения становятся отзывчивыми */
+.question img {
+  display: block;      /* убираем возможные пробелы внизу */
+  max-width: 100%;     /* не шире контейнера */
+  height: auto;        /* сохраняем пропорции */
+  margin: 0 auto;      /* по желанию: центрируем */
+}
+.test-container,
+.question {
+  overflow: visible;   /* разрешаем показывать всю картинку */
+}
+.question img {
+  /* возможно у вас стоит */
+  /* height: 200px; */
+  /* или */
+  /* object-fit: cover; */
+}
+
           showTranslations();
         }
         // Отметим активную кнопку визуально (если нужно)
