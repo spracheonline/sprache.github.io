@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>LiD – Allgemeine 300 Fragen</title>
+   <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <meta name="description" content="Kostenloser 'Leben in Deutschland'- und Einbürgerungstest-Trainer auf 13 Sprachen: Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano und हिन्दी.">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2756865893493273"
      crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -962,6 +964,72 @@ body.dark .topbar {
   width: 100%;
   box-sizing: border-box;
 }
+.footer-links {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+}
+
+.footer-links a {
+  color: #333;
+}
+.footer-links a:hover {
+  color: #1e40af;
+}
+.footer-links a:visited {
+  color: #333;
+}
+
+body.dark .footer-links a {
+  color: #ccc !important;
+}
+body.dark .footer-links a:hover {
+  color: #3b82f6 !important;
+}
+body.dark .footer-links a:visited {
+  color: #ccc !important;
+}
+
+.site-footer {
+  background: none;
+  padding: 0.5rem 0;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.site-footer a {
+  color: #333;
+  text-decoration: none;
+  margin: 0 0.3rem;
+  transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+  color: #1e40af;
+}
+
+.site-footer a:visited {
+  color: #333;
+}
+
+/* Тёмная тема */
+body.dark .site-footer {
+  color: #ccc;
+}
+
+body.dark .site-footer a {
+  color: #ccc;
+}
+
+body.dark .site-footer a:hover {
+  color: #4c9aff;
+}
+
+body.dark .site-footer a:visited {
+  color: #ccc;
+}
 
   </style>
 
@@ -1009,7 +1077,7 @@ body.dark .topbar {
   </script>
   <header class="topbar">
   <div class="topbar-container">
-    <img src="logo_5.png" alt="sprache.online Logo" class="logo">
+   <a href="../"> <img src="logo_5.png" alt="sprache.online Logo" class="logo"></a>
     <button id="settings-btn" class="settings-icon" aria-label="Einstellungen">⚙️</button>
   </div>
   <!-- Модальное окно -->
@@ -12133,15 +12201,14 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="page-info">Seite 1 / 2</div>
   <button class="next-button" onclick="goNextPage()">Nächste →</button>
 </div>
-<footer style="background-color: #f0f0f0; padding: 20px 0; text-align: center; font-size: 14px; color: #666;">
-  <div>
-    <a href="../impressum/" style="text-decoration: none;">Impressum</a> |
-    <a href="../datenschutz/" style="text-decoration: none;">Datenschutzerklärung</a> |
-    <a href="../kontakt/" style="text-decoration: none;">Kontakt</a>
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="../impressum/">Impressum</a> |
+    <a href="../datenschutz/">Datenschutzerklärung</a> |
+    <a href="../kontakt/">Kontakt</a>
   </div>
-  <div style="margin-top: 10px;">
-    © 2025 sprache.online — Alle Rechte vorbehalten
-  </div>
+  <div class="footer-copy">© 2025 sprache.online — Alle Rechte vorbehalten</div>
 </footer>
+
 </body>
 </html>
