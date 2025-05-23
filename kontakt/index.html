@@ -1,70 +1,87 @@
-<div id="kontakt" style="max-width:800px; margin:50px auto; padding:30px; background:#fff; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.08); font-family:sans-serif;">
-  <h2>Kontakt</h2>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-  <p>Wenn Sie Fragen oder Anregungen zu dieser Website haben, können Sie uns gerne per E-Mail kontaktieren:</p>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      font-family: "Segoe UI", sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
 
-  <p>
-    <strong>E-Mail:</strong><br>
-    <a href="pavlospitsyn@gmail.com">pavlospitsyn@gmail.com</a>
-  </p>
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
 
-  <p>Bitte beachten Sie, dass wir keine Garantie für eine sofortige Rückmeldung übernehmen können. Wir bemühen uns jedoch, Ihre Anfrage so schnell wie möglich zu beantworten.</p>
-</div>
-<style type="text/css">body {
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
-  font-family: "Segoe UI", sans-serif;
-  color: #333;
-}
+    h1, h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: #222;
+      border-bottom: 2px solid #0066cc;
+      padding-bottom: 5px;
+    }
 
-.legal-container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  border-radius: 12px;
-  box-sizing: border-box;
-}
+    p {
+      margin-bottom: 1em;
+      font-size: 1em;
+    }
 
-.legal-container h1,
-.legal-container h2 {
-  font-size: 1.6em;
-  margin-bottom: 1em;
-  color: #111;
-}
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
 
-.legal-container p,
-.legal-container ul {
-  margin-bottom: 1em;
-  line-height: 1.6;
-  font-size: 1em;
-}
+    a:hover {
+      text-decoration: underline;
+    }
 
-.legal-container a {
-  color: #0066cc;
-  text-decoration: none;
-}
+    strong {
+      color: #000;
+    }
 
-.legal-container a:hover {
-  text-decoration: underline;
-}
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: none;
+      }
 
-@media (max-width: 600px) {
-  .legal-container {
-    padding: 15px;
-    border-radius: 0;
-    box-shadow: none;
-  }
+      h1, h2 {
+        font-size: 1.5em;
+      }
 
-  .legal-container h1,
-  .legal-container h2 {
-    font-size: 1.4em;
-  }
+      p {
+        font-size: 0.95em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Kontakt</h2>
 
-  .legal-container p {
-    font-size: 0.95em;
-  }
-}
-</style>
+    <p>Wenn Sie Fragen oder Anregungen zu dieser Website haben, können Sie uns gerne per E-Mail kontaktieren:</p>
+
+    <p>
+      <strong>E-Mail:</strong><br>
+      <a href="mailto:pavlospitsyn@gmail.com">pavlospitsyn@gmail.com</a>
+    </p>
+
+    <p>Bitte beachten Sie, dass wir keine Garantie für eine sofortige Rückmeldung übernehmen können. Wir bemühen uns jedoch, Ihre Anfrage so schnell wie möglich zu beantworten.</p>
+  </div>
+</body>
+</html>
