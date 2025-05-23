@@ -279,34 +279,172 @@ footer a:hover {
   border-radius: 4px;
   border: 1px solid #ccc;
 }
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  max-width: 100%;
+}
+
+.logo-top {
+  max-height: 48px;
+  height: auto;
+}
+
+.lang-select {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lang-select label {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.lang-select select {
+  font-size: 1rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.logo {
+  max-height: 48px;
+  height: auto;
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.test-info {
+  text-align: center;
+  margin: 1.5rem auto;
+  max-width: 800px;
+  font-size: 1rem;
+  color: #444;
+}
+body.dark .test-info {
+  color: #ccc;
+}
+.lang-switcher {
+  position: relative;
+  display: inline-block;
+}
+
+#language-toggle {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+#language-list {
+  display: none;
+  position: absolute;
+  right: 0;
+  margin-top: 0.2rem;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 0.5rem 0;
+  z-index: 1000;
+  min-width: 180px;
+}
+
+#language-list li {
+  padding: 0;
+  margin: 0;
+}
+
+#language-list li button {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#language-list li button:hover {
+  background-color: #f0f0f0;
+}
+
+#language-list.open {
+  display: block;
+}
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  box-sizing: border-box;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  max-height: 48px;
+  height: auto;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
   </style>
 </head>
 <body>
+
 <center>
 <div class="header-bar">
-  <div class="logo-box">
-    <img src="logo_5.png" alt="sprache.online Logo" class="header-logo">
-  </div>
-  <div class="lang-box">
-    <label for="lang-dropdown">Wählen Sie Ihre Sprache:</label>
-    <select id="lang-dropdown">
-      <option value="de">Deutsch</option>
-      <option value="uk">Українська</option>
-      <option value="en">English</option>
-      <option value="ar">العربية</option>
-      <option value="tr">Türkçe</option>
-      <option value="bg">Български</option>
-      <option value="fa">فارسی</option>
-      <option value="bs">Bosanski</option>
-      <option value="mk">Македонски</option>
-      <option value="pl">Polski</option>
-      <option value="ro">Română</option>
-      <option value="it">Italiano</option>
-      <option value="hi">हिन्दी</option>
-    </select>
+  <img src="logo_s.png" alt="sprache.online Logo" class="header-logo">
+
+  <div class="lang-switcher">Wählen Sie Ihre Sprache:&nbsp;
+    <button id="language-toggle">Deutsch ▾</button>
+    <ul id="language-list">
+      <li data-lang="de"><button>Deutsch</button></li>
+      <li data-lang="uk"><button>Українська</button></li>
+      <li data-lang="en"><button>English</button></li>
+      <li data-lang="ar"><button>العربية</button></li>
+      <li data-lang="tr"><button>Türkçe</button></li>
+      <li data-lang="bg"><button>Български</button></li>
+      <li data-lang="fa"><button>فارسی</button></li>
+      <li data-lang="bs"><button>Bosanski</button></li>
+      <li data-lang="mk"><button>Македонски</button></li>
+      <li data-lang="pl"><button>Polski</button></li>
+      <li data-lang="ro"><button>Română</button></li>
+      <li data-lang="it"><button>Italiano</button></li>
+      <li data-lang="hi"><button>हिन्दी</button></li>
+    </ul>
   </div>
 </div>
+
 
 
   <main id="welcome">
