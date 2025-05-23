@@ -427,6 +427,42 @@ body.dark .test-info {
   align-items: center;
   gap: 0.5rem;
 }
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  max-width: 100%;
+  box-sizing: border-box;
+  gap: 1rem;
+}
+
+.header-logo {
+  max-height: 40px;
+  height: auto;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Адаптация для телефонов */
+@media (max-width: 600px) {
+  .header-bar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .header-left, .header-right {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+  }
+  .header-right {
+    margin-top: 0.5rem;
+  }
+}
 
   </style>
 </head>
