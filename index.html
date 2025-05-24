@@ -819,134 +819,951 @@ body.dark .site-footer a:visited {
 
 const infoText = {
   de: {
-    title:   'Was ist dieser Test?',
-    content: `Dieser Online-Test ist Teil des Integrationskurses in Deutschland und Grundlage für
-    den Erhalt der Niederlassungserlaubnis oder Staatsbürgerschaft. Sie beantworten 33
-    offizielle Fragen (Stand 07.05.2025 vom BAMF): 30 allgemeine Fragen aus dem Katalog
-    und 3 speziell zu Ihrem Bundesland. Um zu bestehen, sind mindestens 17 richtige Antworten
-    erforderlich. Die Plattform ist in 13 Sprachen (Deutsch, Українська, English, العربية,
-    Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी)
-    verfügbar und zeigt direkt Übersetzungen an, falls Sie etwas nachschlagen möchten.`
+    title: 'Was ist dieser Test?',
+    content: `
+<div class="einbuergerung-info">
+  <h2>Allgemeines</h2>
+  <p>
+    Der <strong>Einbürgerungstest</strong>, auch bekannt als Abschlusstest des Orientierungskurses "Leben in Deutschland", ist ein verpflichtender Bestandteil für Personen,
+    die die deutsche Staatsbürgerschaft oder eine Niederlassungserlaubnis beantragen möchten. 
+    Der Test umfasst <strong>33 Fragen</strong>: <strong>30 allgemeine Fragen</strong> zu Politik, Geschichte, Gesellschaft und Werten in Deutschland sowie <strong>3 länderspezifische Fragen</strong>.
+  </p>
+
+  <h2>Ablauf des Tests</h2>
+  <p>
+    Die Prüfung erfolgt schriftlich als <strong>Multiple-Choice-Test</strong> mit vier Antwortmöglichkeiten. 
+    Die Bearbeitungszeit beträgt <strong>60 Minuten</strong>, die Teilnahme kostet <strong>25 Euro</strong>. 
+    Bei Bestehen erhalten Sie ein offizielles <strong>Zertifikat</strong>, das für Einbürgerung oder Niederlassungserlaubnis genutzt wird.
+  </p>
+
+  <h2>Vorbereitung mit sprache.online</h2>
+  <p>
+    Unsere Plattform <strong>sprache.online</strong> bietet Ihnen eine gezielte Vorbereitung mit dem kompletten Fragenkatalog in <strong>13 Sprachen</strong> 
+    (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी).
+    Sie erleichtert das Verstehen komplexer Begriffe und hilft Ihnen, selbstbewusst zur Prüfung zu erscheinen.
+    Beim offiziellen Test sind alle Fragen nur auf <strong>Deutsch</strong>, aber unser interaktiver Trainer unterstützt Sie mit mehrsprachiger Erklärung.
+  </p>
+
+  <h2>Fragenkatalog laut BAMF</h2>
+  <p>
+    Der BAMF-Katalog enthält <strong>300 allgemeine Fragen</strong> + <strong>10 spezifische Fragen je Bundesland</strong>. 
+    Im tatsächlichen Test erscheinen davon nur <strong>30 zufällige allgemeine</strong> und <strong>3 bundeslandspezifische</strong> –
+    welche das sind, lässt sich im Voraus nicht sagen.
+  </p>
+
+  <h2>Gesetzliche Rahmenbedingungen</h2>
+  <p>
+    Seit der Reform 2024 ist eine Einbürgerung bereits nach <strong>5 Jahren</strong> möglich – in Sonderfällen schon nach <strong>3 Jahren</strong>. 
+    Das Verbot der <strong>doppelten Staatsangehörigkeit</strong> wurde für viele aufgehoben. 
+    Im Jahr 2023 gab es über <strong>200.000 Einbürgerungen</strong> – ein Rekord.
+  </p>
+
+  <h2>Neue Inhalte im Test</h2>
+  <p>
+    Der Test wurde erweitert: Er enthält jetzt auch Fragen zum <strong>Demokratieverständnis</strong>, zu <strong>Grundrechten</strong> und zum <strong>Antisemitismus</strong>.
+    Die Bundesregierung möchte damit aktuelle Entwicklungen aufnehmen und die <strong>Wertevermittlung</strong> stärken.
+  </p>
+  <p>Weitere Informationen finden Sie auf der offiziellen Website des Bundesamts für Migration und Flüchtlinge (BAMF):
+    <a href="https://www.bamf.de/DE/Themen/Integration/ZugewanderteTeilnehmende/Einbuergerung/einbuergerung-node.html" target="_blank" rel="noopener">bamf.de – Einbürgerung</a>
+  </p>
+</div>
+<style>
+  .einbuergerung-info {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .einbuergerung-info h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .einbuergerung-info p {
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .einbuergerung-info {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .einbuergerung-info h2 {
+      font-size: 1.05rem;
+    }
+  }
+</style>` // уже добавлено
   },
   uk: {
-    title:   'Що це за тест?',
-    content: `Цей онлайн-тест є частиною інтеграційного курсу в Німеччині та необхідний для
-    отримання дозволу на проживання або громадянства. Ви відповідаєте на 33
-    офіційні запитання (станом на 07.05.2025 за списком BAMF): 30 загальних і 3 —
-    по вашій федеральній землі. Для проходження потрібно щонайменше 17 правильних
-    відповідей. Платформа доступна 13 мовами (Deutsch, Українська, English, العربية,
-    Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी)
-    із миттєвим показом перекладів незрозумілих фраз.`
+    title: 'Що це за тест?',
+    content: `<div class="einbuergerung-info">
+  <h2>Загальна інформація</h2>
+  <p>
+    <strong>Тест на натуралізацію</strong>, також відомий як підсумковий тест орієнтаційного курсу "Життя в Німеччині", є обов’язковим для осіб,
+    які бажають отримати німецьке громадянство або дозвіл на постійне проживання (Niederlassungserlaubnis).
+    Тест містить <strong>33 запитання</strong>: <strong>30 загальних</strong> з політики, історії, суспільства і цінностей Німеччини та <strong>3 регіональні</strong>, що стосуються вашої федеральної землі.
+  </p>
+
+  <h2>Як проходить тест</h2>
+  <p>
+    Це письмовий <strong>тест із варіантами відповідей</strong> (Multiple Choice), де лише один варіант є правильним. 
+    Тривалість – <strong>60 хвилин</strong>, вартість участі – <strong>25 євро</strong>. 
+    Після успішного складання видається <strong>офіційний сертифікат</strong>, який необхідний для натуралізації або отримання дозволу на проживання.
+  </p>
+
+  <h2>Підготовка на платформі sprache.online</h2>
+  <p>
+    Платформа <strong>sprache.online</strong> надає повний каталог запитань із перекладами <strong>13 мовами</strong> 
+    (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी).
+    Вона допоможе вам зрозуміти складні формулювання та впевнено скласти тест. На офіційному іспиті запитання подаються лише <strong>німецькою</strong>,
+    але ви можете тренуватись із перекладами.
+  </p>
+
+  <h2>Каталог запитань від BAMF</h2>
+  <p>
+    Каталог BAMF містить <strong>300 загальних питань</strong> + <strong>10 питань для кожної федеральної землі</strong>. 
+    У тесті обираються <strong>30 випадкових загальних</strong> і <strong>3 регіональні</strong>. Які саме – не повідомляється заздалегідь.
+  </p>
+
+  <h2>Юридичні підстави</h2>
+  <p>
+    З 2024 року натуралізація можлива вже через <strong>5 років</strong> законного проживання, а в особливих випадках – через <strong>3 роки</strong>.
+    Багатьом дозволено мати <strong>подвійне громадянство</strong>. У 2023 році натуралізовано понад <strong>200 000 осіб</strong> – рекордний показник.
+  </p>
+
+  <h2>Нові запитання у тесті</h2>
+  <p>
+    Додано теми, що стосуються <strong>демократичних цінностей</strong>, <strong>основних прав</strong> і <strong>антисемітизму</strong>. 
+    Уряд Німеччини прагне закріпити не лише знання, а й передати <strong>цінності</strong>.
+  </p>
+  <p>Детальніше на офіційному сайті Федерального відомства у справах міграції та біженців (BAMF):
+    <a href="https://www.bamf.de/UA/Integration/lebenindeutschland/lebenindeutschland-node.html" target="_blank" rel="noopener">bamf.de – Життя в Німеччині</a>
+  </p>
+</div></div>
+<style>
+  .einbuergerung-info {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .einbuergerung-info h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .einbuergerung-info p {
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .einbuergerung-info {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .einbuergerung-info h2 {
+      font-size: 1.05rem;
+    }
+  }
+</style>
+` // сюда будет вставлен украинский перевод
   },
   en: {
-    title:   'What is this test?',
-    content: `This online test is part of Germany’s integration course and a prerequisite for
-    obtaining a residence permit or citizenship. You will answer 33 official questions
-    (as of 07.05.2025 from BAMF): 30 general questions from the catalogue and 3
-    on your federal state. A minimum of 17 correct answers is required to pass.
-    The platform is available in 13 languages (Deutsch, Українська, English, العربية,
-    Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी)
-    and shows instant translations if you need to look up anything.`
+    title: 'What is this test?',
+    content: `<div class="einbuergerung-info">
+  <h2>General Information</h2>
+  <p>
+    The <strong>naturalization test</strong>, also known as the final test of the orientation course "Life in Germany," is a mandatory component for individuals seeking German citizenship or a permanent residence permit (Niederlassungserlaubnis).
+    The test includes <strong>33 questions</strong>: <strong>30 general questions</strong> about politics, history, society, and values in Germany, and <strong>3 regional questions</strong> about your federal state.
+  </p>
+
+  <h2>How the test works</h2>
+  <p>
+    It is a written <strong>multiple-choice test</strong> with four options per question, only one of which is correct.
+    The duration is <strong>60 minutes</strong>, and the participation fee is <strong>25 euros</strong>.
+    Upon passing, you receive an <strong>official certificate</strong> that can be used for naturalization or a permanent residence permit application.
+  </p>
+
+  <h2>Preparation with sprache.online</h2>
+  <p>
+    Our platform <strong>sprache.online</strong> provides the full set of questions translated into <strong>13 languages</strong>
+    (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी).
+    It helps you understand complex wording and feel confident for the exam. The official test is conducted <strong>only in German</strong>,
+    but our trainer supports multilingual explanations.
+  </p>
+
+  <h2>Question catalog from BAMF</h2>
+  <p>
+    The BAMF catalog consists of <strong>300 general questions</strong> + <strong>10 specific questions</strong> for each federal state.
+    Only <strong>30 random general</strong> and <strong>3 state-specific</strong> questions will appear in the test — you won’t know in advance which.
+  </p>
+
+  <h2>Legal framework</h2>
+  <p>
+    Since the 2024 reform, naturalization is possible after <strong>5 years</strong> of legal residence — in special cases, even after <strong>3 years</strong>.
+    The restriction on <strong>dual citizenship</strong> has been lifted for many people. In 2023, over <strong>200,000 people</strong> were naturalized — a record.
+  </p>
+
+  <h2>New topics in the test</h2>
+  <p>
+    New questions have been added on <strong>democratic values</strong>, <strong>fundamental rights</strong>, and <strong>antisemitism</strong>.
+    The German government aims not only to convey knowledge but also to strengthen <strong>value-based education</strong>.
+  </p>
+  <p>More information can be found on the official website of the Federal Office for Migration and Refugees (BAMF):
+    <a href="https://www.bamf.de/EN/Themen/Integration/ZugewanderteTeilnehmende/Einbuergerung/einbuergerung-node.html" target="_blank" rel="noopener">bamf.de – Naturalization</a>
+  </p>
+</div>
+<style>
+  .einbuergerung-info {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .einbuergerung-info h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .einbuergerung-info p {
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .einbuergerung-info {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .einbuergerung-info h2 {
+      font-size: 1.05rem;
+    }
+  }
+</style>` // английский перевод
   },
   ar: {
-    title:   'ما هذا الاختبار؟',
-    content: `هذا الاختبار الإلكتروني هو جزء من دورة الاندماج في ألمانيا وأساسي للحصول على
-    تصريح إقامة أو الجنسية. ستجيب على 33 سؤالاً رسميًا (حتى 07.05.2025 حسب موقع BAMF):
-    30 سؤالًا عامًّا من الكتالوج و3 أسئلة عن ولايتك الفيدرالية. لاجتياز الامتحان
-    تحتاج إلى 17 إجابة صحيحة. المنصة متاحة بـ13 لغة (Deutsch, Українська, English,
-    العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano,
-    हिन्दी) وتعرض الترجمات فورًا عند الحاجة.`
+    title: 'ما هذا الاختبار؟',
+    content: `<div class="einbuergerung-info">
+  <h2>معلومات عامة</h2>
+  <p>
+    <strong>اختبار التجنيس</strong>، المعروف أيضًا باسم الاختبار النهائي لدورة التوجيه "العيش في ألمانيا"، هو جزء إلزامي للأشخاص الذين يسعون للحصول على الجنسية الألمانية أو تصريح الإقامة الدائمة (Niederlassungserlaubnis).
+    يتضمن الاختبار <strong>33 سؤالًا</strong>: <strong>30 سؤالًا عامًا</strong> حول السياسة والتاريخ والمجتمع والقيم في ألمانيا و<strong>3 أسئلة إقليمية</strong> تتعلق بالولاية الفيدرالية التي تعيش فيها.
+  </p>
+
+  <h2>كيفية إجراء الاختبار</h2>
+  <p>
+    يتم إجراء الاختبار كتابيًا ويكون على شكل <strong>اختبار متعدد الخيارات</strong>، حيث يوجد أربعة خيارات لكل سؤال، وإجابة واحدة فقط صحيحة.
+    مدة الاختبار <strong>60 دقيقة</strong>، وتبلغ رسوم المشاركة <strong>25 يورو</strong>.
+    عند النجاح، تحصل على <strong>شهادة رسمية</strong> يمكن استخدامها لطلب الجنسية أو تصريح الإقامة الدائمة.
+  </p>
+
+  <h2>التحضير عبر sprache.online</h2>
+  <p>
+    توفر منصتنا <strong>sprache.online</strong> كتالوج الأسئلة الكامل مع ترجمات بـ<strong>13 لغة</strong>
+    (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी).
+    تساعدك المنصة على فهم المصطلحات المعقدة والاستعداد بثقة للامتحان. تُطرح الأسئلة في الاختبار الرسمي <strong>باللغة الألمانية فقط</strong>،
+    لكن يمكنك التعلم والتدريب باستخدام الترجمة.
+  </p>
+
+  <h2>كتالوج الأسئلة من BAMF</h2>
+  <p>
+    يحتوي كتالوج BAMF على <strong>300 سؤال عام</strong> + <strong>10 أسئلة خاصة بكل ولاية فيدرالية</strong>.
+    في الاختبار، يتم اختيار <strong>30 سؤالًا عامًا عشوائيًا</strong> و<strong>3 أسئلة خاصة بالولاية</strong> — ولا يتم الإعلان عنها مسبقًا.
+  </p>
+
+  <h2>الإطار القانوني</h2>
+  <p>
+    منذ إصلاح عام 2024، أصبح من الممكن الحصول على الجنسية بعد <strong>5 سنوات</strong> من الإقامة القانونية — وفي حالات خاصة بعد <strong>3 سنوات</strong> فقط.
+    تم أيضًا إلغاء القيود المفروضة على <strong>ازدواج الجنسية</strong>. في عام 2023، تم تجنيس أكثر من <strong>200,000 شخص</strong> — رقم قياسي.
+  </p>
+
+  <h2>مواضيع جديدة في الاختبار</h2>
+  <p>
+    تمت إضافة أسئلة جديدة حول <strong>القيم الديمقراطية</strong> و<strong>الحقوق الأساسية</strong> و<strong>معاداة السامية</strong>.
+    تهدف الحكومة الألمانية إلى تعزيز <strong>نقل القيم</strong>، بالإضافة إلى نقل المعرفة.
+  </p>
+  <p>لمزيد من المعلومات، قم بزيارة الموقع الرسمي للمكتب الاتحادي للهجرة واللاجئين (BAMF):
+    <a href="https://www.bamf.de/AR/Integration/lebenindeutschland/lebenindeutschland-node.html" target="_blank" rel="noopener">bamf.de – التجنيس</a>
+  </p>
+</div>
+<style>
+  .einbuergerung-info {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .einbuergerung-info h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .einbuergerung-info p {
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .einbuergerung-info {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .einbuergerung-info h2 {
+      font-size: 1.05rem;
+    }
+  }
+</style>`
   },
   tr: {
-    title:   'Bu test nedir?',
-    content: `Bu çevrimiçi test, Almanya entegrasyon kursunun bir parçasıdır ve oturma izni
-    veya vatandaşlık için ön koşuldur. BAMF’den alınan 07.05.2025 tarihli 33 resmi
-    soruyu yanıtlayacaksınız: 300 soruluk katalogdan 30 genel soru ve yaşadığınız
-    Eyaletle ilgili 3 soru. Geçmek için en az 17 doğru yanıt gerekiyor. Platform,
-    13 dilde (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی,
-    Bosanski, Македонски, Polski, Română, Italiano, हिन्दी) hizmet verir ve anında
-    çeviri sunar.`
+    title: 'Bu test nedir?',
+    content: `<div class="einbuergerung-info">
+  <h2>Genel Bilgi</h2>
+  <p>
+    <strong>Vatandaşlık testi</strong>, "Almanya'da Yaşam" uyum kursunun son testi olarak da bilinir ve Alman vatandaşlığı veya süresiz oturma izni (Niederlassungserlaubnis) başvurusunda bulunmak isteyen kişiler için zorunludur.
+    Test <strong>33 sorudan</strong> oluşur: Almanya’daki siyaset, tarih, toplum ve değerler hakkında <strong>30 genel soru</strong> ve yaşadığınız <strong>federal eyalete dair 3 bölgesel soru</strong>.
+  </p>
+
+  <h2>Testin işleyişi</h2>
+  <p>
+    Test yazılı olarak <strong>çoktan seçmeli</strong> formatta yapılır; her soru için dört şık vardır ve yalnızca biri doğrudur.
+    Süre <strong>60 dakikadır</strong> ve katılım ücreti <strong>25 Euro</strong>'dur.
+    Testi başarıyla geçenler, vatandaşlık veya süresiz oturma izni başvurularında kullanılabilecek <strong>resmi bir sertifika</strong> alır.
+  </p>
+
+  <h2>sprache.online ile hazırlık</h2>
+  <p>
+    <strong>sprache.online</strong> platformumuz, <strong>13 dilde</strong> çevirileriyle birlikte tüm soru kataloğunu sunar
+    (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी).
+    Zor terimleri anlamanıza yardımcı olur ve sınava kendinize güvenerek girmenizi sağlar. Resmî sınav <strong>yalnızca Almanca</strong> yapılır,
+    ancak bu araç çok dilli açıklamalarla sizi destekler.
+  </p>
+
+  <h2>BAMF soru kataloğu</h2>
+  <p>
+    BAMF kataloğu <strong>300 genel soru</strong> + her eyalet için <strong>10 özel soru</strong> içerir.
+    Testte yalnızca <strong>rastgele seçilmiş 30 genel</strong> ve <strong>3 eyalete özgü soru</strong> yer alır — hangi sorular geleceği önceden bilinmez.
+  </p>
+
+  <h2>Yasal çerçeve</h2>
+  <p>
+    2024 reformuyla birlikte vatandaşlık başvurusu artık <strong>5 yıl</strong> yasal ikamet sonrası mümkündür — bazı durumlarda bu süre <strong>3 yıla</strong> kadar düşebilir.
+    <strong>Çifte vatandaşlık</strong> yasağı birçok kişi için kaldırılmıştır. 2023 yılında <strong>200.000'den fazla kişi</strong> vatandaşlığa geçmiştir — bu bir rekordur.
+  </p>
+
+  <h2>Teste yeni konular</h2>
+  <p>
+    Teste <strong>demokratik değerler</strong>, <strong>temel haklar</strong> ve <strong>antisemitizm</strong> ile ilgili yeni sorular eklenmiştir.
+    Alman hükümeti yalnızca bilgi değil, aynı zamanda <strong>değer aktarımını</strong> da güçlendirmek istemektedir.
+  </p>
+  <p>Daha fazla bilgi için Federal Göç ve Mülteciler Dairesi'nin (BAMF) resmî web sitesini ziyaret edin:
+    <a href="https://www.bamf.de/TR/Integration/lebenindeutschland/lebenindeutschland-node.html" target="_blank" rel="noopener">bamf.de – Vatandaşlık</a>
+  </p>
+</div>
+<style>
+  .einbuergerung-info {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .einbuergerung-info h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .einbuergerung-info p {
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .einbuergerung-info {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .einbuergerung-info h2 {
+      font-size: 1.05rem;
+    }
+  }
+</style>`
   },
   bg: {
-    title:   'Какъв е този тест?',
-    content: `Този онлайн тест е част от интеграционния курс в Германия и предпоставка за
-    получаване на разрешение за постоянно пребиваване или гражданство. Ще отговорите
-    на 33 официални въпроса (към 07.05.2025 от BAMF): 30 общи въпроса от каталога и 3
-    за вашата федерална провинция. За да преминете, са нужни поне 17 верни отговора.
-    Платформата е достъпна на 13 езика (Deutsch, Українська, English, العربية,
-    Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी)
-    и показва преводи на момента.`
+    title: 'Какъв е този тест?',
+    content: `<div class="einbuergerung-info">
+  <h2>Обща информация</h2>
+  <p>
+    <strong>Тестът за гражданство</strong>, известен също като заключителен тест на ориентационния курс „Живот в Германия“, е задължителен за лица, които желаят да получат германско гражданство или разрешение за постоянно пребиваване (Niederlassungserlaubnis).
+    Тестът включва <strong>33 въпроса</strong>: <strong>30 общи въпроса</strong> относно политика, история, общество и ценности в Германия, както и <strong>3 регионални въпроса</strong>, свързани с федералната провинция, в която живеете.
+  </p>
+
+  <h2>Как протича тестът</h2>
+  <p>
+    Изпитът е писмен <strong>тест с избор между няколко възможности</strong>, като всеки въпрос има четири отговора, само един от които е верен.
+    Продължителността е <strong>60 минути</strong>, а таксата за участие е <strong>25 евро</strong>.
+    При успешно полагане получавате <strong>официален сертификат</strong>, който може да се използва за кандидатстване за гражданство или разрешение за постоянно пребиваване.
+  </p>
+
+  <h2>Подготовка със sprache.online</h2>
+  <p>
+    Нашата платформа <strong>sprache.online</strong> предлага пълния каталог с въпроси, преведен на <strong>13 езика</strong>
+    (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी).
+    Тя ви помага да разберете сложни формулировки и да се подготвите уверено за изпита. Официалният тест е <strong>изцяло на немски език</strong>,
+    но нашият интерактивен тренажор предоставя обяснения на различни езици.
+  </p>
+
+  <h2>Каталог на въпросите на BAMF</h2>
+  <p>
+    Каталогът на BAMF съдържа <strong>300 общи въпроса</strong> + <strong>10 специфични за всяка федерална провинция</strong>.
+    В самия тест се падат само <strong>30 случайни общи</strong> и <strong>3 регионални въпроса</strong> — кои точно ще бъдат, не е известно предварително.
+  </p>
+
+  <h2>Законова рамка</h2>
+  <p>
+    От 2024 г. насам, гражданството може да се получи след <strong>5 години</strong> законно пребиваване — в специални случаи дори след <strong>3 години</strong>.
+    Забраната за <strong>двойно гражданство</strong> е отменена за мнозина. През 2023 г. над <strong>200 000 души</strong> са получили гражданство — рекорден брой.
+  </p>
+
+  <h2>Нови теми в теста</h2>
+  <p>
+    Добавени са нови въпроси за <strong>демократични ценности</strong>, <strong>основни права</strong> и <strong>антисемитизъм</strong>.
+    Германското правителство цели не само да предаде знания, но и да засили <strong>предаването на ценности</strong>.
+  </p>
+  <p>Още информация можете да намерите на официалния сайт на Федералната служба за миграция и бежанци (BAMF):
+    <a href="https://www.bamf.de/BG/Integration/lebenindeutschland/lebenindeutschland-node.html" target="_blank" rel="noopener">bamf.de – Гражданство</a>
+  </p>
+</div>
+<style>
+  .einbuergerung-info {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .einbuergerung-info h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .einbuergerung-info p {
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .einbuergerung-info {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .einbuergerung-info h2 {
+      font-size: 1.05rem;
+    }
+  }
+</style>`
   },
   fa: {
-    title:   'این آزمون چیست؟',
-    content: `این آزمون آنلاین بخشی از دوره انتگراسیون در آلمان است و شرط لازم برای
-    دریافت اجازه اقامت یا تابعیت می‌باشد. شما به 33 سؤال رسمی (تا 07.05.2025 از BAMF)
-    پاسخ می‌دهید: 30 سؤال عمومی از فهرست و 3 سؤال درباره ایالت خود. برای قبولی
-    حداقل 17 پاسخ صحیح لازم است. این پلتفرم به 13 زبان (Deutsch, Українська,
-    English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română,
-    Italiano, हिन्दी) در دسترس است و ترجمه‌ها را آنی نمایش می‌دهد.`
+    title: 'این آزمون چیست؟',
+    content: `<div class="einbuergerung-info">
+  <h2>اطلاعات کلی</h2>
+  <p>
+    <strong>آزمون تابعیت</strong> که به عنوان آزمون نهایی دوره جهت‌یابی "زندگی در آلمان" نیز شناخته می‌شود، بخش الزامی برای افرادی است که متقاضی دریافت تابعیت آلمان یا اجازه اقامت دائم (Niederlassungserlaubnis) هستند.
+    این آزمون شامل <strong>33 سوال</strong> است: <strong>30 سوال عمومی</strong> درباره سیاست، تاریخ، جامعه و ارزش‌های آلمان و <strong>3 سوال منطقه‌ای</strong> مربوط به ایالت محل اقامت شما.
+  </p>
+
+  <h2>نحوه برگزاری آزمون</h2>
+  <p>
+    این آزمون به صورت <strong>چندگزینه‌ای کتبی</strong> برگزار می‌شود و هر سوال دارای چهار گزینه است که تنها یکی صحیح می‌باشد.
+    مدت زمان آزمون <strong>60 دقیقه</strong> است و هزینه شرکت <strong>25 یورو</strong> می‌باشد.
+    در صورت قبولی، شما <strong>گواهینامه رسمی</strong> دریافت خواهید کرد که می‌توانید برای دریافت تابعیت یا اجازه اقامت دائم از آن استفاده کنید.
+  </p>
+
+  <h2>آمادگی با sprache.online</h2>
+  <p>
+    پلتفرم ما <strong>sprache.online</strong> کاتالوگ کامل سوالات را به <strong>13 زبان</strong> در اختیار شما قرار می‌دهد:
+    (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी).
+    این پلتفرم به شما کمک می‌کند تا عبارات پیچیده را درک کرده و با اعتماد به نفس در آزمون شرکت کنید. آزمون رسمی <strong>تنها به زبان آلمانی</strong> برگزار می‌شود،
+    اما تمرین با این ابزار امکان توضیح چندزبانه را فراهم می‌کند.
+  </p>
+
+  <h2>کاتالوگ سوالات BAMF</h2>
+  <p>
+    کاتالوگ BAMF شامل <strong>300 سوال عمومی</strong> و <strong>10 سوال مخصوص برای هر ایالت فدرال</strong> است.
+    در آزمون واقعی فقط <strong>30 سوال عمومی تصادفی</strong> و <strong>3 سوال منطقه‌ای</strong> ظاهر می‌شود — نمی‌توان از قبل دانست که کدام سوالات خواهند آمد.
+  </p>
+
+  <h2>چارچوب قانونی</h2>
+  <p>
+    از سال 2024، درخواست تابعیت پس از <strong>5 سال</strong> اقامت قانونی ممکن است — در موارد خاص حتی پس از <strong>3 سال</strong>.
+    ممنوعیت <strong>تابعیت دوگانه</strong> برای بسیاری از افراد لغو شده است. در سال 2023، بیش از <strong>200,000 نفر</strong> تابعیت دریافت کرده‌اند — یک رکورد.
+  </p>
+
+  <h2>موضوعات جدید در آزمون</h2>
+  <p>
+    سوالات جدیدی در مورد <strong>ارزش‌های دموکراتیک</strong>، <strong>حقوق اساسی</strong> و <strong>یهودستیزی</strong> افزوده شده‌اند.
+    دولت آلمان هدف دارد علاوه بر انتقال دانش، <strong>انتقال ارزش‌ها</strong> را نیز تقویت کند.
+  </p>
+  <p>اطلاعات بیشتر در وب‌سایت رسمی اداره فدرال مهاجرت و پناهندگان (BAMF):
+    <a href="https://www.bamf.de/FA/Integration/lebenindeutschland/lebenindeutschland-node.html" target="_blank" rel="noopener">bamf.de – تابعیت</a>
+  </p>
+</div>
+<style>
+  .einbuergerung-info {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .einbuergerung-info h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .einbuergerung-info p {
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .einbuergerung-info {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .einbuergerung-info h2 {
+      font-size: 1.05rem;
+    }
+  }
+</style>`
   },
   bs: {
-    title:   'Šta je ovaj test?',
-    content: `Ovaj online test je dio integracijskog tečaja u Njemačkoj i uvjet za dobivanje
-    boravišne dozvole ili državljanstva. Odgovarat ćete na 33 službena pitanja (prema
-    BAMF-u od 07.05.2025): 30 općih pitanja iz kataloga i 3 o vašoj saveznoj državi.
-    Za prolaz je potrebno najmanje 17 točnih odgovora. Platforma je dostupna na 13
-    jezika (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی,
-    Bosanski, Македонски, Polski, Română, Italiano, हिन्दी) te odmah prikazuje
-    prijevode.`
+    title: 'Šta je ovaj test?',
+    content: `<div class="einbuergerung-info">
+  <h2>Opšte informacije</h2>
+  <p>
+    <strong>Test za državljanstvo</strong>, poznat i kao završni test orijentacijskog kursa "Život u Njemačkoj", obavezan je za osobe koje žele da steknu njemačko državljanstvo ili dozvolu za stalni boravak (Niederlassungserlaubnis).
+    Test sadrži <strong>33 pitanja</strong>: <strong>30 općih pitanja</strong> o politici, historiji, društvu i vrijednostima u Njemačkoj i <strong>3 pitanja o saveznoj zemlji</strong> u kojoj živite.
+  </p>
+
+  <h2>Kako test izgleda</h2>
+  <p>
+    Test se polaže pismeno kao <strong>višestruki izbor</strong> (multiple choice), sa četiri ponuđena odgovora, od kojih je jedan tačan.
+    Trajanje testa je <strong>60 minuta</strong>, a kotizacija iznosi <strong>25 eura</strong>.
+    Ako položite test, dobit ćete <strong>službeni certifikat</strong> koji možete koristiti za zahtjev za državljanstvo ili boravišnu dozvolu.
+  </p>
+
+  <h2>Priprema preko sprache.online</h2>
+  <p>
+    Naša platforma <strong>sprache.online</strong> nudi potpuni katalog pitanja sa prevodima na <strong>13 jezika</strong>
+    (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी).
+    Platforma pomaže u razumijevanju složenih izraza i omogućava vam da se samouvjereno pripremite za ispit. Na zvaničnom testu pitanja su <strong>isključivo na njemačkom jeziku</strong>,
+    ali naš trener nudi objašnjenja na više jezika.
+  </p>
+
+  <h2>Katalog pitanja prema BAMF-u</h2>
+  <p>
+    Katalog BAMF-a sadrži <strong>300 općih pitanja</strong> i <strong>10 pitanja za svaku saveznu zemlju</strong>.
+    Na samom testu dobit ćete <strong>30 nasumičnih općih</strong> i <strong>3 pitanja o zemlji</strong> — unaprijed nije poznato koja.
+  </p>
+
+  <h2>Pravni okvir</h2>
+  <p>
+    Od 2024. godine, državljanstvo je moguće zatražiti nakon <strong>5 godina</strong> zakonitog boravka — u posebnim slučajevima čak nakon <strong>3 godine</strong>.
+    Zabrana <strong>dvojnog državljanstva</strong> je ukinuta za mnoge. U 2023. godini više od <strong>200.000 osoba</strong> je dobilo državljanstvo — rekordan broj.
+  </p>
+
+  <h2>Nove teme u testu</h2>
+  <p>
+    Dodana su nova pitanja o <strong>demokratskim vrijednostima</strong>, <strong>osnovnim pravima</strong> i <strong>antisemitizmu</strong>.
+    Njemačka vlada želi ne samo prenijeti znanje već i osnažiti <strong>prenošenje vrijednosti</strong>.
+  </p>
+  <p>Više informacija možete pronaći na zvaničnoj stranici Saveznog ureda za migracije i izbjeglice (BAMF):
+    <a href="https://www.bamf.de/BS/Integration/lebenindeutschland/lebenindeutschland-node.html" target="_blank" rel="noopener">bamf.de – Državljanstvo</a>
+  </p>
+</div>
+<style>
+  .einbuergerung-info {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .einbuergerung-info h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .einbuergerung-info p {
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .einbuergerung-info {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .einbuergerung-info h2 {
+      font-size: 1.05rem;
+    }
+  }
+</style>`
   },
   mk: {
-    title:   'Што е овој тест?',
-    content: `Овој онлајн тест е дел од интеграцискиот курс во Германија и предуслов за
-    добивање дозвола за престој или државјанство. Ќе одговарате на 33 официјални
-    прашања (според BAMF до 07.05.2025): 30 општи прашања од каталогот и 3 за вашата
-    сојузна земја. За да поминете, ви се потребни барем 17 точни одговори. Платформата
-    е достапна на 13 јазици (Deutsch, Українська, English, العربية, Türkçe,
-    Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी) и
-    веднаш ги прикажува преводите.`
+    title: 'Што е овој тест?',
+    content: `<div class="einbuergerung-info">
+  <h2>Општи информации</h2>
+  <p>
+    <strong>Тестот за државјанство</strong>, познат и како завршен тест на ориентацискиот курс „Живот во Германија“, е задолжителен за лица кои сакаат да добијат германско државјанство или дозвола за постојан престој (Niederlassungserlaubnis).
+    Тестот содржи <strong>33 прашања</strong>: <strong>30 општи прашања</strong> за политика, историја, општество и вредности во Германија и <strong>3 прашања за покраината</strong> каде што живеете.
+  </p>
+
+  <h2>Како изгледа тестот</h2>
+  <p>
+    Тестот се полага писмено и е <strong>тест со повеќе избори</strong> со четири понудени одговори, од кои само еден е точен.
+    Времетраењето на тестот е <strong>60 минути</strong>, а учеството чини <strong>25 евра</strong>.
+    По успешно полагање добивате <strong>официјален сертификат</strong> кој може да се користи за аплицирање за државјанство или дозвола за постојан престој.
+  </p>
+
+  <h2>Подготовка со sprache.online</h2>
+  <p>
+    Нашата платформа <strong>sprache.online</strong> го нуди целиот каталог на прашања со преводи на <strong>13 јазици</strong>
+    (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी).
+    Ви помага да ги разберете сложените формулации и да се подготвите со самодоверба. На официјалниот тест прашањата се <strong>само на германски јазик</strong>,
+    но со оваа алатка ќе можете да вежбате со повеќејазични објаснувања.
+  </p>
+
+  <h2>Каталог на прашања од BAMF</h2>
+  <p>
+    Каталогот од BAMF содржи <strong>300 општи прашања</strong> + <strong>10 специфични прашања</strong> за секоја покраина.
+    На тестот ќе добиете <strong>30 случајни општи</strong> и <strong>3 покраински прашања</strong> — однапред не е познато кои.
+  </p>
+
+  <h2>Правна рамка</h2>
+  <p>
+    Од 2024 година, државјанството може да се побара по <strong>5 години</strong> легален престој — во посебни случаи и по <strong>3 години</strong>.
+    Забраната за <strong>двојно државјанство</strong> е укината за многу луѓе. Во 2023 година повеќе од <strong>200.000 лица</strong> се стекнале со државјанство — рекорден број.
+  </p>
+
+  <h2>Нови теми во тестот</h2>
+  <p>
+    Вклучени се нови прашања за <strong>демократски вредности</strong>, <strong>основни права</strong> и <strong>антисемитизам</strong>.
+    Германската влада сака да пренесе не само знаење, туку и <strong>вредности</strong>.
+  </p>
+  <p>Повеќе информации на официјалната веб-страница на Сојузната канцеларија за миграција и бегалци (BAMF):
+    <a href="https://www.bamf.de/MK/Integration/lebenindeutschland/lebenindeutschland-node.html" target="_blank" rel="noopener">bamf.de – Државјанство</a>
+  </p>
+</div>
+<style>
+  .einbuergerung-info {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .einbuergerung-info h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .einbuergerung-info p {
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .einbuergerung-info {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .einbuergerung-info h2 {
+      font-size: 1.05rem;
+    }
+  }
+</style>`
   },
   pl: {
-    title:   'Czym jest ten test?',
-    content: `Ten test online jest częścią kursu integracyjnego w Niemczech i warunkiem uzyskania
-    zezwolenia na pobyt lub obywatelstwa. Odpowiesz na 33 oficjalne pytania (wg BAMF
-    z 07.05.2025): 30 ogólnych pytań z katalogu i 3 dotyczące twojego landu. Aby zdać,
-    potrzebne jest co najmniej 17 poprawnych odpowiedzi. Platforma jest dostępna w 13
-    językach (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی,
-    Bosanski, Македонски, Polski, Română, Italiano, हिन्दी) i natychmiast udostępnia
-    tłumaczenia.`
+    title: 'Czym jest ten test?',
+    content: `<div class="einbuergerung-info">
+  <h2>Informacje ogólne</h2>
+  <p>
+    <strong>Test na obywatelstwo</strong>, znany również jako końcowy test kursu orientacyjnego "Życie w Niemczech", jest obowiązkowy dla osób, które ubiegają się o obywatelstwo niemieckie lub o pozwolenie na pobyt stały (Niederlassungserlaubnis).
+    Test zawiera <strong>33 pytania</strong>: <strong>30 ogólnych pytań</strong> dotyczących polityki, historii, społeczeństwa i wartości w Niemczech oraz <strong>3 pytania dotyczące kraju związkowego</strong> zamieszkania.
+  </p>
+
+  <h2>Przebieg testu</h2>
+  <p>
+    Egzamin odbywa się w formie <strong>testu wyboru</strong> (multiple choice) – do każdego pytania są cztery odpowiedzi, z których tylko jedna jest prawidłowa.
+    Czas trwania wynosi <strong>60 minut</strong>, a opłata za uczestnictwo to <strong>25 euro</strong>.
+    Po zdaniu testu uczestnik otrzymuje <strong>oficjalny certyfikat</strong>, który może być użyty do wniosku o obywatelstwo lub pozwolenie na pobyt stały.
+  </p>
+
+  <h2>Przygotowanie na sprache.online</h2>
+  <p>
+    Nasza platforma <strong>sprache.online</strong> oferuje pełny katalog pytań z tłumaczeniami na <strong>13 języków</strong>
+    (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी).
+    Pomaga w zrozumieniu trudnych sformułowań i przygotowaniu się z pewnością siebie. Oficjalny test jest <strong>wyłącznie po niemiecku</strong>,
+    ale nasz interaktywny trener dostarcza wyjaśnień w różnych językach.
+  </p>
+
+  <h2>Katalog pytań BAMF</h2>
+  <p>
+    Katalog BAMF zawiera <strong>300 ogólnych pytań</strong> oraz <strong>10 pytań specyficznych</strong> dla każdego kraju związkowego.
+    W rzeczywistym teście pojawi się <strong>30 losowych ogólnych</strong> i <strong>3 pytania regionalne</strong> — nie można wcześniej przewidzieć, które dokładnie.
+  </p>
+
+  <h2>Podstawa prawna</h2>
+  <p>
+    Od reformy w 2024 roku, obywatelstwo można uzyskać już po <strong>5 latach</strong> legalnego pobytu – w wyjątkowych przypadkach nawet po <strong>3 latach</strong>.
+    Zakaz <strong>podwójnego obywatelstwa</strong> został zniesiony dla wielu osób. W 2023 roku ponad <strong>200 000 osób</strong> uzyskało obywatelstwo – rekordowa liczba.
+  </p>
+
+  <h2>Nowe tematy w teście</h2>
+  <p>
+    Dodano pytania dotyczące <strong>wartości demokratycznych</strong>, <strong>praw podstawowych</strong> oraz <strong>antysemityzmu</strong>.
+    Rząd niemiecki chce nie tylko przekazywać wiedzę, ale również wzmacniać <strong>przekaz wartości</strong>.
+  </p>
+  <p>Więcej informacji można znaleźć na oficjalnej stronie Federalnego Urzędu ds. Migracji i Uchodźców (BAMF):
+    <a href="https://www.bamf.de/PL/Integration/lebenindeutschland/lebenindeutschland-node.html" target="_blank" rel="noopener">bamf.de – Obywatelstwo</a>
+  </p>
+</div><style>
+  .einbuergerung-info {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .einbuergerung-info h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .einbuergerung-info p {
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .einbuergerung-info {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .einbuergerung-info h2 {
+      font-size: 1.05rem;
+    }
+  }
+</style>`
   },
   ro: {
-    title:   'Ce este acest test?',
-    content: `Acest test online face parte din cursul de integrare din Germania și este necesar
-    pentru obținerea permisului de ședere sau a cetățeniei. Veți răspunde la 33 de
-    întrebări oficiale (conform BAMF de la 07.05.2025): 30 întrebări generale din
-    catalog și 3 despre landul dvs. Pentru promovare sunt necesare cel puțin 17
-    răspunsuri corecte. Platforma este disponibilă în 13 limbi (Deutsch, Українська,
-    English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski,
-    Română, Italiano, हिन्दी) și afișează imediat traducerile.`
+    title: 'Ce este acest test?',
+    content: `<div class="einbuergerung-info">
+  <h2>Informații generale</h2>
+  <p>
+    <strong>Testul de naturalizare</strong>, cunoscut și ca testul final al cursului de orientare „Viața în Germania”, este o componentă obligatorie pentru persoanele care solicită cetățenia germană sau un permis de ședere permanentă (Niederlassungserlaubnis).
+    Testul conține <strong>33 de întrebări</strong>: <strong>30 de întrebări generale</strong> despre politică, istorie, societate și valori în Germania, precum și <strong>3 întrebări regionale</strong> despre landul federal în care locuiți.
+  </p>
+
+  <h2>Desfășurarea testului</h2>
+  <p>
+    Testul se desfășoară în scris sub forma unui <strong>test grilă</strong> (multiple choice), cu patru opțiuni de răspuns pentru fiecare întrebare, dintre care una este corectă.
+    Durata este de <strong>60 de minute</strong>, iar taxa de participare este de <strong>25 de euro</strong>.
+    După promovare, veți primi un <strong>certificat oficial</strong> care poate fi utilizat pentru cererea de cetățenie sau permis de ședere permanentă.
+  </p>
+
+  <h2>Pregătirea cu sprache.online</h2>
+  <p>
+    Platforma noastră <strong>sprache.online</strong> oferă întregul catalog de întrebări tradus în <strong>13 limbi</strong>
+    (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी).
+    Aceasta vă ajută să înțelegeți formulările dificile și să vă pregătiți cu încredere pentru examen. Testul oficial este <strong>doar în limba germană</strong>,
+    dar platforma noastră oferă explicații multilingve.
+  </p>
+
+  <h2>Catalogul de întrebări de la BAMF</h2>
+  <p>
+    Catalogul BAMF conține <strong>300 de întrebări generale</strong> + <strong>10 întrebări specifice</strong> pentru fiecare land federal.
+    La testul real vor apărea <strong>30 de întrebări generale aleatorii</strong> și <strong>3 întrebări regionale</strong> — nu este posibil să știți în avans care anume.
+  </p>
+
+  <h2>Cadrul legal</h2>
+  <p>
+    Începând cu reforma din 2024, cetățenia poate fi solicitată după <strong>5 ani</strong> de rezidență legală — în cazuri speciale chiar după <strong>3 ani</strong>.
+    Interdicția privind <strong>dublă cetățenie</strong> a fost eliminată pentru mulți. În 2023, peste <strong>200.000 de persoane</strong> au obținut cetățenia — un record.
+  </p>
+
+  <h2>Noi subiecte în test</h2>
+  <p>
+    Au fost adăugate întrebări noi despre <strong>valorile democratice</strong>, <strong>drepturile fundamentale</strong> și <strong>antisemitism</strong>.
+    Guvernul german dorește nu doar să transmită cunoștințe, ci și să consolideze <strong>transmiterea valorilor</strong>.
+  </p>
+  <p>Mai multe informații pot fi găsite pe site-ul oficial al Oficiului Federal pentru Migrație și Refugiați (BAMF):
+    <a href="https://www.bamf.de/RO/Integration/lebenindeutschland/lebenindeutschland-node.html" target="_blank" rel="noopener">bamf.de – Cetățenie</a>
+  </p>
+</div><style>
+  .einbuergerung-info {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .einbuergerung-info h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .einbuergerung-info p {
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .einbuergerung-info {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .einbuergerung-info h2 {
+      font-size: 1.05rem;
+    }
+  }
+</style>`
   },
   it: {
-    title:   'Cos’è questo test?',
-    content: `Questo test online fa parte del corso di integrazione in Germania ed è prerequisito
-    per ottenere il permesso di soggiorno o la cittadinanza. Risponderai a 33
-    domande ufficiali (secondo BAMF al 07.05.2025): 30 domande generali dal catalogo
-    e 3 relative al tuo Land. Per superare servono almeno 17 risposte corrette. La
-    piattaforma è disponibile in 13 lingue (Deutsch, Українська, English, العربية,
-    Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano,
-    हिन्दी) e mostra subito le traduzioni.`
+    title: 'Cos’è questo test?',
+    content: `<div class="einbuergerung-info">
+  <h2>Informazioni generali</h2>
+  <p>
+    Il <strong>test di naturalizzazione</strong>, noto anche come test finale del corso di orientamento "Vita in Germania", è un requisito obbligatorio per coloro che richiedono la cittadinanza tedesca o un permesso di soggiorno permanente (Niederlassungserlaubnis).
+    Il test comprende <strong>33 domande</strong>: <strong>30 domande generali</strong> su politica, storia, società e valori in Germania, e <strong>3 domande regionali</strong> relative al proprio stato federale.
+  </p>
+
+  <h2>Svolgimento del test</h2>
+  <p>
+    Il test si svolge in forma scritta come <strong>quiz a scelta multipla</strong> con quattro opzioni di risposta, di cui solo una è corretta.
+    Ha una durata di <strong>60 minuti</strong> e la partecipazione costa <strong>25 euro</strong>.
+    Superato il test, si riceve un <strong>certificato ufficiale</strong> utilizzabile per la richiesta di cittadinanza o permesso di soggiorno permanente.
+  </p>
+
+  <h2>Preparazione con sprache.online</h2>
+  <p>
+    La nostra piattaforma <strong>sprache.online</strong> fornisce l’intero catalogo delle domande con traduzioni in <strong>13 lingue</strong>
+    (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी).
+    Aiuta a comprendere espressioni complesse e a prepararsi con fiducia. Il test ufficiale è <strong>solo in lingua tedesca</strong>,
+    ma questo strumento interattivo offre spiegazioni multilingue.
+  </p>
+
+  <h2>Catalogo delle domande del BAMF</h2>
+  <p>
+    Il catalogo del BAMF contiene <strong>300 domande generali</strong> + <strong>10 domande specifiche</strong> per ciascun Land.
+    Al test compaiono solo <strong>30 domande generali casuali</strong> e <strong>3 domande regionali</strong> — non è possibile sapere in anticipo quali.
+  </p>
+
+  <h2>Quadro legale</h2>
+  <p>
+    A partire dalla riforma del 2024, la cittadinanza può essere richiesta dopo <strong>5 anni</strong> di residenza legale — in casi speciali anche dopo <strong>3 anni</strong>.
+    Il divieto di <strong>doppia cittadinanza</strong> è stato revocato per molti. Nel 2023, oltre <strong>200.000 persone</strong> sono state naturalizzate — un record.
+  </p>
+
+  <h2>Nuovi contenuti nel test</h2>
+  <p>
+    Sono state aggiunte domande su <strong>valori democratici</strong>, <strong>diritti fondamentali</strong> e <strong>antisemitismo</strong>.
+    Il governo tedesco mira non solo a trasmettere conoscenze, ma anche a rafforzare la <strong>trasmissione dei valori</strong>.
+  </p>
+  <p>Maggiori informazioni sul sito ufficiale dell'Ufficio Federale per l'Immigrazione e i Rifugiati (BAMF):
+    <a href="https://www.bamf.de/IT/Integration/lebenindeutschland/lebenindeutschland-node.html" target="_blank" rel="noopener">bamf.de – Cittadinanza</a>
+  </p>
+</div><style>
+  .einbuergerung-info {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .einbuergerung-info h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .einbuergerung-info p {
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .einbuergerung-info {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .einbuergerung-info h2 {
+      font-size: 1.05rem;
+    }
+  }
+</style>`
   },
   hi: {
-    title:   'यह परीक्षण क्या है?',
-    content: `यह ऑनलाइन परीक्षण जर्मनी के एकीकरण पाठ्यक्रम का हिस्सा है और निवास अनुमति
-    या नागरिकता प्राप्त करने के लिए अनिवार्य है। आप 33 आधिकारिक प्रश्नों
-    (BAMF के अनुसार 07.05.2025 तक) का उत्तर देंगे: 300 में से 30 सामान्य प्रश्न
-    और आपके संघीय राज्य से संबंधित 3 प्रश्न। उत्तीर्ण होने के लिए कम से कम
-    17 सही उत्तर आवश्यक हैं। मंच 13 भाषाओं (Deutsch, Українська, English,
-    العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română,
-    Italiano, हिन्दी) में उपलब्ध है और तुरंत अनुवाद दिखाता है।`
+  title: 'यह परीक्षण क्या है?',
+  content: `
+<div class="einbuergerung-info">
+  <h2>सामान्य जानकारी</h2>
+  <p>
+    <strong>नागरिकता परीक्षण</strong>, जिसे "जर्मनी में जीवन" ओरिएंटेशन कोर्स की अंतिम परीक्षा के रूप में भी जाना जाता है, उन लोगों के लिए अनिवार्य है जो जर्मन नागरिकता या स्थायी निवास अनुमति (Niederlassungserlaubnis) के लिए आवेदन करना चाहते हैं।
+    इस परीक्षण में <strong>33 प्रश्न</strong> होते हैं: <strong>30 सामान्य प्रश्न</strong> राजनीति, इतिहास, समाज और मूल्यों पर और <strong>3 क्षेत्रीय प्रश्न</strong> जो उस राज्य से संबंधित होते हैं जहाँ आप रहते हैं।
+  </p>
+
+  <h2>परीक्षा की प्रक्रिया</h2>
+  <p>
+    यह एक लिखित <strong>बहुविकल्पीय परीक्षा</strong> होती है जिसमें प्रत्येक प्रश्न के लिए चार उत्तर विकल्प होते हैं और केवल एक सही होता है।
+    परीक्षा की अवधि <strong>60 मिनट</strong> है और भागीदारी शुल्क <strong>25 यूरो</strong> है।
+    सफलतापूर्वक पास करने पर, आपको एक <strong>आधिकारिक प्रमाणपत्र</strong> प्राप्त होता है जिसका उपयोग नागरिकता या स्थायी निवास अनुमति के लिए किया जा सकता है।
+  </p>
+
+  <h2>sprache.online के साथ तैयारी</h2>
+  <p>
+    हमारा प्लेटफॉर्म <strong>sprache.online</strong> <strong>13 भाषाओं</strong> में अनुवादित पूर्ण प्रश्न कैटलॉग प्रदान करता है:
+    (Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano, हिन्दी)।
+    यह जटिल शब्दों को समझने और आत्मविश्वास के साथ परीक्षा में बैठने में आपकी सहायता करता है। आधिकारिक परीक्षा केवल <strong>जर्मन भाषा में</strong> होती है,
+    लेकिन यह उपकरण बहुभाषी व्याख्याओं के साथ सहायता करता है।
+  </p>
+
+  <h2>BAMF प्रश्न कैटलॉग</h2>
+  <p>
+    BAMF कैटलॉग में <strong>300 सामान्य प्रश्न</strong> और प्रत्येक फेडरल राज्य के लिए <strong>10 विशेष प्रश्न</strong> शामिल हैं।
+    परीक्षा में केवल <strong>30 यादृच्छिक सामान्य प्रश्न</strong> और <strong>3 क्षेत्रीय प्रश्न</strong> आते हैं — यह पहले से ज्ञात नहीं होता कि कौन से प्रश्न पूछे जाएंगे।
+  </p>
+
+  <h2>कानूनी रूपरेखा</h2>
+  <p>
+    2024 से, नागरिकता <strong>5 वर्षों</strong> की वैध निवास अवधि के बाद प्राप्त की जा सकती है — विशेष मामलों में <strong>3 वर्षों</strong> के बाद भी।
+    कई लोगों के लिए <strong>दोहरे नागरिकता</strong> पर प्रतिबंध हटा दिया गया है। 2023 में, <strong>200,000 से अधिक लोगों</strong> को नागरिकता प्रदान की गई — यह एक रिकॉर्ड है।
+  </p>
+
+  <h2>परीक्षा में नए विषय</h2>
+  <p>
+    इस परीक्षा में अब <strong>लोकतांत्रिक मूल्यों</strong>, <strong>मौलिक अधिकारों</strong> और <strong>यहूदी-विरोध</strong> जैसे विषयों पर प्रश्न भी शामिल हैं।
+    जर्मन सरकार का उद्देश्य केवल जानकारी देना नहीं बल्कि <strong>मूल्य-आधारित शिक्षा</strong> को भी बढ़ावा देना है।
+  </p>
+
+  <p>अधिक जानकारी के लिए आधिकारिक BAMF वेबसाइट देखें:
+    <a href="https://www.bamf.de/HI/Integration/lebenindeutschland/lebenindeutschland-node.html" target="_blank" rel="noopener">bamf.de – नागरिकता</a>
+  </p>
+</div>
+<style>
+  .einbuergerung-info {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
   }
+  .einbuergerung-info h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .einbuergerung-info p {
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .einbuergerung-info {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .einbuergerung-info h2 {
+      font-size: 1.05rem;
+    }
+  }
+</style>
+`
+}
+
 };
+
+
 
 // Объединяем с вашим существующим translations
 Object.keys(infoText).forEach(lang => {
@@ -964,8 +1781,9 @@ const _apply = applyLanguage;
 applyLanguage = code => {
   _apply(code);  // ваша старая логика
   const dict = translations[code] || translations.de;
-  document.querySelector('#info-section .info-title').textContent   = dict.infoTitle;
-  document.querySelector('#info-section .info-content').textContent = dict.infoContent;
+ document.querySelector('#info-section .info-title').textContent   = dict.infoTitle;
+document.querySelector('#info-section .info-content').innerHTML   = dict.infoContent;
+
 };
 
 // 3) Инициализируем сразу:
