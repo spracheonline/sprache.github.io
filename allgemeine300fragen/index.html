@@ -14858,11 +14858,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!container) return;
 
-    // Спостерігаємо за змінами у контейнері
-    const observer = new MutationObserver((mutationsList, observer) => {
+    // Стежимо за додаванням нових питань (виключаючи "Prüfen")
+    const observer = new MutationObserver((mutationsList) => {
       for (let mutation of mutationsList) {
-        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-          // Нові питання зʼявились — прокручуємо вгору
+        if (
+          mutation.type === 'childList' &&
+          mutation.addedNodes.length > 0 &&
+          !mutation.target.closest('.question')
+        ) {
+          // Нові блоки питань вставлено – прокручуємо догори
           window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -14873,7 +14877,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(container, {
       childList: true,
-      subtree: true
+      subtree: false // щоб не реагувало на кнопки "Prüfen" всередині питань
+    });
+
+    // Додатково: кнопка "далі" — навіть якщо вставляється динамічно
+    document.body.addEventListener('click', (e) => {
+      const btn = e.target.closest('.next-button');
+      if (btn) {
+        // відкладена прокрутка – після оновлення DOM
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 150);
+      }
     });
   });
 </script>
