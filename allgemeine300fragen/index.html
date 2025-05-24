@@ -14839,6 +14839,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', function (e) {
+      const target = e.target.closest('.next-button');
+      if (target) {
+        // Невелика затримка, щоб контент встиг змінитись
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 100);
+      }
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.test-container');
+
+    if (!container) return;
+
+    // Спостерігаємо за змінами у контейнері
+    const observer = new MutationObserver((mutationsList, observer) => {
+      for (let mutation of mutationsList) {
+        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+          // Нові питання зʼявились — прокручуємо вгору
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+
+    observer.observe(container, {
+      childList: true,
+      subtree: true
+    });
+  });
+</script>
 
 <div class="pagination">
   <div class="page-info">Seite 1 / 2</div>
