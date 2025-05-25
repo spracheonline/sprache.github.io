@@ -1140,6 +1140,7 @@ body.dark .site-footer a:visited {
 
 
 </header>
+<!-- правильыне -->
 <script>
 function printAllQuestions() {
   const allQuestions = Array.from(document.querySelectorAll('.question'));
@@ -1149,95 +1150,88 @@ function printAllQuestions() {
   }
 
   const lang = document.getElementById('lang-dropdown')?.value || 'de';
+  const ABCD = ['A', 'B', 'C', 'D'];
   const win = window.open('', '_blank');
   if (!win) {
     alert("Pop-up Blocker aktiv. Bitte deaktivieren und erneut versuchen.");
     return;
   }
 
-  const ABCD = ['A', 'B', 'C', 'D'];
-
-  let html = `
-  <html>
-    <head>
-      <title>Alle Fragen – Sprache.online</title>
-      <style>
-        @media print {
-          body { margin: 0; }
-        }
-        body {
-          font-family: Arial, sans-serif;
-          padding: 30px 40px;
-          max-width: 850px;
-          margin: auto;
-          position: relative;
-        }
-        h1 {
-          text-align: center;
-          font-size: 24px;
-          margin-bottom: 30px;
-        }
-        .question {
-          margin-bottom: 24px;
-          border-bottom: 1px solid #ccc;
-          padding-bottom: 10px;
-        }
-        .frage {
-          margin-bottom: 4px;
-        }
-        .frage strong {
-          font-weight: bold;
-        }
-        .translation {
-          display: inline-block;
-          margin-left: 10px;
-          color: #555;
-          font-style: italic;
-        }
-        label {
-          display: block;
-          margin: 2px 0;
-        }
-        label.correct {
-          font-weight: bold;
-          color: #0a0;
-        }
-        .watermark {
-          position: fixed;
-          top: 50%;
-          right: -60px;
-          transform: rotate(-90deg);
-          font-size: 48px;
-          color: rgba(0, 0, 0, 0.06);
-          z-index: 0;
-          pointer-events: none;
-          user-select: none;
-        }
-        .question:nth-child(-n+65) label:first-of-type {
-          margin-top: -80px !important;
-        }
-        .question:nth-child(n+66) label:first-of-type {
-          margin-top: 0 !important;
-        }
-      </style>
-    </head>
-    <body>
-      <h1>Allgemeine 300 Fragen</h1>
-      <div class="watermark">sprache.online</div>
+  let html = '';
+  html += '<html><head><title>Alle Fragen – Sprache.online</title>';
+  html += `
+    <style>
+      @media print {
+        body { margin: 0; }
+      }
+      body {
+        font-family: Arial, sans-serif;
+        padding: 30px 40px;
+        max-width: 850px;
+        margin: auto;
+        position: relative;
+      }
+      h1 {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 30px;
+      }
+      .question {
+        margin-bottom: 24px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+      }
+      .frage {
+        margin-bottom: 4px;
+      }
+      .frage strong {
+        font-weight: bold;
+      }
+      .translation {
+        display: inline-block;
+        margin-left: 10px;
+        color: #555;
+        font-style: italic;
+      }
+      label {
+        display: block;
+        margin: 2px 0;
+      }
+      label.correct {
+        font-weight: bold;
+        color: #0a0;
+      }
+      .watermark {
+        position: fixed;
+        top: 50%;
+        right: -60px;
+        transform: rotate(-90deg);
+        font-size: 48px;
+        color: rgba(0, 0, 0, 0.06);
+        z-index: 0;
+        pointer-events: none;
+        user-select: none;
+      }
+      .question:nth-child(-n+65) label:first-of-type {
+        margin-top: -80px !important;
+      }
+      .question:nth-child(n+66) label:first-of-type {
+        margin-top: 0 !important;
+      }
+    </style>
   `;
+  html += '</head><body>';
+  html += '<h1>Allgemeine 300 Fragen</h1>';
+  html += '<div class="watermark">sprache.online</div>';
 
   allQuestions.forEach((q) => {
     const clone = q.cloneNode(true);
-
-    // Удалить кнопку Prüfen
     clone.querySelectorAll('button').forEach(b => b.remove());
 
-    // Показать только нужный перевод
     clone.querySelectorAll('.translation').forEach(span => {
       span.style.display = span.classList.contains('lang-' + lang) ? 'inline-block' : 'none';
     });
 
-    // Объединить <strong> и <span> в .frage
     const frageDiv = document.createElement('div');
     frageDiv.classList.add('frage');
     const children = Array.from(clone.childNodes);
@@ -1247,13 +1241,14 @@ function printAllQuestions() {
     }
     clone.insertBefore(frageDiv, clone.querySelector('label'));
 
-    // Удалить input'ы и выделить правильные ответы
     let i = 0;
-    clone.querySelectorAll('input[type="radio"]').forEach(input => input.remove());
-
-    clone.querySelectorAll('label').forEach(label => {
-      if (label.querySelector('input')) label.querySelector('input').remove();
-      if (label.innerHTML.trim().length > 0) {
+    clone.querySelectorAll('input[type="radio"]').forEach(input => {
+      const label = input.closest('label');
+      if (label) {
+        if (input.value === "1") {
+          label.classList.add('correct');
+        }
+        input.remove();
         label.innerHTML = `<strong>${ABCD[i++]}. </strong>` + label.innerHTML;
       }
     });
@@ -1261,15 +1256,16 @@ function printAllQuestions() {
     html += `<div class="question">${clone.innerHTML}</div>`;
   });
 
-  html += `</body></html>`;
+  html += `<script>window.onload = function() { window.print(); }<\/script>`;
+  html += '</body></html>';
 
   win.document.open();
   win.document.write(html);
   win.document.close();
-
-  win.onload = () => win.print();
 }
 </script>
+
+
 
 
 
