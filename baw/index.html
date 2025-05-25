@@ -1,0 +1,2794 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>LiD – Fragen für das Bundesland Baden-Württemberg</title>
+   <!-- Базові favicon для браузерів -->
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+
+<!-- Apple Touch Icon для iOS -->
+<link rel="apple-touch-icon" href="favicon.ico">
+
+<!-- Для Safari (опціонально) -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <meta name="description" content="Kostenloser 'Leben in Deutschland'- und Einbürgerungstest-Trainer auf 13 Sprachen: Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano und हिन्दी.">
+  <!-- 1) Consent Mode default auf 'denied' -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent','default',{
+      'ad_storage':'denied',
+      'analytics_storage':'denied'
+    });
+  </script>
+
+  <!-- 2) Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2756865893493273" crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-2756865893493273">
+
+  <!-- 3) Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y58Z6NYLLT"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config','G-Y58Z6NYLLT',{ 'anonymize_ip': true });
+  </script>
+
+  
+<style>
+  .cookiebanner-links a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.cookiebanner-links a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+a { text-decoration:none; color:inherit }
+ .ucb-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: #fff;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    z-index: 9999;
+    font-family: system-ui, sans-serif;
+    display: none;
+  }
+
+  .ucb-text {
+    margin-bottom: 1rem;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .ucb-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .ucb-btn {
+    padding: 0.5em 1.2em;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .ucb-btn-primary {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .ucb-btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+
+  .ucb-panel {
+    margin-top: 1rem;
+    background: #f8f8f8;
+    border-radius: 6px;
+    padding: 1rem;
+    border: 1px solid #ddd;
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
+
+
+<style>
+  /* ==== Скрываем все <em> (переводы) во всём контейнере с вопросами ==== */
+  .test-container em {
+    display: none !important;
+  }
+
+  /* ==== Если у body есть класс show-trans — показываем их ==== */
+  body.show-trans .test-container em {
+    display: inline !important;
+  }
+
+  /* Для визуального выделения активной кнопки */
+  .lang-btn.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+</style>
+  <style>
+    /* ————————————————————————————————————————————
+       Theme variables
+    ———————————————————————————————————————————— */
+    :root {
+      --bg-color: #f5f7fa;
+      --text-color: #111;
+      --card-bg: #fff;
+      --card-shadow: rgba(0,0,0,0.05);
+      --button-bg: #4a90e2;
+      --button-hover: #357ab8;
+    }
+    body.dark {
+      --bg-color: #1e1e28;
+      --text-color: #e0e0e0;
+      --card-bg: #2c2c38;
+      --card-shadow: rgba(0,0,0,0.5);
+      --button-bg: #6a6af5;
+      --button-hover: #5252c2;
+    }
+
+    /* ————————————————————————————————————————————
+       Base styles
+    ———————————————————————————————————————————— */
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .test-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ————————————————————————————————————————————
+       Question card
+    ———————————————————————————————————————————— */
+    .question {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px var(--card-shadow);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .question:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px var(--card-shadow);
+    }
+    .question p {
+      margin: 0 0 0.4rem;
+      line-height: 1.4;
+      font-size: 1.1rem;
+    }
+    .question p em {
+      display: inline;
+      margin: 0;
+      font-style: italic;
+    }
+    .question label {
+      display: block;
+      margin: 0.3rem 0;
+      cursor: pointer;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.5rem;
+      transition: background 0.2s;
+      font-size: 1rem;
+      color: var(--text-color);
+    }
+    .question label:hover {
+      background: #eef2f7;
+    }
+    .question button {
+      background: var(--button-bg);
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 1rem;
+    }
+    .question button:hover {
+      background: var(--button-hover);
+    }
+    .feedback {
+      margin-top: 0.75rem;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .feedback.correct { color: #27ae60; }
+    .feedback.incorrect { color: #c0392b; }
+
+    /* ————————————————————————————————————————————
+       Pagination
+    ———————————————————————————————————————————— */
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+    }
+    .page-btn {
+      background: var(--button-bg);
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .page-btn:hover {
+      background: var(--button-hover);
+      transform: translateY(-2px);
+    }
+
+    /* ————————————————————————————————————————————
+       Theme-toggle button
+    ———————————————————————————————————————————— */
+  #theme-toggle {
+  position: static;
+  margin-left: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.2s;
+}
+body.dark .question p em {
+  color: #cccccc !important;
+}
+    .question p {
+      margin: 0 0 0.4rem;
+      line-height: 1.4;
+      font-size: 1.1rem;
+    }
+    .question label {
+      display: block;
+      margin: 0.3rem 0;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.5rem;
+      transition: background 0.2s;
+      font-size: 1rem;
+      color: var(--text-color);
+    }
+    /* Убираем большие отступы между вопросами */
+.question {
+  margin-bottom: 0.5rem !important;
+  padding: 0.8rem !important;
+}
+
+.question p {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.3 !important;
+}
+
+.question label {
+  display: block !important;
+  margin: 0.1rem 0 !important;
+  padding: 0.2rem 0.4rem !important;
+  border-radius: 0.4rem;
+  font-size: 0.97rem;
+}
+
+.question br {
+  display: block !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+}
+.question p em {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-style: italic;
+  color: #555;
+}
+
+.question br {
+  display: none !important;
+}
+
+/* —————— Topbar (Site + Language switcher) —————— */
+.topbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-bg);
+  box-shadow: 0 2px 4px var(--card-shadow);
+  padding: 0.5rem 1rem;
+  z-index: 1002;
+}
+.site-info {
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+.lang-switcher a {
+  margin-left: 0.5rem;
+  color: var(--button-bg);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.lang-switcher a:hover {
+  text-decoration: underline;
+}
+
+/* Отступ контента, чтобы не перекрывала topbar */
+body {
+  padding-top: 3rem; /* или чуть больше, если topbar выше */
+}
+
+.translation {
+  display: inline-block;
+  margin-left: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  background: var(--button-bg);
+  color: #fff;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+  vertical-align: middle;
+  transition: background 0.2s;
+}
+.translation:hover {
+  background: var(--button-hover);
+}
+/* более тёмные “бэйджи” переводов в dark mode */
+body.dark .translation {
+  background: rgba(255, 255, 255, 0.1) !important;  /* почти прозрачный светлый фон */
+  color: #bbbbbb       !important;                  /* светло-серый текст */
+}
+body.dark .translation {
+  background: rgba(50, 50, 60, 0.8) !important;
+  color: #dddddd       !important;
+}
+/* Стили для кнопки навигации вниз */
+.bottom-nav {
+  text-align: center;
+  margin: 2rem 0;
+}
+.bottom-nav .page-btn {
+  background: var(--button-bg);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.bottom-nav .page-btn:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+}
+/* убираем горизонтальный скролл */
+html, body {
+  overflow-x: hidden;
+}
+
+/* на мобильных девайсах делаем нав обычным, не фиксированным */
+@media (max-width: 768px) {
+  #top-nav {
+    position: static !important;
+  }
+  /* и отменяем отступ сверху, если он задавался */
+  body {
+    padding-top: 0 !important;
+  }
+}
+/* Навигация в обычном потоке документа */
+#top-nav {
+  position: static !important;
+  width: 100%;
+  /* при желании: добавить фон/бордер, чтобы отделять от контента */
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--card-shadow);
+}
+
+/* Убираем отступ, который мы добавляли для фиксированного nav */
+body {
+  padding-top: 0 !important;
+}
+/* --- Убираем любой «автоматический» фон у label при фокусе/checked --- */
+.question label,
+.question label:hover,
+.question label:focus-within {
+  background-color: transparent !important;
+  outline: none !important;
+}
+
+/* --- Наш фон для выбранного (.selected) --- */
+.question label.selected {
+  background-color: rgba(255,255,255,0.1) !important;
+  /* при желании можно чуть потемнее, например rgba(255,255,255,0.08) */
+}
+
+/* Чтобы переводы (em) не меркли */
+.question label.selected em {
+  color: var(--text-color) !important;
+}
+/* По умолчанию — показываем переводы (ваши <em>) */
+
+/* При наличии на <body> класса show-trans — показываем переводы */
+body.show-trans em {
+  display: inline !important;
+}
+  /* максимально приоритетно скрываем все <em>, если body НЕ имеет класс show-trans */
+  body:not(.show-trans) em {
+    display: none !important;
+  }
+  /* как только к body добавится show-trans — показываем <em> */
+  body.show-trans em {
+    display: inline !important;
+  }
+/* 1. Сбросим всё, что браузер может приплюсовать к label */
+.question label {
+  background-color: transparent !important;
+  outline: none !important;
+}
+
+/* 2. Наш собственный стиль для выделенного label */
+.question label.selected {
+  background-color: rgba(0, 123, 255, 0.15) !important;
+  /* можно поменять цвет и прозрачность по вкусу */
+}
+/* Красивый стиль для ссылок пагинации */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  gap: 1rem;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--button-bg);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.pagination a:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.pagination a:disabled,
+.pagination a[style*="visibility: hidden"] {
+  opacity: 0.4;
+  pointer-events: none;
+  background: #ccc;
+  box-shadow: none;
+}
+/* --- ВАШ CSS ФАЙЛ Или внутри <style> --- */
+/* Все изображения становятся отзывчивыми */
+.question img {
+  display: block;      /* убираем возможные пробелы внизу */
+  max-width: 100%;     /* не шире контейнера */
+  height: auto;        /* сохраняем пропорции */
+  margin: 0 auto;      /* по желанию: центрируем */
+}
+.test-container,
+.question {
+  overflow: visible;   /* разрешаем показывать всю картинку */
+}
+.question img {
+  /* возможно у вас стоит */
+  /* height: 200px; */
+  /* или */
+  /* object-fit: cover; */
+}
+/* общий контейнер */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+}
+
+/* стиль для текста "Seite X / Y" */
+.pagination .page-info {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* кнопка "Nächste →" */
+.pagination .next-button {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.pagination .next-button:hover {
+  background: var(--color-primary-dark);
+}
+
+/* --- Мобильная адаптация --- */
+@media (max-width: 600px) {
+  .pagination {
+    flex-direction: column;
+    gap: 0.75rem;          /* расстояние между элементами */
+    text-align: center;
+  }
+  .pagination .page-info {
+    order: 2;               /* выводим под кнопкой, если надо */
+  }
+  .pagination .next-button {
+    order: 1;               /* сначала кнопка */
+    width: 100%;            /* на всю ширину */
+    max-width: 300px;       /* но не слишком шире */
+  }
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  gap: 1rem;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--button-bg);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.pagination a:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.pagination a:disabled,
+.pagination a[style*="visibility: hidden"] {
+  opacity: 0.4;
+  pointer-events: none;
+  background: #ccc;
+  box-shadow: none;
+}
+/* --- ВАШ CSS ФАЙЛ Или внутри <style> --- */
+/* Все изображения становятся отзывчивыми */
+.question img {
+  display: block;      /* убираем возможные пробелы внизу */
+  max-width: 100%;     /* не шире контейнера */
+  height: auto;        /* сохраняем пропорции */
+  margin: 0 auto;      /* по желанию: центрируем */
+}
+.test-container,
+.question {
+  overflow: visible;   /* разрешаем показывать всю картинку */
+}
+.question img {
+  /* возможно у вас стоит */
+  /* height: 200px; */
+  /* или */
+  /* object-fit: cover; */
+}
+/* общий контейнер */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+}
+
+/* стиль для текста "Seite X / Y" */
+.pagination .page-info {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* кнопка "Nächste →" */
+.pagination .next-button {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.pagination .next-button:hover {
+  background: var(--color-primary-dark);
+}
+
+/* --- Мобильная адаптация --- */
+@media (max-width: 600px) {
+  .pagination {
+    flex-direction: column;
+    gap: 0.75rem;          /* расстояние между элементами */
+    text-align: center;
+  }
+  .pagination .page-info {
+    order: 2;               /* выводим под кнопкой, если надо */
+  }
+  .pagination .next-button {
+    order: 1;               /* сначала кнопка */
+    width: 100%;            /* на всю ширину */
+    max-width: 300px;       /* но не слишком шире */
+  }
+}
+#language-selector {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+#language-selector select {
+  font-size: 0.95rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .lang-switcher {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  #language-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+/* Иконка настроек */
+.settings-icon {
+  background: #eee;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+body.dark .settings-icon {
+  background: #444;
+  color: #fff;
+}
+
+/* Модальное окно */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background: white;
+  margin: 10% auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  font-family: sans-serif;
+  text-align: left;
+}
+body.dark .modal-content {
+  background: #1f1f2a;
+  color: #eee;
+}
+
+/* Заголовок */
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #222;
+}
+body.dark .modal-content h3 {
+  color: #fff;
+}
+
+/* Чекбоксы */
+.modal-content label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+body.dark .modal-content label {
+  color: #eee;
+}
+
+/* Кнопка Schließen */
+#close-settings {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+#close-settings:hover {
+  background-color: #357ab8;
+}
+.logo {
+  max-height: 48px;
+  height: auto;
+  width: auto;
+}
+/* Анимация появления */
+.modal-content {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+  opacity: 1;
+  transform: scale(1);
+}
+.modal-content select {
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+body.dark .modal-content select {
+  background: #333;
+  color: white;
+  border: 1px solid #666;
+}
+.topbar {
+  background: #2b2b38;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.topbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Логотип */
+.logo {
+  max-height: 48px;
+  height: auto;
+  width: auto;
+}
+
+/* Иконка настроек */
+.settings-icon {
+  background: #444;
+  border: none;
+  color: #ddd;
+  font-size: 1.4rem;
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.settings-icon:hover {
+  background: #555;
+}
+body.dark .settings-icon {
+  background: #666;
+  color: #fff;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 600px) {
+  .topbar-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    max-height: 42px;
+  }
+  .settings-icon {
+    font-size: 1.2rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+.topbar {
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: background-color 0.3s ease;
+  background-color: #ffffff; /* светлая тема по умолчанию */
+}
+
+body.dark .topbar {
+  background-color: #2b2b38; /* фон в темной теме */
+}
+body {
+  background-color: #f5f7fa;
+  transition: background-color 0.3s ease;
+}
+
+body.dark {
+  background-color: #1e1e28;
+}
+.topbar {
+  background-color: #ffffff;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: background-color 0.3s ease;
+}
+
+body.dark .topbar {
+  background-color: #2b2b38;
+}
+
+.topbar-container {
+  display: flex;
+  justify-content: space-between; /* <== ЭТО главное */
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+@media (max-width: 600px) {
+  .topbar-container {
+    padding: 0 1rem;
+  }
+}
+.settings-icon {
+  background: #e0e7ff; /* светлый синий, гармонирует с логотипом */
+  border: none;
+  color: #1e3a8a; /* насыщенный синий для контраста */
+  font-size: 1.4rem;
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.settings-icon:hover {
+  background: #c7d2fe;
+}
+
+body.dark .settings-icon {
+  background: #1e3a8a; /* тёмный синий в темной теме */
+  color: #e0e7ff;
+}
+.topbar {
+  background-color: #fff;
+  padding: 0; /* Убираем лишний padding */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+body.dark .topbar {
+  background-color: #2b2b38;
+}
+
+.topbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem; /* ← ОТСТУПЫ ДЛЯ ВНУТРЕННЕГО ВЫРАВНИВАНИЯ */
+  width: 100%;
+  box-sizing: border-box;
+}
+.footer-links {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+}
+
+.footer-links a {
+  color: #333;
+}
+.footer-links a:hover {
+  color: #1e40af;
+}
+.footer-links a:visited {
+  color: #333;
+}
+
+body.dark .footer-links a {
+  color: #ccc !important;
+}
+body.dark .footer-links a:hover {
+  color: #3b82f6 !important;
+}
+body.dark .footer-links a:visited {
+  color: #ccc !important;
+}
+
+.site-footer {
+  background: #e9edf1;
+  padding: 0.5rem 0;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.site-footer a {
+  color: #333;
+  text-decoration: none;
+  margin: 0 0.3rem;
+  transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+  color: #1e40af;
+}
+
+.site-footer a:visited {
+  color: #333;
+}
+
+/* Тёмная тема */
+body.dark .site-footer {
+  color: #ccc;
+}
+
+body.dark .site-footer a {
+  color: #ccc;
+}
+
+body.dark .site-footer a:hover {
+  color: #4c9aff;
+}
+
+body.dark .site-footer a:visited {
+  color: #ccc;
+}
+
+  </style>
+
+</head>
+<body>
+
+<!-- Cookie Banner HTML -->
+<div id="unique-cookie-banner" class="ucb-container">
+  <div class="ucb-text">
+    Wir verwenden Cookies, um die Funktionalität der Website zu gewährleisten, das Nutzererlebnis zu verbessern und Werbung zu personalisieren. Weitere Informationen finden Sie in unserer
+    <a href="/datenschutz" target="_blank">Datenschutzerklärung</a>,
+    <a href="/impressum" target="_blank">Impressum</a> und
+    <a href="/kontakt" target="_blank">Kontakt</a>.
+  </div>
+  <div class="ucb-buttons">
+    <button id="ucb-reject" class="ucb-btn ucb-btn-secondary">Alle ablehnen</button>
+    <button id="ucb-settings" class="ucb-btn ucb-btn-secondary">Einstellungen</button>
+    <button id="ucb-accept" class="ucb-btn ucb-btn-primary">Alle akzeptieren</button>
+  </div>
+  <div id="ucb-panel" class="ucb-panel hidden">
+    <label><input type="checkbox" id="ucb-analytics"> Statistik-Cookies</label><br>
+    <label><input type="checkbox" id="ucb-ads"> Werbe-Cookies</label><br>
+    <button id="ucb-save" class="ucb-btn ucb-btn-primary">Speichern</button>
+  </div>
+</div>
+
+
+
+<!-- JavaScript für Banner-Logik -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const banner   = document.getElementById('unique-cookie-banner');
+    const panel    = document.getElementById('ucb-panel');
+    const btnAcc   = document.getElementById('ucb-accept');
+    const btnRej   = document.getElementById('ucb-reject');
+    const btnSet   = document.getElementById('ucb-settings');
+    const btnSave  = document.getElementById('ucb-save');
+    const chkA     = document.getElementById('ucb-analytics');
+    const chkAds   = document.getElementById('ucb-ads');
+
+    // Название куки уникальное
+    const storageKey = 'ucbCookieConsent_v1';
+
+    if (!localStorage.getItem(storageKey)) {
+      banner.style.display = 'block';
+    }
+
+    function applyConsent(consent) {
+      localStorage.setItem(storageKey, JSON.stringify(consent));
+      banner.remove();
+    }
+
+    btnAcc.addEventListener('click', () => applyConsent({ analytics: true,  ads: true }));
+    btnRej.addEventListener('click', () => applyConsent({ analytics: false, ads: false }));
+
+    btnSet.addEventListener('click', () => {
+      panel.classList.toggle('hidden');
+      const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+      chkA.checked  = !!saved.analytics;
+      chkAds.checked = !!saved.ads;
+    });
+
+    btnSave.addEventListener('click', e => {
+      e.preventDefault();
+      applyConsent({ analytics: chkA.checked, ads: chkAds.checked });
+    });
+  });
+</script>
+
+
+
+
+<!-- Cookie Consent Banner
+<div id="cookie-banner" class="cookie-banner" style="display:none;">
+  <p>
+    Diese Website verwendet Cookies, um Inhalte zu personalisieren und Zugriffe zu analysieren. 
+    <a href="/datenschutz.html">Mehr erfahren</a>
+  </p>
+  <div class="cookie-buttons">
+    <button id="accept-cookies">Alle akzeptieren</button>
+    <button id="reject-cookies">Alle ablehnen</button>
+    <button id="settings-cookies">Einstellungen</button>
+  </div>
+</div>
+
+<script>
+  // Сразу скрываем все <em> на странице
+  document.querySelectorAll('em').forEach(node => node.style.display = 'none');
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Навешиваем переключатель
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const show = btn.dataset.lang !== 'de';
+        document.querySelectorAll('em').forEach(node => {
+          node.style.display = show ? 'inline' : 'none';
+        });
+        // отметить активность кнопок, если нужно
+        document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  });
+</script>
+ <script>
+    // Этот код выполнится до отрисовки остального <body>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('em').forEach(el => el.style.display = 'none');
+    });
+  </script> -->
+  <header class="topbar">
+ <div class="topbar-container">
+  <a href="../"> <img src="logo_5.png" alt="sprache.online Logo" class="logo"></a>
+  <button id="settings-btn" class="settings-icon" aria-label="Einstellungen">⚙️</button>
+</div>
+
+<!-- Модальное окно -->
+<div id="settings-modal" class="modal">
+  <div class="modal-content">
+    <h3>Einstellungen</h3>
+
+    <label for="lang-dropdown">Sprache wählen:</label><br>
+    <select id="lang-dropdown">
+      <option value="de">Deutsch</option>
+      <option value="uk">Українська</option>
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+      <option value="tr">Türkçe</option>
+      <option value="bg">Български</option>
+      <option value="fa">فارسی</option>
+      <option value="bs">Bosanski</option>
+      <option value="mk">Македонски</option>
+      <option value="pl">Polski</option>
+      <option value="ro">Română</option>
+      <option value="it">Italiano</option>
+      <option value="hi">हिन्दी</option>
+    </select>
+
+    <br><br>
+
+    <label><input type="checkbox" id="darkmode-toggle"> Nachtmodus</label>
+   <label>
+  <input type="checkbox" id="shuffle-once">
+  Fragen mischen (einmalig)
+</label>
+<label>
+  <input type="checkbox" id="cancel-shuffle">
+  Mischung zurücksetzen
+</label>
+<label>
+  <button onclick="printAllQuestions()" id="print-btn" style="margin-top: 4px; display: flex; align-items: center; gap: 6px; padding: 5px 10px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9; cursor: pointer;">
+    <span>Alle Fragen (mit Antworten) drucken (PDF)</span>
+  </button>
+</label>
+
+<label>
+  <button onclick="printAllQuestionsWithoutAnswers()" id="print-blank" style="margin-top: 4px; display: flex; align-items: center; gap: 6px; padding: 5px 10px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9; cursor: pointer;">
+    <span>Alle Fragen (ohne Antworten) drucken (PDF)</span>
+  </button>
+</label>
+
+
+
+
+
+
+
+    <br><br>
+    <button id="close-settings">Schließen</button>
+  </div>
+</div>
+
+
+</header>
+<!-- печать с прав. ответами -->
+
+<script>
+function printAllQuestions() {
+  const allQuestions = Array.from(document.querySelectorAll('.question'));
+  if (!allQuestions.length) {
+    alert("Keine Fragen gefunden.");
+    return;
+  }
+
+  const lang = document.getElementById('lang-dropdown')?.value || 'de';
+  const ABCD = ['A', 'B', 'C', 'D'];
+  const win = window.open('', '_blank');
+  if (!win) {
+    alert("Pop-up Blocker aktiv. Bitte deaktivieren und erneut versuchen.");
+    return;
+  }
+
+  let html = `
+  <html>
+    <head>
+      <title>Fragen für das Bundesland Baden-Württemberg – Sprache.online</title>
+      <style>
+        @media print { body { margin: 0; } }
+        body {
+          font-family: Arial, sans-serif;
+          max-width: 850px;
+          margin: auto;
+          padding: 30px 40px;
+          position: relative;
+        }
+        h1 {
+          text-align: center;
+          font-size: 24px;
+          margin-bottom: 30px;
+        }
+        .question {
+          margin-bottom: 24px;
+          border-bottom: 1px solid #ccc;
+          padding-bottom: 10px;
+          page-break-inside: avoid;
+          break-inside: avoid;
+          overflow: visible;
+          white-space: normal;
+        }
+        .frage {
+          margin-bottom: 4px;
+        }
+        .frage strong {
+          font-weight: bold;
+        }
+        .translation {
+          display: inline-block;
+          margin-left: 10px;
+          font-style: italic;
+          color: #555;
+        }
+        label {
+          display: block;
+          margin: 2px 0;
+          white-space: normal;
+          word-break: break-word;
+        }
+        label.correct {
+          font-weight: bold;
+          color: #0a0;
+        }
+        .watermark {
+          position: fixed;
+          top: 50%;
+          right: -60px;
+          transform: rotate(-90deg);
+          font-size: 48px;
+          color: rgba(0,0,0,0.06);
+          pointer-events: none;
+          user-select: none;
+          z-index: 0;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Fragen für das Bundesland Baden-Württemberg</h1>
+      <div class="watermark">sprache.online</div>
+  `;
+
+  allQuestions.forEach(q => {
+    const clone = q.cloneNode(true);
+
+    // extract question number
+    const qNum = parseInt(clone.id.replace('q',''), 10);
+
+    // find correct value from Prüfen button
+    let correctValue = null;
+    const btn = clone.querySelector("button[onclick^='checkQuestion']");
+    if (btn) {
+      const m = btn.getAttribute('onclick').match(/checkQuestion\('.*?','(\d)'\)/);
+      if (m) correctValue = m[1];
+    }
+    clone.querySelectorAll('button').forEach(b => b.remove());
+
+    // show only selected translation
+    clone.querySelectorAll('.translation').forEach(span => {
+      span.style.display = span.classList.contains('lang-' + lang) ? 'inline-block' : 'none';
+    });
+
+    // wrap question text into .frage
+    const frageDiv = document.createElement('div');
+    frageDiv.classList.add('frage');
+    Array.from(clone.childNodes).forEach(node => {
+      if (node.nodeName === 'LABEL') return;
+      frageDiv.appendChild(node);
+    });
+    clone.insertBefore(frageDiv, clone.querySelector('label'));
+
+    // determine negative margin for first label
+    let mt = '0';
+    if ((qNum >= 1 && qNum <= 65) || (qNum >= 189 && qNum <= 199) || qNum >= 201) {
+      mt = '-80px';
+    }
+
+    // process labels: remove inputs, prefix ABCD, mark correct
+    let i = 0;
+    clone.querySelectorAll('label').forEach(label => {
+      const inp = label.querySelector('input[type="radio"]');
+      const val = inp?.value;
+      if (inp) inp.remove();
+      if (val === correctValue) label.classList.add('correct');
+      label.innerHTML = `<strong>${ABCD[i++]}. </strong>` + label.innerHTML;
+      if (i === 1) label.style.marginTop = mt;
+    });
+
+    html += `<div class="question">${clone.innerHTML}</div>`;
+  });
+
+  html += `</body></html>`;
+
+  win.document.open();
+  win.document.write(html);
+  win.document.close();
+  win.onload = () => win.print();
+}
+</script>
+
+
+<!-- печать без вариантов ответа -->
+<script>
+function printAllQuestionsWithoutAnswers() {
+  const allQuestions = Array.from(document.querySelectorAll('.question'));
+  if (!allQuestions.length) {
+    alert("Keine Fragen gefunden.");
+    return;
+  }
+
+  const lang = document.getElementById('lang-dropdown')?.value || 'de';
+  const ABCD = ['A','B','C','D'];
+  const printWindow = window.open('', '_blank');
+  if (!printWindow) {
+    alert("Pop-up Blocker aktiv. Bitte deaktivieren und erneut versuchen.");
+    return;
+  }
+
+  let html = `
+  <html>
+    <head>
+      <title>Fragen für das Bundesland Baden-Württemberg – Sprache.online</title>
+      <style>
+        @media print { body { margin: 0; } }
+        body {
+          font-family: Arial, sans-serif;
+          max-width: 850px; margin: auto;
+          padding: 30px 40px; position: relative;
+        }
+        h1 {
+          text-align: center; font-size: 24px;
+          margin-bottom: 30px;
+        }
+        .question {
+          margin-bottom: 24px;
+          border-bottom: 1px solid #ccc;
+          padding-bottom: 10px;
+          page-break-inside: avoid;
+          break-inside: avoid;
+          overflow: visible;
+          white-space: normal;
+        }
+        .frage { margin-bottom: 4px; }
+        .frage strong { font-weight: bold; }
+        .translation {
+          display: inline-block;
+          margin-left: 10px;
+          font-style: italic;
+          color: #555;
+        }
+        label {
+          display: block;
+          margin: 2px 0;
+          white-space: normal;
+          word-break: break-word;
+        }
+        .watermark {
+          position: fixed;
+          top: 50%;
+          right: -60px;
+          transform: rotate(-90deg);
+          font-size: 48px;
+          color: rgba(0,0,0,0.06);
+          pointer-events: none;
+          user-select: none;
+          z-index: 0;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Fragen für das Bundesland Baden-Württemberg</h1>
+      <div class="watermark">sprache.online</div>
+  `;
+
+  allQuestions.forEach(q => {
+    const clone = q.cloneNode(true);
+    const qNum = parseInt(clone.id.replace('q',''),10);
+
+    // показать только нужный перевод
+    clone.querySelectorAll('.translation').forEach(span => {
+      span.style.display = span.classList.contains('lang-' + lang)
+        ? 'inline-block'
+        : 'none';
+    });
+
+    // вынести вопрос в .frage
+    const frageDiv = document.createElement('div');
+    frageDiv.classList.add('frage');
+    Array.from(clone.childNodes).forEach(node => {
+      if (node.nodeName === 'LABEL') return;
+      frageDiv.appendChild(node);
+    });
+    clone.insertBefore(frageDiv, clone.querySelector('label'));
+
+    // вычислить margin-top для первого label
+    let mt = '0';
+    if ((qNum >= 1 && qNum <= 65) || (qNum >= 189 && qNum <= 199) || qNum >= 201) {
+      mt = '-80px';
+    }
+
+    // удалить кнопки, инпуты, префикс ABCD + квадратик
+    let i = 0;
+    clone.querySelectorAll('button').forEach(b => b.remove());
+    clone.querySelectorAll('label').forEach(label => {
+      const inp = label.querySelector('input[type="radio"]');
+      if (inp) inp.remove();
+      label.innerHTML =
+        `<strong>${ABCD[i]}. </strong>` +
+        `<span style="display:inline-block; width:1em;">☐</span> ` +
+        label.innerHTML;
+      if (i === 0) label.style.marginTop = mt;
+      i++;
+    });
+
+    html += `<div class="question">${clone.innerHTML}</div>`;
+  });
+
+  html += `
+    </body>
+  </html>`;
+
+  // вот здесь — правильно вызываем печать
+  printWindow.document.open();
+  printWindow.document.write(html);
+  printWindow.document.close();
+
+  printWindow.focus();
+  printWindow.addEventListener('load', () => {
+    printWindow.print();
+  });
+}
+</script>
+
+
+<script>
+let originalQuestions = []; // Сохраняем вне DOMContentLoaded, чтобы он жил глобально
+
+// === ИСХОДНЫЙ ВАРИАНТ: только перемешивание текущих 30 вопросов на странице и сохранение кнопок ===
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('settings-modal');
+  const openBtn = document.getElementById('settings-btn');
+  const closeBtn = document.getElementById('close-settings');
+  const darkToggle = document.getElementById('darkmode-toggle');
+  const shuffleCheckbox = document.getElementById('shuffle-once');
+
+  let originalOrder = [];
+  let isShuffled = false;
+
+  openBtn.addEventListener('click', () => {
+    modal.style.display = 'block';
+    setTimeout(() => modal.classList.add('show'), 10);
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('show');
+    setTimeout(() => modal.style.display = 'none', 300);
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target == modal) {
+      modal.classList.remove('show');
+      setTimeout(() => modal.style.display = 'none', 300);
+    }
+  });
+
+  darkToggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark', darkToggle.checked);
+  });
+
+  shuffleCheckbox.addEventListener('change', () => {
+    const container = document.querySelector('.test-container');
+    if (shuffleCheckbox.checked && container) {
+      const questions = Array.from(container.querySelectorAll('.question'));
+      const pagination = container.querySelector('.pagination');
+
+      // Сохраняем оригинальный порядок, если ещё не сохраняли
+      if (!isShuffled) {
+        originalOrder = [...questions];
+        isShuffled = true;
+      }
+
+      // Перемешиваем вопросы
+      for (let i = questions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [questions[i], questions[j]] = [questions[j], questions[i]];
+      }
+
+      container.innerHTML = '';
+      questions.forEach(q => container.appendChild(q));
+      if (pagination) container.appendChild(pagination);
+
+      shuffleCheckbox.checked = false;
+    }
+  });
+
+  const cancelCheckbox = document.getElementById('cancel-shuffle');
+if (cancelCheckbox) {
+  cancelCheckbox.addEventListener('change', () => {
+    const container = document.querySelector('.test-container');
+    const pagination = container.querySelector('.pagination');
+
+    if (isShuffled && originalOrder.length > 0) {
+      container.innerHTML = '';
+      originalOrder.forEach(q => container.appendChild(q));
+      if (pagination) container.appendChild(pagination);
+      isShuffled = false;
+    }
+
+    cancelCheckbox.checked = false; // сбрасываем галочку обратно
+  });
+}
+
+
+  // Добавляем кнопку отмены в модалку или рядом с чекбоксом
+  const shuffleBoxLabel = document.querySelector('label[for="shuffle-once"]');
+  if (shuffleBoxLabel && shuffleBoxLabel.parentElement) {
+    shuffleBoxLabel.parentElement.appendChild(cancelShuffleBtn);
+  }
+});
+function renderPage(page) {
+  const start = (page - 1) * 30;
+  const end = start + 30;
+
+  allQuestions.forEach((q, i) => {
+    q.style.display = (i >= start && i < end) ? 'block' : 'none';
+  });
+
+  document.getElementById('page-indicator').innerText = `Seite ${page} / ${Math.ceil(allQuestions.length / 30)}`;
+}
+
+</script>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark', toggle.checked);
+    });
+  });
+</script>
+
+
+
+  <h3 align="center">Fragen für das Bundesland Baden-Württemberg</h3>
+  
+
+  <p align="center">Stand: <a href="https://www.bamf.de/SharedDocs/Anlagen/DE/Integration/Einbuergerung/gesamtfragenkatalog-lebenindeutschland.pdf?__blob=publicationFile&v=19" style="text-decoration: none; color: gray;" target="_blank">07.05.2025</a></p>
+  
+
+  <p class="language-hint" align="center">
+  <strong>Sprache auswählen:</strong> Bitte wählen Sie Ihre Sprache über das Zahnrad-Symbol (⚙️) oben rechts auf der Seite aus.
+</p>
+    <div id="cookie-banner" role="dialog" aria-live="polite">
+
+<div class="test-container">
+<!-- Початок єдиного блоку 1–50 питань -->
+<!-- Тут ідуть питання 1–5 (залишаємо як є)... -->
+
+
+<div class="question" id="q301">
+  <strong>301. Welches Wappen gehört zum Bundesland Baden-Württemberg?</strong>
+  <br>
+  <img src="301.png" alt="Frage 301 Bild">
+  <label><input type="radio" name="q301" value="0"> Bild 1 <span class="translation lang-uk">Зображення 1</span> <span class="translation lang-en">Image 1</span> <span class="translation lang-ar">الصورة 1</span> <span class="translation lang-tr">Resim 1</span> <span class="translation lang-bg">Изображение 1</span> <span class="translation lang-fa">تصویر 1</span> <span class="translation lang-bs">Slika 1</span> <span class="translation lang-mk">Слика 1</span> <span class="translation lang-pl">Obraz 1</span> <span class="translation lang-ro">Imaginea 1</span> <span class="translation lang-it">Immagine 1</span> <span class="translation lang-hi">चित्र 1</span></label><br>
+  <label><input type="radio" name="q301" value="1"> Bild 2 <span class="translation lang-uk">Зображення 2</span> <span class="translation lang-en">Image 2</span> <span class="translation lang-ar">الصورة 2</span> <span class="translation lang-tr">Resim 2</span> <span class="translation lang-bg">Изображение 2</span> <span class="translation lang-fa">تصویر 2</span> <span class="translation lang-bs">Slika 2</span> <span class="translation lang-mk">Слика 2</span> <span class="translation lang-pl">Obraz 2</span> <span class="translation lang-ro">Imaginea 2</span> <span class="translation lang-it">Immagine 2</span> <span class="translation lang-hi">चित्र 2</span></label><br>
+  <label><input type="radio" name="q301" value="2"> Bild 3 <span class="translation lang-uk">Зображення 3</span> <span class="translation lang-en">Image 3</span> <span class="translation lang-ar">الصورة 3</span> <span class="translation lang-tr">Resim 3</span> <span class="translation lang-bg">Изображение 3</span> <span class="translation lang-fa">تصویر 3</span> <span class="translation lang-bs">Slika 3</span> <span class="translation lang-mk">Слика 3</span> <span class="translation lang-pl">Obraz 3</span> <span class="translation lang-ro">Imaginea 3</span> <span class="translation lang-it">Immagine 3</span> <span class="translation lang-hi">चित्र 3</span></label><br>
+  <label><input type="radio" name="q301" value="3"> Bild 4 <span class="translation lang-uk">Зображення 4</span> <span class="translation lang-en">Image 4</span> <span class="translation lang-ar">الصورة 4</span> <span class="translation lang-tr">Resim 4</span> <span class="translation lang-bg">Изображение 4</span> <span class="translation lang-fa">تصویر 4</span> <span class="translation lang-bs">Slika 4</span> <span class="translation lang-mk">Слика 4</span> <span class="translation lang-pl">Obraz 4</span> <span class="translation lang-ro">Imaginea 4</span> <span class="translation lang-it">Immagine 4</span> <span class="translation lang-hi">चित्र 4</span></label><br>
+  <button onclick="checkQuestion('q301','0')">Prüfen</button>
+  <div id="fb-q301"></div>
+</div>
+
+
+<div class="question" id="q302">
+  <strong>302. Welches ist ein Landkreis in Baden-Württemberg?</strong>
+  <span class="translation lang-uk">Який округ знаходиться у землі Баден-Вюртемберг?</span>
+  <span class="translation lang-en">Which is a district in Baden-Württemberg?</span>
+  <span class="translation lang-ar">أي مقاطعة تقع في بادن-فورتمبيرغ؟</span>
+  <span class="translation lang-tr">Baden-Württemberg'de hangi ilçe bulunmaktadır?</span>
+  <span class="translation lang-bg">Кой е окръг в Баден-Вюртемберг?</span>
+  <span class="translation lang-fa">کدام شهرستان در بادن-وورتمبرگ قرار دارد؟</span>
+  <span class="translation lang-bs">Koji je okrug u Baden-Württembergu?</span>
+  <span class="translation lang-mk">Кој е округ во Баден-Виртемберг?</span>
+  <span class="translation lang-pl">Który powiat znajduje się w Badenii-Wirtembergii?</span>
+  <span class="translation lang-ro">Care este un district în Baden-Württemberg?</span>
+  <span class="translation lang-it">Qual è un distretto in Baden-Württemberg?</span>
+  <span class="translation lang-hi">बाडेन-वुर्टेमबर्ग में कौन सा ज़िला है?</span><br>
+
+  <label><input type="radio" name="q302" value="0"> Mecklenburgische Seenplatte
+    <span class="translation lang-uk">Мекленбурзьке поозер’я</span>
+    <span class="translation lang-en">Mecklenburg Lake District</span>
+    <span class="translation lang-ar">منطقة بحيرات مكلنبورغ</span>
+    <span class="translation lang-tr">Mecklenburg Göller Bölgesi</span>
+    <span class="translation lang-bg">Мекленбургско езерно плато</span>
+    <span class="translation lang-fa">ناحیه دریاچه‌های مکلنبورگ</span>
+    <span class="translation lang-bs">Meklenburško jezersko područje</span>
+    <span class="translation lang-mk">Мекленбуршка езерска област</span>
+    <span class="translation lang-pl">Pojezierze Meklemburskie</span>
+    <span class="translation lang-ro">Regiunea lacurilor Mecklenburg</span>
+    <span class="translation lang-it">Distretto dei laghi del Meclemburgo</span>
+    <span class="translation lang-hi">मेक्लेनबर्ग झील क्षेत्र</span>
+  </label><br>
+
+  <label><input type="radio" name="q302" value="1"> Neckar-Odenwald-Kreis
+    <span class="translation lang-uk">Округ Неккар-Оденвальд</span>
+    <span class="translation lang-en">Neckar-Odenwald District</span>
+    <span class="translation lang-ar">منطقة نيكار-أودنفالد</span>
+    <span class="translation lang-tr">Neckar-Odenwald Bölgesi</span>
+    <span class="translation lang-bg">Окръг Некар-Оденвалд</span>
+    <span class="translation lang-fa">ناحیه نککار-اودنوالد</span>
+    <span class="translation lang-bs">Okrug Neckar-Odenwald</span>
+    <span class="translation lang-mk">Округ Некар-Оденвалд</span>
+    <span class="translation lang-pl">Powiat Neckar-Odenwald</span>
+    <span class="translation lang-ro">Districtul Neckar-Odenwald</span>
+    <span class="translation lang-it">Distretto Neckar-Odenwald</span>
+    <span class="translation lang-hi">नेक्कर-ओडेनवाल्ड ज़िला</span>
+  </label><br>
+
+  <label><input type="radio" name="q302" value="2"> Nordfriesland
+    <span class="translation lang-uk">Північна Фрізія</span>
+    <span class="translation lang-en">North Frisia</span>
+    <span class="translation lang-ar">شمال فريزيا</span>
+    <span class="translation lang-tr">Kuzey Frizya</span>
+    <span class="translation lang-bg">Северна Фризия</span>
+    <span class="translation lang-fa">فریزی شمالی</span>
+    <span class="translation lang-bs">Sjeverna Frizija</span>
+    <span class="translation lang-mk">Северна Фризија</span>
+    <span class="translation lang-pl">Fryzja Północna</span>
+    <span class="translation lang-ro">Frizia de Nord</span>
+    <span class="translation lang-it">Frisia settentrionale</span>
+    <span class="translation lang-hi">उत्तरी फ्रिज़िया</span>
+  </label><br>
+
+  <label><input type="radio" name="q302" value="3"> Altötting
+    <span class="translation lang-uk">Альтетінг</span>
+    <span class="translation lang-en">Altötting</span>
+    <span class="translation lang-ar">ألتوتينغ</span>
+    <span class="translation lang-tr">Altötting</span>
+    <span class="translation lang-bg">Алтьотинг</span>
+    <span class="translation lang-fa">آلتوتینگ</span>
+    <span class="translation lang-bs">Altötting</span>
+    <span class="translation lang-mk">Алтётинг</span>
+    <span class="translation lang-pl">Altötting</span>
+    <span class="translation lang-ro">Altötting</span>
+    <span class="translation lang-it">Altötting</span>
+    <span class="translation lang-hi">अल्टेटिंग</span>
+  </label><br>
+
+  <button onclick="checkQuestion('q302','1')">Prüfen</button>
+  <div id="fb-q302"></div>
+</div>
+
+
+
+<div class="question" id="q303">
+  <strong>303. Für wie viele Jahre wird der Landtag in Baden-Württemberg gewählt?</strong>
+  <span class="translation lang-uk">На скільки років обирається ландтаг у Баден-Вюртемберзі?</span>
+  <span class="translation lang-en">For how many years is the state parliament in Baden-Württemberg elected?</span>
+  <span class="translation lang-ar">لمدة كم سنة يُنتخب برلمان الولاية في بادن-فورتمبيرغ؟</span>
+  <span class="translation lang-tr">Baden-Württemberg eyalet meclisi kaç yıllığına seçilir?</span>
+  <span class="translation lang-bg">За колко години се избира ландтагът в Баден-Вюртемберг?</span>
+  <span class="translation lang-fa">پارلمان ایالتی بادن-وورتمبرگ برای چند سال انتخاب می‌شود؟</span>
+  <span class="translation lang-bs">Na koliko godina se bira pokrajinski parlament u Baden-Württembergu?</span>
+  <span class="translation lang-mk">На колку години се избира покраинскиот парламент во Баден-Виртемберг?</span>
+  <span class="translation lang-pl">Na ile lat wybiera się parlament krajowy w Badenii-Wirtembergii?</span>
+  <span class="translation lang-ro">Pe câți ani este ales parlamentul regional din Baden-Württemberg?</span>
+  <span class="translation lang-it">Per quanti anni viene eletto il parlamento regionale in Baden-Württemberg?</span>
+  <span class="translation lang-hi">बाडेन-वुर्टेमबर्ग में राज्य संसद कितने वर्षों के लिए चुनी जाती है?</span><br>
+
+  <label><input type="radio" name="q303" value="0"> 3
+    <span class="translation lang-uk">3 роки</span>
+    <span class="translation lang-en">3 years</span>
+    <span class="translation lang-ar">3 سنوات</span>
+    <span class="translation lang-tr">3 yıl</span>
+    <span class="translation lang-bg">3 години</span>
+    <span class="translation lang-fa">۳ سال</span>
+    <span class="translation lang-bs">3 godine</span>
+    <span class="translation lang-mk">3 години</span>
+    <span class="translation lang-pl">3 lata</span>
+    <span class="translation lang-ro">3 ani</span>
+    <span class="translation lang-it">3 anni</span>
+    <span class="translation lang-hi">3 वर्ष</span>
+  </label><br>
+
+  <label><input type="radio" name="q303" value="1"> 4
+    <span class="translation lang-uk">4 роки</span>
+    <span class="translation lang-en">4 years</span>
+    <span class="translation lang-ar">4 سنوات</span>
+    <span class="translation lang-tr">4 yıl</span>
+    <span class="translation lang-bg">4 години</span>
+    <span class="translation lang-fa">۴ سال</span>
+    <span class="translation lang-bs">4 godine</span>
+    <span class="translation lang-mk">4 години</span>
+    <span class="translation lang-pl">4 lata</span>
+    <span class="translation lang-ro">4 ani</span>
+    <span class="translation lang-it">4 anni</span>
+    <span class="translation lang-hi">4 वर्ष</span>
+  </label><br>
+
+  <label><input type="radio" name="q303" value="2"> 5
+    <span class="translation lang-uk">5 років</span>
+    <span class="translation lang-en">5 years</span>
+    <span class="translation lang-ar">5 سنوات</span>
+    <span class="translation lang-tr">5 yıl</span>
+    <span class="translation lang-bg">5 години</span>
+    <span class="translation lang-fa">۵ سال</span>
+    <span class="translation lang-bs">5 godina</span>
+    <span class="translation lang-mk">5 години</span>
+    <span class="translation lang-pl">5 lat</span>
+    <span class="translation lang-ro">5 ani</span>
+    <span class="translation lang-it">5 anni</span>
+    <span class="translation lang-hi">5 वर्ष</span>
+  </label><br>
+
+  <label><input type="radio" name="q303" value="3"> 6
+    <span class="translation lang-uk">6 років</span>
+    <span class="translation lang-en">6 years</span>
+    <span class="translation lang-ar">6 سنوات</span>
+    <span class="translation lang-tr">6 yıl</span>
+    <span class="translation lang-bg">6 години</span>
+    <span class="translation lang-fa">۶ سال</span>
+    <span class="translation lang-bs">6 godina</span>
+    <span class="translation lang-mk">6 години</span>
+    <span class="translation lang-pl">6 lat</span>
+    <span class="translation lang-ro">6 ani</span>
+    <span class="translation lang-it">6 anni</span>
+    <span class="translation lang-hi">6 वर्ष</span>
+  </label><br>
+
+  <button onclick="checkQuestion('q303','2')">Prüfen</button>
+  <div id="fb-q303"></div>
+</div>
+
+<div class="question" id="q304">
+  <strong>304. Ab welchem Alter darf man in Baden-Württemberg bei Kommunalwahlen wählen?</strong>
+  <span class="translation lang-uk">З якого віку можна голосувати на муніципальних виборах у Баден-Вюртемберзі?</span>
+  <span class="translation lang-en">From what age may one vote in local elections in Baden-Württemberg?</span>
+  <span class="translation lang-ar">من أي عمر يُسمح بالتصويت في الانتخابات المحلية في بادن-فورتمبيرغ؟</span>
+  <span class="translation lang-tr">Baden-Württemberg'de yerel seçimlerde oy kullanma yaşı kaçtır?</span>
+  <span class="translation lang-bg">От каква възраст може да се гласува на общински избори в Баден-Вюртемберг?</span>
+  <span class="translation lang-fa">در ایالت بادن-وورتمبرگ از چه سنی می‌توان در انتخابات محلی رأی داد؟</span>
+  <span class="translation lang-bs">Od koje dobi se može glasati na lokalnim izborima u Baden-Württembergu?</span>
+  <span class="translation lang-mk">Од која возраст може да се гласа на општински избори во Баден-Виртемберг?</span>
+  <span class="translation lang-pl">Od jakiego wieku można głosować w wyborach samorządowych w Badenii-Wirtembergii?</span>
+  <span class="translation lang-ro">De la ce vârstă se poate vota la alegerile locale în Baden-Württemberg?</span>
+  <span class="translation lang-it">A partire da quale età si può votare alle elezioni comunali in Baden-Württemberg?</span>
+  <span class="translation lang-hi">बाडेन-वुर्टेमबर्ग में स्थानीय चुनावों में मतदान की अनुमति किस उम्र से है?</span><br>
+
+  <label><input type="radio" name="q304" value="0"> 14
+    <span class="translation lang-uk">14 років</span>
+    <span class="translation lang-en">14 years</span>
+    <span class="translation lang-ar">14 سنة</span>
+    <span class="translation lang-tr">14 yaş</span>
+    <span class="translation lang-bg">14 години</span>
+    <span class="translation lang-fa">۱۴ سال</span>
+    <span class="translation lang-bs">14 godina</span>
+    <span class="translation lang-mk">14 години</span>
+    <span class="translation lang-pl">14 lat</span>
+    <span class="translation lang-ro">14 ani</span>
+    <span class="translation lang-it">14 anni</span>
+    <span class="translation lang-hi">14 वर्ष</span>
+  </label><br>
+
+  <label><input type="radio" name="q304" value="1"> 16
+    <span class="translation lang-uk">16 років</span>
+    <span class="translation lang-en">16 years</span>
+    <span class="translation lang-ar">16 سنة</span>
+    <span class="translation lang-tr">16 yaş</span>
+    <span class="translation lang-bg">16 години</span>
+    <span class="translation lang-fa">۱۶ سال</span>
+    <span class="translation lang-bs">16 godina</span>
+    <span class="translation lang-mk">16 години</span>
+    <span class="translation lang-pl">16 lat</span>
+    <span class="translation lang-ro">16 ani</span>
+    <span class="translation lang-it">16 anni</span>
+    <span class="translation lang-hi">16 वर्ष</span>
+  </label><br>
+
+  <label><input type="radio" name="q304" value="2"> 18
+    <span class="translation lang-uk">18 років</span>
+    <span class="translation lang-en">18 years</span>
+    <span class="translation lang-ar">18 سنة</span>
+    <span class="translation lang-tr">18 yaş</span>
+    <span class="translation lang-bg">18 години</span>
+    <span class="translation lang-fa">۱۸ سال</span>
+    <span class="translation lang-bs">18 godina</span>
+    <span class="translation lang-mk">18 години</span>
+    <span class="translation lang-pl">18 lat</span>
+    <span class="translation lang-ro">18 ani</span>
+    <span class="translation lang-it">18 anni</span>
+    <span class="translation lang-hi">18 वर्ष</span>
+  </label><br>
+
+  <label><input type="radio" name="q304" value="3"> 20
+    <span class="translation lang-uk">20 років</span>
+    <span class="translation lang-en">20 years</span>
+    <span class="translation lang-ar">20 سنة</span>
+    <span class="translation lang-tr">20 yaş</span>
+    <span class="translation lang-bg">20 години</span>
+    <span class="translation lang-fa">۲۰ سال</span>
+    <span class="translation lang-bs">20 godina</span>
+    <span class="translation lang-mk">20 години</span>
+    <span class="translation lang-pl">20 lat</span>
+    <span class="translation lang-ro">20 ani</span>
+    <span class="translation lang-it">20 anni</span>
+    <span class="translation lang-hi">20 वर्ष</span>
+  </label><br>
+
+  <button onclick="checkQuestion('q304','1')">Prüfen</button>
+  <div id="fb-q304"></div>
+</div>
+
+
+<div class="question" id="q305">
+  <strong>305. Welche Farben hat die Landesflagge von Baden-Württemberg?</strong>
+  <span class="translation lang-uk">Які кольори має державний прапор Баден-Вюртембергу?</span>
+  <span class="translation lang-en">What are the colors of the state flag of Baden-Württemberg?</span>
+  <span class="translation lang-ar">ما هي ألوان علم ولاية بادن-فورتمبيرغ؟</span>
+  <span class="translation lang-tr">Baden-Württemberg eyalet bayrağının renkleri nelerdir?</span>
+  <span class="translation lang-bg">Какви са цветовете на знамето на Баден-Вюртемберг?</span>
+  <span class="translation lang-fa">رنگ‌های پرچم ایالت بادن-وورتمبرگ چیست؟</span>
+  <span class="translation lang-bs">Koje su boje zastave pokrajine Baden-Württemberg?</span>
+  <span class="translation lang-mk">Кои се боите на знамето на покраината Баден-Виртемберг?</span>
+  <span class="translation lang-pl">Jakie kolory ma flaga kraju związkowego Badenia-Wirtembergia?</span>
+  <span class="translation lang-ro">Care sunt culorile steagului landului Baden-Württemberg?</span>
+  <span class="translation lang-it">Quali sono i colori della bandiera del Baden-Württemberg?</span>
+  <span class="translation lang-hi">बाडेन-वुर्टेमबर्ग राज्य के झंडे के रंग कौन से हैं?</span><br>
+
+  <label><input type="radio" name="q305" value="0"> blau-weiß-rot
+    <span class="translation lang-uk">синьо-біло-червоний</span>
+    <span class="translation lang-en">blue-white-red</span>
+    <span class="translation lang-ar">أزرق-أبيض-أحمر</span>
+    <span class="translation lang-tr">mavi-beyaz-kırmızı</span>
+    <span class="translation lang-bg">синьо-бяло-червено</span>
+    <span class="translation lang-fa">آبی-سفید-قرمز</span>
+    <span class="translation lang-bs">plavo-bijelo-crvena</span>
+    <span class="translation lang-mk">сино-бело-црвено</span>
+    <span class="translation lang-pl">niebiesko-biało-czerwony</span>
+    <span class="translation lang-ro">albastru-alb-roșu</span>
+    <span class="translation lang-it">blu-bianco-rosso</span>
+    <span class="translation lang-hi">नीला-सफेद-लाल</span>
+  </label><br>
+
+  <label><input type="radio" name="q305" value="1"> schwarz-gold
+    <span class="translation lang-uk">чорно-золотий</span>
+    <span class="translation lang-en">black-gold</span>
+    <span class="translation lang-ar">أسود-ذهبي</span>
+    <span class="translation lang-tr">siyah-altın</span>
+    <span class="translation lang-bg">черно-златисто</span>
+    <span class="translation lang-fa">سیاه-طلایی</span>
+    <span class="translation lang-bs">crno-zlatna</span>
+    <span class="translation lang-mk">црно-златна</span>
+    <span class="translation lang-pl">czarno-złoty</span>
+    <span class="translation lang-ro">negru-auriu</span>
+    <span class="translation lang-it">nero-oro</span>
+    <span class="translation lang-hi">काला-सुनहरा</span>
+  </label><br>
+
+  <label><input type="radio" name="q305" value="2"> weiß-blau
+    <span class="translation lang-uk">біло-синій</span>
+    <span class="translation lang-en">white-blue</span>
+    <span class="translation lang-ar">أبيض-أزرق</span>
+    <span class="translation lang-tr">beyaz-mavi</span>
+    <span class="translation lang-bg">бяло-синьо</span>
+    <span class="translation lang-fa">سفید-آبی</span>
+    <span class="translation lang-bs">bijelo-plava</span>
+    <span class="translation lang-mk">бело-сина</span>
+    <span class="translation lang-pl">biało-niebieski</span>
+    <span class="translation lang-ro">alb-albastru</span>
+    <span class="translation lang-it">bianco-blu</span>
+    <span class="translation lang-hi">सफेद-नीला</span>
+  </label><br>
+
+  <label><input type="radio" name="q305" value="3"> grün-weiß-rot
+    <span class="translation lang-uk">зелено-біло-червоний</span>
+    <span class="translation lang-en">green-white-red</span>
+    <span class="translation lang-ar">أخضر-أبيض-أحمر</span>
+    <span class="translation lang-tr">yeşil-beyaz-kırmızı</span>
+    <span class="translation lang-bg">зелено-бяло-червено</span>
+    <span class="translation lang-fa">سبز-سفید-قرمز</span>
+    <span class="translation lang-bs">zeleno-bijelo-crvena</span>
+    <span class="translation lang-mk">зелено-бело-црвено</span>
+    <span class="translation lang-pl">zielono-biało-czerwony</span>
+    <span class="translation lang-ro">verde-alb-roșu</span>
+    <span class="translation lang-it">verde-bianco-rosso</span>
+    <span class="translation lang-hi">हरा-सफेद-लाल</span>
+  </label><br>
+
+  <button onclick="checkQuestion('q305','1')">Prüfen</button>
+  <div id="fb-q305"></div>
+</div>
+
+<div class="question" id="q306">
+  <strong>306. Wo können Sie sich in Baden-Württemberg über politische Themen informieren?</strong>
+  <span class="translation lang-uk">Де можна отримати інформацію про політичні теми в Баден-Вюртемберзі?</span>
+  <span class="translation lang-en">Where can you get information on political topics in Baden-Württemberg?</span>
+  <span class="translation lang-ar">أين يمكنك الحصول على معلومات حول المواضيع السياسية في بادن-فورتمبيرغ؟</span>
+  <span class="translation lang-tr">Baden-Württemberg'de siyasi konular hakkında nereden bilgi alabilirsiniz?</span>
+  <span class="translation lang-bg">Къде можете да получите информация по политически теми в Баден-Вюртемберг?</span>
+  <span class="translation lang-fa">در بادن-وورتمبرگ از کجا می‌توانید در مورد موضوعات سیاسی اطلاعات کسب کنید؟</span>
+  <span class="translation lang-bs">Gdje se u Baden-Württembergu možete informisati o političkim temama?</span>
+  <span class="translation lang-mk">Каде можете да се информирате за политички теми во Баден-Виртемберг?</span>
+  <span class="translation lang-pl">Gdzie w Badenii-Wirtembergii można uzyskać informacje na tematy polityczne?</span>
+  <span class="translation lang-ro">Unde vă puteți informa despre teme politice în Baden-Württemberg?</span>
+  <span class="translation lang-it">Dove puoi informarti su temi politici nel Baden-Württemberg?</span>
+  <span class="translation lang-hi">बाडेन-वुर्टेमबर्ग में आप राजनीतिक विषयों की जानकारी कहाँ प्राप्त कर सकते हैं?</span><br>
+
+  <label><input type="radio" name="q306" value="0"> beim Ordnungsamt der Gemeinde
+    <span class="translation lang-uk">в управлінні громадського порядку громади</span>
+    <span class="translation lang-en">at the municipal regulatory office</span>
+    <span class="translation lang-ar">في مكتب النظام العام بالبلدية</span>
+    <span class="translation lang-tr">belediyenin düzen ofisinde</span>
+    <span class="translation lang-bg">в службата за ред и сигурност на общината</span>
+    <span class="translation lang-fa">در اداره نظم شهرداری</span>
+    <span class="translation lang-bs">u općinskom uredu za red i zakon</span>
+    <span class="translation lang-mk">во општинската служба за ред</span>
+    <span class="translation lang-pl">w urzędzie porządkowym gminy</span>
+    <span class="translation lang-ro">la biroul de ordine publică al comunei</span>
+    <span class="translation lang-it">presso l'ufficio dell'ordine pubblico comunale</span>
+    <span class="translation lang-hi">नगर पालिका के सार्वजनिक व्यवस्था कार्यालय में</span>
+  </label><br>
+
+  <label><input type="radio" name="q306" value="1"> bei der Verbraucherzentrale
+    <span class="translation lang-uk">в центрі захисту прав споживачів</span>
+    <span class="translation lang-en">at the consumer advice center</span>
+    <span class="translation lang-ar">في مركز حماية المستهلك</span>
+    <span class="translation lang-tr">tüketici danışma merkezinde</span>
+    <span class="translation lang-bg">в потребителския център</span>
+    <span class="translation lang-fa">در مرکز حمایت از مصرف‌کننده</span>
+    <span class="translation lang-bs">u centru za zaštitu potrošača</span>
+    <span class="translation lang-mk">во центарот за заштита на потрошувачите</span>
+    <span class="translation lang-pl">w centrum ochrony konsumentów</span>
+    <span class="translation lang-ro">la centrul pentru protecția consumatorilor</span>
+    <span class="translation lang-it">al centro per i consumatori</span>
+    <span class="translation lang-hi">उपभोक्ता केंद्र में</span>
+  </label><br>
+
+  <label><input type="radio" name="q306" value="2"> bei der Landeszentrale für politische Bildung
+    <span class="translation lang-uk">у Земельному центрі політичної освіти</span>
+    <span class="translation lang-en">at the State Center for Civic Education</span>
+    <span class="translation lang-ar">في المركز الإقليمي للتثقيف السياسي</span>
+    <span class="translation lang-tr">Siyasi Eğitim Eyalet Merkezi'nde</span>
+    <span class="translation lang-bg">в Центъра за политическо образование на провинцията</span>
+    <span class="translation lang-fa">در مرکز ایالتی آموزش سیاسی</span>
+    <span class="translation lang-bs">u pokrajinskom centru za političko obrazovanje</span>
+    <span class="translation lang-mk">во покраинскиот центар за политичко образование</span>
+    <span class="translation lang-pl">w krajowym centrum edukacji obywatelskiej</span>
+    <span class="translation lang-ro">la centrul regional pentru educație politică</span>
+    <span class="translation lang-it">presso il centro statale per l’educazione politica</span>
+    <span class="translation lang-hi">राज्य राजनीतिक शिक्षा केंद्र में</span>
+  </label><br>
+
+  <label><input type="radio" name="q306" value="3"> bei den Kirchen
+    <span class="translation lang-uk">у церквах</span>
+    <span class="translation lang-en">at the churches</span>
+    <span class="translation lang-ar">في الكنائس</span>
+    <span class="translation lang-tr">kiliselerde</span>
+    <span class="translation lang-bg">в църквите</span>
+    <span class="translation lang-fa">در کلیساها</span>
+    <span class="translation lang-bs">u crkvama</span>
+    <span class="translation lang-mk">во црквите</span>
+    <span class="translation lang-pl">w kościołach</span>
+    <span class="translation lang-ro">la biserici</span>
+    <span class="translation lang-it">nelle chiese</span>
+    <span class="translation lang-hi">चर्चों में</span>
+  </label><br>
+
+  <button onclick="checkQuestion('q306','2')">Prüfen</button>
+  <div id="fb-q306"></div>
+</div>
+
+
+<div class="question" id="q307">
+  <strong>307. Die Landeshauptstadt von Baden-Württemberg heißt …</strong>
+  <span class="translation lang-uk">Столиця землі Баден-Вюртемберг називається …</span>
+  <span class="translation lang-en">The capital of the federal state of Baden-Württemberg is …</span>
+  <span class="translation lang-ar">عاصمة ولاية بادن-فورتمبيرغ هي …</span>
+  <span class="translation lang-tr">Baden-Württemberg eyaletinin başkenti …</span>
+  <span class="translation lang-bg">Столицата на провинция Баден-Вюртемберг се нарича …</span>
+  <span class="translation lang-fa">پایتخت ایالت بادن-وورتمبرگ … است</span>
+  <span class="translation lang-bs">Glavni grad pokrajine Baden-Württemberg je …</span>
+  <span class="translation lang-mk">Главниот град на покраината Баден-Виртемберг се вика …</span>
+  <span class="translation lang-pl">Stolicą kraju związkowego Badenia-Wirtembergia jest …</span>
+  <span class="translation lang-ro">Capitala landului Baden-Württemberg se numește …</span>
+  <span class="translation lang-it">La capitale del Baden-Württemberg si chiama …</span>
+  <span class="translation lang-hi">बाडेन-वुर्टेमबर्ग राज्य की राजधानी है …</span><br>
+
+  <label><input type="radio" name="q307" value="0"> Heidelberg
+    <span class="translation lang-uk">Гайдельберг</span>
+    <span class="translation lang-en">Heidelberg</span>
+    <span class="translation lang-ar">هايدلبرغ</span>
+    <span class="translation lang-tr">Heidelberg</span>
+    <span class="translation lang-bg">Хайделберг</span>
+    <span class="translation lang-fa">هایدلبرگ</span>
+    <span class="translation lang-bs">Heidelberg</span>
+    <span class="translation lang-mk">Хајделберг</span>
+    <span class="translation lang-pl">Heidelberg</span>
+    <span class="translation lang-ro">Heidelberg</span>
+    <span class="translation lang-it">Heidelberg</span>
+    <span class="translation lang-hi">हाईडेलबर्ग</span>
+  </label><br>
+
+  <label><input type="radio" name="q307" value="1"> Stuttgart
+    <span class="translation lang-uk">Штутгарт</span>
+    <span class="translation lang-en">Stuttgart</span>
+    <span class="translation lang-ar">شتوتغارت</span>
+    <span class="translation lang-tr">Stuttgart</span>
+    <span class="translation lang-bg">Щутгарт</span>
+    <span class="translation lang-fa">اشتوتگارت</span>
+    <span class="translation lang-bs">Stuttgart</span>
+    <span class="translation lang-mk">Штутгарт</span>
+    <span class="translation lang-pl">Stuttgart</span>
+    <span class="translation lang-ro">Stuttgart</span>
+    <span class="translation lang-it">Stoccarda</span>
+    <span class="translation lang-hi">स्टटगार्ट</span>
+  </label><br>
+
+  <label><input type="radio" name="q307" value="2"> Karlsruhe
+    <span class="translation lang-uk">Карлсруе</span>
+    <span class="translation lang-en">Karlsruhe</span>
+    <span class="translation lang-ar">كارلسروه</span>
+    <span class="translation lang-tr">Karlsruhe</span>
+    <span class="translation lang-bg">Карлсруе</span>
+    <span class="translation lang-fa">کارلسروهه</span>
+    <span class="translation lang-bs">Karlsruhe</span>
+    <span class="translation lang-mk">Карлсруе</span>
+    <span class="translation lang-pl">Karlsruhe</span>
+    <span class="translation lang-ro">Karlsruhe</span>
+    <span class="translation lang-it">Karlsruhe</span>
+    <span class="translation lang-hi">कार्ल्सरुहे</span>
+  </label><br>
+
+  <label><input type="radio" name="q307" value="3"> Mannheim
+    <span class="translation lang-uk">Мангайм</span>
+    <span class="translation lang-en">Mannheim</span>
+    <span class="translation lang-ar">مانهايم</span>
+    <span class="translation lang-tr">Mannheim</span>
+    <span class="translation lang-bg">Манхайм</span>
+    <span class="translation lang-fa">مانهایم</span>
+    <span class="translation lang-bs">Mannheim</span>
+    <span class="translation lang-mk">Манхајм</span>
+    <span class="translation lang-pl">Mannheim</span>
+    <span class="translation lang-ro">Mannheim</span>
+    <span class="translation lang-it">Mannheim</span>
+    <span class="translation lang-hi">मन्नहाइम</span>
+  </label><br>
+
+  <button onclick="checkQuestion('q307','1')">Prüfen</button>
+  <div id="fb-q307"></div>
+</div>
+
+
+<div class="question" id="q308">
+  <strong>308. Welches Bundesland ist Baden-Württemberg?</strong>
+  <span class="translation lang-uk">Яка федеральна земля є Баден-Вюртемберг?</span>
+  <span class="translation lang-en">Which federal state is Baden-Württemberg?</span>
+  <span class="translation lang-ar">أي ولاية اتحادية هي بادن-فورتمبيرغ؟</span>
+  <span class="translation lang-tr">Hangi eyalet Baden-Württemberg’tir?</span>
+  <span class="translation lang-bg">Коя федерална провинция е Баден-Вюртемберг?</span>
+  <span class="translation lang-fa">کدام ایالت فدرال بادن-وورتمبرگ است؟</span>
+  <span class="translation lang-bs">Koja savezna pokrajina je Baden-Württemberg?</span>
+  <span class="translation lang-mk">Која сојузна покраина е Баден-Виртемберг?</span>
+  <span class="translation lang-pl">Który kraj związkowy to Badenia-Wirtembergia?</span>
+  <span class="translation lang-ro">Care este landul Baden-Württemberg?</span>
+  <span class="translation lang-it">Quale stato federale è il Baden-Württemberg?</span>
+  <span class="translation lang-hi">कौन सा संघीय राज्य बाडेन-वुर्टेमबर्ग है?</span><br>
+ <img src="308.png" alt="Frage 308 Bild"><br><br>
+  <label><input type="radio" name="q308" value="0"> 1
+    <span class="translation lang-uk">1</span>
+    <span class="translation lang-en">1</span>
+    <span class="translation lang-ar">١</span>
+    <span class="translation lang-tr">1</span>
+    <span class="translation lang-bg">1</span>
+    <span class="translation lang-fa">۱</span>
+    <span class="translation lang-bs">1</span>
+    <span class="translation lang-mk">1</span>
+    <span class="translation lang-pl">1</span>
+    <span class="translation lang-ro">1</span>
+    <span class="translation lang-it">1</span>
+    <span class="translation lang-hi">1</span>
+  </label><br>
+
+  <label><input type="radio" name="q308" value="1"> 2
+    <span class="translation lang-uk">2</span>
+    <span class="translation lang-en">2</span>
+    <span class="translation lang-ar">٢</span>
+    <span class="translation lang-tr">2</span>
+    <span class="translation lang-bg">2</span>
+    <span class="translation lang-fa">۲</span>
+    <span class="translation lang-bs">2</span>
+    <span class="translation lang-mk">2</span>
+    <span class="translation lang-pl">2</span>
+    <span class="translation lang-ro">2</span>
+    <span class="translation lang-it">2</span>
+    <span class="translation lang-hi">2</span>
+  </label><br>
+
+  <label><input type="radio" name="q308" value="2"> 3
+    <span class="translation lang-uk">3</span>
+    <span class="translation lang-en">3</span>
+    <span class="translation lang-ar">٣</span>
+    <span class="translation lang-tr">3</span>
+    <span class="translation lang-bg">3</span>
+    <span class="translation lang-fa">۳</span>
+    <span class="translation lang-bs">3</span>
+    <span class="translation lang-mk">3</span>
+    <span class="translation lang-pl">3</span>
+    <span class="translation lang-ro">3</span>
+    <span class="translation lang-it">3</span>
+    <span class="translation lang-hi">3</span>
+  </label><br>
+
+  <label><input type="radio" name="q308" value="3"> 4
+    <span class="translation lang-uk">4</span>
+    <span class="translation lang-en">4</span>
+    <span class="translation lang-ar">٤</span>
+    <span class="translation lang-tr">4</span>
+    <span class="translation lang-bg">4</span>
+    <span class="translation lang-fa">۴</span>
+    <span class="translation lang-bs">4</span>
+    <span class="translation lang-mk">4</span>
+    <span class="translation lang-pl">4</span>
+    <span class="translation lang-ro">4</span>
+    <span class="translation lang-it">4</span>
+    <span class="translation lang-hi">4</span>
+  </label><br>
+
+  <button onclick="checkQuestion('q308','1')">Prüfen</button>
+  <div id="fb-q308"></div>
+</div>
+
+<div class="question" id="q309">
+  <strong>309. Wie nennt man die Regierungschefin/den Regierungschef in Baden-Württemberg?</strong>
+  <span class="translation lang-uk">Як називається глава уряду в Баден-Вюртемберзі?</span>
+  <span class="translation lang-en">What is the name of the head of government in Baden-Württemberg?</span>
+  <span class="translation lang-ar">ما اسم رئيس الحكومة في بادن-فورتمبيرغ؟</span>
+  <span class="translation lang-tr">Baden-Württemberg eyaletinde hükümet başkanına ne ad verilir?</span>
+  <span class="translation lang-bg">Как се нарича ръководителят на правителството в Баден-Вюртемберг?</span>
+  <span class="translation lang-fa">رئیس دولت در بادن-وورتمبرگ چه نامیده می‌شود؟</span>
+  <span class="translation lang-bs">Kako se zove šef vlade u Baden-Württembergu?</span>
+  <span class="translation lang-mk">Како се нарекува шефот на владата во Баден-Виртемберг?</span>
+  <span class="translation lang-pl">Jak nazywa się szef rządu w Badenii-Wirtembergii?</span>
+  <span class="translation lang-ro">Cum se numește șeful guvernului din Baden-Württemberg?</span>
+  <span class="translation lang-it">Come si chiama il capo del governo del Baden-Württemberg?</span>
+  <span class="translation lang-hi">बाडेन-वुर्टेमबर्ग में सरकार प्रमुख को क्या कहा जाता है?</span><br>
+
+  <label><input type="radio" name="q309" value="0"> Erste Ministerin / Erster Minister
+    <span class="translation lang-uk">Перший міністр / Перша міністерка</span>
+    <span class="translation lang-en">First Minister</span>
+    <span class="translation lang-ar">الوزير الأول / الوزيرة الأولى</span>
+    <span class="translation lang-tr">Birinci Bakan</span>
+    <span class="translation lang-bg">Първи министър</span>
+    <span class="translation lang-fa">وزیر اول</span>
+    <span class="translation lang-bs">Prvi ministar / ministrica</span>
+    <span class="translation lang-mk">Прв министер</span>
+    <span class="translation lang-pl">Pierwszy minister</span>
+    <span class="translation lang-ro">Primul ministru</span>
+    <span class="translation lang-it">Primo ministro</span>
+    <span class="translation lang-hi">प्रथम मंत्री</span>
+  </label><br>
+
+  <label><input type="radio" name="q309" value="1"> Premierministerin / Premierminister
+    <span class="translation lang-uk">Прем’єр-міністр</span>
+    <span class="translation lang-en">Prime Minister</span>
+    <span class="translation lang-ar">رئيسة الوزراء / رئيس الوزراء</span>
+    <span class="translation lang-tr">Başbakan</span>
+    <span class="translation lang-bg">Премиер</span>
+    <span class="translation lang-fa">نخست‌وزیر</span>
+    <span class="translation lang-bs">Premijer / premijerka</span>
+    <span class="translation lang-mk">Премиер</span>
+    <span class="translation lang-pl">Premier</span>
+    <span class="translation lang-ro">Prim-ministru</span>
+    <span class="translation lang-it">Primo ministro</span>
+    <span class="translation lang-hi">प्रधान मंत्री</span>
+  </label><br>
+
+  <label><input type="radio" name="q309" value="2"> Bürgermeisterin / Bürgermeister
+    <span class="translation lang-uk">Бургомістр / Мер</span>
+    <span class="translation lang-en">Mayor</span>
+    <span class="translation lang-ar">رئيسة البلدية / رئيس البلدية</span>
+    <span class="translation lang-tr">Belediye Başkanı</span>
+    <span class="translation lang-bg">Кмет</span>
+    <span class="translation lang-fa">شهردار</span>
+    <span class="translation lang-bs">Gradonačelnik / gradonačelnica</span>
+    <span class="translation lang-mk">Градоначалник</span>
+    <span class="translation lang-pl">Burmistrz</span>
+    <span class="translation lang-ro">Primar</span>
+    <span class="translation lang-it">Sindaco</span>
+    <span class="translation lang-hi">महापौर</span>
+  </label><br>
+
+  <label><input type="radio" name="q309" value="3"> Ministerpräsidentin / Ministerpräsident
+    <span class="translation lang-uk">Міністр-президент</span>
+    <span class="translation lang-en">Minister-President</span>
+    <span class="translation lang-ar">رئيسة الوزراء / رئيس الوزراء (رئيس الولاية)</span>
+    <span class="translation lang-tr">Eyalet Başbakanı</span>
+    <span class="translation lang-bg">Министър-председател на провинцията</span>
+    <span class="translation lang-fa">رئیس ایالت</span>
+    <span class="translation lang-bs">Premijer entiteta / pokrajine</span>
+    <span class="translation lang-mk">Министер-претседател</span>
+    <span class="translation lang-pl">Premier landu</span>
+    <span class="translation lang-ro">Premierul landului</span>
+    <span class="translation lang-it">Presidente del Land</span>
+    <span class="translation lang-hi">मंत्री-प्रधान (राज्य प्रमुख)</span>
+  </label><br>
+
+  <button onclick="checkQuestion('q309','3')">Prüfen</button>
+  <div id="fb-q309"></div>
+</div>
+
+<div class="question" id="q310">
+  <strong>310. Welche Ministerin/welchen Minister hat Baden-Württemberg nicht?</strong>
+  <span class="translation lang-uk">Якого міністра немає в уряді землі Баден-Вюртемберг?</span>
+  <span class="translation lang-en">Which minister does Baden-Württemberg not have?</span>
+  <span class="translation lang-ar">أي وزيرة / وزير لا يوجد في حكومة بادن-فورتمبيرغ؟</span>
+  <span class="translation lang-tr">Baden-Württemberg eyaletinde hangi bakan yoktur?</span>
+  <span class="translation lang-bg">Кой министър не съществува в Баден-Вюртемберг?</span>
+  <span class="translation lang-fa">کدام وزیر در ایالت بادن-وورتمبرگ وجود ندارد؟</span>
+  <span class="translation lang-bs">Koji ministar/ministarka ne postoji u vladi Baden-Württemberga?</span>
+  <span class="translation lang-mk">Кој министер/министерка не постои во владата на Баден-Виртемберг?</span>
+  <span class="translation lang-pl">Którego ministra nie ma w Badenii-Wirtembergii?</span>
+  <span class="translation lang-ro">Ce ministru nu există în guvernul landului Baden-Württemberg?</span>
+  <span class="translation lang-it">Quale ministro non esiste nel governo del Baden-Württemberg?</span>
+  <span class="translation lang-hi">बाडेन-वुर्टेमबर्ग में कौन सा मंत्री नहीं होता?</span><br>
+
+  <label><input type="radio" name="q310" value="0"> Finanzministerin / Finanzminister
+    <span class="translation lang-uk">Міністр фінансів</span>
+    <span class="translation lang-en">Minister of Finance</span>
+    <span class="translation lang-ar">وزير المالية</span>
+    <span class="translation lang-tr">Maliye Bakanı</span>
+    <span class="translation lang-bg">Министър на финансите</span>
+    <span class="translation lang-fa">وزیر دارایی</span>
+    <span class="translation lang-bs">Ministar/ministrica finansija</span>
+    <span class="translation lang-mk">Министер за финансии</span>
+    <span class="translation lang-pl">Minister finansów</span>
+    <span class="translation lang-ro">Ministrul de finanțe</span>
+    <span class="translation lang-it">Ministro delle finanze</span>
+    <span class="translation lang-hi">वित्त मंत्री</span>
+  </label><br>
+
+  <label><input type="radio" name="q310" value="1"> Justizministerin / Justizminister
+    <span class="translation lang-uk">Міністр юстиції</span>
+    <span class="translation lang-en">Minister of Justice</span>
+    <span class="translation lang-ar">وزير العدل</span>
+    <span class="translation lang-tr">Adalet Bakanı</span>
+    <span class="translation lang-bg">Министър на правосъдието</span>
+    <span class="translation lang-fa">وزیر دادگستری</span>
+    <span class="translation lang-bs">Ministar/ministrica pravde</span>
+    <span class="translation lang-mk">Министер за правда</span>
+    <span class="translation lang-pl">Minister sprawiedliwości</span>
+    <span class="translation lang-ro">Ministrul justiției</span>
+    <span class="translation lang-it">Ministro della giustizia</span>
+    <span class="translation lang-hi">न्याय मंत्री</span>
+  </label><br>
+
+  <label><input type="radio" name="q310" value="2"> Innenministerin / Innenminister
+    <span class="translation lang-uk">Міністр внутрішніх справ</span>
+    <span class="translation lang-en">Minister of the Interior</span>
+    <span class="translation lang-ar">وزير الداخلية</span>
+    <span class="translation lang-tr">İçişleri Bakanı</span>
+    <span class="translation lang-bg">Министър на вътрешните работи</span>
+    <span class="translation lang-fa">وزیر کشور</span>
+    <span class="translation lang-bs">Ministar/ministrica unutrašnjih poslova</span>
+    <span class="translation lang-mk">Министер за внатрешни работи</span>
+    <span class="translation lang-pl">Minister spraw wewnętrznych</span>
+    <span class="translation lang-ro">Ministrul de interne</span>
+    <span class="translation lang-it">Ministro degli interni</span>
+    <span class="translation lang-hi">गृह मंत्री</span>
+  </label><br>
+
+  <label><input type="radio" name="q310" value="3"> Außenministerin / Außenminister
+    <span class="translation lang-uk">Міністр закордонних справ</span>
+    <span class="translation lang-en">Minister of Foreign Affairs</span>
+    <span class="translation lang-ar">وزير الخارجية</span>
+    <span class="translation lang-tr">Dışişleri Bakanı</span>
+    <span class="translation lang-bg">Министър на външните работи</span>
+    <span class="translation lang-fa">وزیر امور خارجه</span>
+    <span class="translation lang-bs">Ministar/ministrica vanjskih poslova</span>
+    <span class="translation lang-mk">Министер за надворешни работи</span>
+    <span class="translation lang-pl">Minister spraw zagranicznych</span>
+    <span class="translation lang-ro">Ministrul afacerilor externe</span>
+    <span class="translation lang-it">Ministro degli affari esteri</span>
+    <span class="translation lang-hi">विदेश मंत्री</span>
+  </label><br>
+
+  <button onclick="checkQuestion('q310','3')">Prüfen</button>
+  <div id="fb-q310"></div>
+</div>
+
+
+<div class="question">
+  <strong>Ende des Tests (Fragen für das Bundesland Baden-Württemberg, Teil II)</strong><br>
+
+  
+
+
+</div>
+<div class="question">
+  <strong>Quellen</strong><br>
+  Fragen 301, 308 / Infografik, Text zu den Fragen: BAMF – <a href="https://www.bamf.de/SharedDocs/Anlagen/DE/Integration/Einbuergerung/gesamtfragenkatalog-lebenindeutschland.pdf?__blob=publicationFile&v=19">https://www.bamf.de/SharedDocs/Anlagen/DE/Integration/Einbuergerung/gesamtfragenkatalog-lebenindeutschland.pdf?__blob=publicationFile&v=19</a>. Übersetzung / Rechts: KI-Technologie
+
+
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+</div>
+<script>
+  (function(){
+    // Функции скрыть/показать
+    const hideTranslations = () => document.querySelectorAll('em').forEach(el => el.style.display = 'none');
+    const showTranslations = () => document.querySelectorAll('em').forEach(el => el.style.display = 'inline');
+
+    // Сразу при загрузке прячем все <em>
+    hideTranslations();
+
+    // Вешаем переключатель на все языковые кнопки
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        if (btn.dataset.lang === 'de') {
+          hideTranslations();
+        } else {/* Красивый стиль для ссылок пагинации */
+
+          showTranslations();
+        }
+        // Отметим активную кнопку визуально (если нужно)
+        document.querySelectorAll('.lang-btn').forEach(x => x.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  })();
+</script>
+<!-- вставьте прямо перед закрывающим </body> -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1) Сразу достаём все <em> и прячем их
+    const ems = Array.from(document.getElementsByTagName('em'));
+    ems.forEach(el => el.style.display = 'none');
+
+    // 2) Вешаем клики на .lang-btn
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const lang = btn.getAttribute('data-lang');
+        const show = lang !== 'de';  // true для всех, кроме DE
+        ems.forEach(el => el.style.display = show ? 'inline' : 'none');
+        // визуально отметить активную кнопку (опционально)
+        document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Для каждой карточки вопроса
+  document.querySelectorAll('.question').forEach(q => {
+    // на её контейнер ставим делегирование события
+    q.addEventListener('click', e => {
+      // если клик был именно по label или внутри него
+      let lbl = e.target.closest('label');
+      if (!lbl || !q.contains(lbl)) return;
+
+      // снимаем выделение со всех <label> в этом вопросе
+      q.querySelectorAll('label').forEach(l => l.classList.remove('selected'));
+
+      // добавляем выделение к текущему
+      lbl.classList.add('selected');
+    });
+  });
+});
+</script>
+
+</body>
+</html>
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const allEm = () => document.querySelectorAll('em');
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          // если выбран не DE — показываем <em>, иначе скрываем
+          const show = btn.dataset.lang !== 'de';
+          allEm().forEach(el => el.style.display = show ? 'inline' : 'none');
+          // визуально помечаем активную кнопку
+          document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    });
+  </script>
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Переключение языка
+    const dropdown = document.getElementById('lang-dropdown');
+    dropdown.addEventListener('change', () => {
+      const selected = dropdown.value;
+      document.querySelectorAll('.translation').forEach(el => {
+        el.style.display = el.classList.contains(`lang-${selected}`) ? 'inline' : 'none';
+      });
+    });
+
+    // Переключение темы (ночной/дневной)
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      icon.src = isDark ? 'da.png' : 'ni.png';
+    });
+
+    
+</script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Для каждого вопроса перемешиваем варианты ответов
+    document.querySelectorAll('.question').forEach(q => {
+      const labels = Array.from(q.querySelectorAll('label'));
+      const parent = labels[0].parentNode;
+      // Сохраняем кнопку и feedback, чтобы вернуть их в конец
+      const btn = q.querySelector('button');
+      const fb = q.querySelector('.feedback');
+      // Удаляем старые метки
+      labels.forEach(l => parent.removeChild(l));
+      // Перемешиваем массив
+      for (let i = labels.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [labels[i], labels[j]] = [labels[j], labels[i]];
+      }
+      // Вставляем в новом порядке
+      labels.forEach(l => parent.insertBefore(l, btn));
+      // Кнопка и feedback уже на местах
+    });
+  });
+</script>
+<script>
+  function checkQuestion(questionId, correctValue) {
+    const selected = document.querySelector(`input[name="${questionId}"]:checked`);
+    const feedback = document.getElementById(`fb-${questionId}`);
+
+    if (!selected) {
+      feedback.textContent = "❌ Bitte wähle eine Antwort aus. ";
+      feedback.className = "feedback incorrect";
+      return;
+    }
+
+    if (selected.value === correctValue) {
+      feedback.textContent = "✅ Richtig!";
+      feedback.className = "feedback correct";
+    } else {
+      feedback.textContent = "❌ Falsch. ";
+      feedback.className = "feedback incorrect";
+    }
+  }
+</script>
+<script>
+  (function() {
+    // если уже было согласие/отказ — больше не показываем
+    if (localStorage.getItem('cookieConsent')) return;
+
+    const banner = document.getElementById('cookie-banner');
+    banner.style.display = 'flex';
+
+    document.getElementById('accept-cookies').addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      banner.remove();
+      // здесь можно инициализировать non-essential scripts
+    });
+
+    document.getElementById('reject-cookies').addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'rejected');
+      banner.remove();
+    });
+
+    document.getElementById('settings-cookies').addEventListener('click', () => {
+      // раскроете модалку с категориями или просто уведомление
+      alert('Hier können Sie Ihre Cookie-Einstellungen anpassen.');
+    });
+  })();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.querySelector('.cookie-banner');
+  // если пользователь ещё не дал согласие/отказ — показываем баннер
+  if (!localStorage.getItem('cookieConsent')) {
+    banner.style.display = 'flex';
+  }
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.querySelector('.cookie-banner');
+  // Показываем баннер, если ещё нет решения
+  if (!localStorage.getItem('cookieConsent')) {
+    banner.style.display = 'block';
+  }
+
+  // Только на кнопки вешаем hide
+  document.getElementById('accept-cookies').addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'accepted');
+    banner.remove();
+    // здесь можно инициализировать аналитику
+  });
+
+  document.getElementById('reject-cookies').addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'rejected');
+    banner.remove();
+  });
+
+  document.getElementById('settings-cookies').addEventListener('click', () => {
+    alert('Здесь откроются настройки…');
+  });
+});
+</script>
+
+<script>
+(function(){
+  const langs = ['uk','en','ar','tr','bg','fa','bs','mk','pl','ro','it','hi'];
+  const links = document.querySelectorAll('.lang-switcher a');
+
+  function setLang(lang) {
+    if (!langs.includes(lang)) lang = 'uk';
+    history.replaceState(null,'','?lang='+lang);
+    document.querySelectorAll('.translation').forEach(el=>{
+      el.style.display = el.classList.contains('lang-'+lang)
+        ? (el.tagName==='SPAN' ? 'inline-block' : 'block')
+        : 'none';
+    });
+  }
+
+  // при загрузке
+  const params = new URLSearchParams(location.search);
+  setLang(params.get('lang'));
+
+  // переключение по клику
+  links.forEach(a=>{
+    a.addEventListener('click', e=>{
+      e.preventDefault();
+      setLang(a.dataset.lang);
+    });
+  });
+})();
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // для каждой группы input[name]
+  document.querySelectorAll('.question').forEach(question => {
+    const inputs = question.querySelectorAll('input[type="radio"]');
+    inputs.forEach(input => {
+      input.addEventListener('change', () => {
+        // Сначала снимаем .selected со всех label в этом вопросе
+        question.querySelectorAll('label').forEach(l => l.classList.remove('selected'));
+        // Добавляем .selected на тот label, что содержит checked input
+        if (input.checked) {
+          input.closest('label').classList.add('selected');
+        }
+      });
+    });
+  });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // по умолчанию — немецкий, прячем переводы
+  document.body.classList.add('de');
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const lang = btn.dataset.lang;
+
+      if (lang === 'de') {
+        document.body.classList.add('de');
+      } else {
+        document.body.classList.remove('de');
+      }
+
+      // тут можно переключать UI-отмеченный активный язык, e.g.:
+      document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+});
+</script>
+  <!-- Скрипт переключения переводов -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // изначально — показываем только оригинал (DE)
+      document.body.classList.remove('show-trans');
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          const lang = btn.dataset.lang;
+          if (lang === 'de') {
+            document.body.classList.remove('show-trans');
+          } else {
+            document.body.classList.add('show-trans');
+          }
+          // отмечаем активную кнопку
+          document.querySelectorAll('.lang-btn').forEach(x => x.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    });
+  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.question').forEach(question => {
+      // для каждого radio в вопросе
+      question.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+          // убираем selected со всех label этого вопроса
+          question.querySelectorAll('label').forEach(lbl => {
+            lbl.classList.remove('selected');
+          });
+          // добавляем selected только label-у родителю этого radio
+          radio.closest('label').classList.add('selected');
+        });
+      });
+    });
+  });
+</script>
+<script>
+(function(){
+  const perPage = 10;
+  const container = document.querySelector('.test-container') || document.body;
+  const allQuestions = Array.from(document.querySelectorAll('.question'));
+  const totalPages = Math.ceil(allQuestions.length / perPage);
+
+  function renderPage() {
+    // узнаём номер страницы из хэша, например "#page=2"
+    const hash = window.location.hash.slice(1);
+    const params = new URLSearchParams(hash);
+    let page = parseInt(params.get('page')) || 1;
+    page = Math.min(Math.max(page, 1), totalPages);
+
+    // показываем нужные вопросы, прячем остальные
+    const start = (page - 1) * perPage;
+    const end   = page * perPage;
+    allQuestions.forEach((q, i) => {
+      q.style.display = (i >= start && i < end) ? '' : 'none';
+    });
+
+    // удаляем старую навигацию, если была
+    let oldNav = document.querySelector('.pagination');
+    if (oldNav) oldNav.remove();
+
+    // строим новую
+    const nav = document.createElement('div');
+    nav.className = 'pagination';
+
+    const makeLink = (p, text) => {
+      const a = document.createElement('a');
+      a.href = `#page=${p}`;
+      a.textContent = text;
+      if (p < 1 || p > totalPages) a.style.visibility = 'hidden';
+      return a;
+    };
+
+    const prev = makeLink(page - 1, '← Vorherige');
+    const info = document.createElement('span');
+    info.textContent = ` Seite ${page} / ${totalPages} `;
+    const next = makeLink(page + 1, 'Nächste →');
+
+    nav.append(prev, info, next);
+    container.append(nav);
+  }
+
+  window.addEventListener('DOMContentLoaded', renderPage);
+  window.addEventListener('hashchange', renderPage);
+})();
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdown = document.getElementById('lang-dropdown');
+    dropdown.addEventListener('change', () => {
+      const selected = dropdown.value;
+      // Показываем выбранный язык
+      document.querySelectorAll('.translation').forEach(el => {
+        el.style.display = el.classList.contains(`lang-${selected}`) ? 'inline' : 'none';
+      });
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', function (e) {
+      const target = e.target.closest('.next-button');
+      if (target) {
+        // Невелика затримка, щоб контент встиг змінитись
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 100);
+      }
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.test-container');
+
+    if (!container) return;
+
+    // Стежимо за додаванням нових питань (виключаючи "Prüfen")
+    const observer = new MutationObserver((mutationsList) => {
+      for (let mutation of mutationsList) {
+        if (
+          mutation.type === 'childList' &&
+          mutation.addedNodes.length > 0 &&
+          !mutation.target.closest('.question')
+        ) {
+          // Нові блоки питань вставлено – прокручуємо догори
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+
+    observer.observe(container, {
+      childList: true,
+      subtree: false // щоб не реагувало на кнопки "Prüfen" всередині питань
+    });
+
+    // Додатково: кнопка "далі" — навіть якщо вставляється динамічно
+    document.body.addEventListener('click', (e) => {
+      const btn = e.target.closest('.next-button');
+      if (btn) {
+        // відкладена прокрутка – після оновлення DOM
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 150);
+      }
+    });
+  });
+</script>
+<script type="text/javascript">
+  
+</script>
+<div class="pagination">
+  <div class="page-info">Seite 1 / 2</div>
+  <button class="next-button" onclick="goNextPage()">Nächste →</button>
+</div>
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="../impressum/">Impressum</a> |
+    <a href="../datenschutz/">Datenschutzerklärung</a> |
+    <a href="../kontakt/">Kontakt</a>
+  </div>
+  <div class="footer-copy">© 2025 sprache.online — Alle Rechte vorbehalten</div>
+</footer>
+
+</body>
+</html>
