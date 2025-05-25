@@ -1171,9 +1171,7 @@ function printAllQuestions() {
   html += '<html><head><title>Alle Fragen – Sprache.online</title>';
   html += `
     <style>
-      @media print {
-        body { margin: 0; }
-      }
+      @media print { body { margin: 0; } }
       body {
         font-family: Arial, sans-serif;
         padding: 30px 40px;
@@ -1236,12 +1234,8 @@ function printAllQuestions() {
 
   allQuestions.forEach((q) => {
     const clone = q.cloneNode(true);
-    clone.querySelectorAll('button').forEach(b => b.remove());
 
-    clone.querySelectorAll('.translation').forEach(span => {
-      span.style.display = span.classList.contains('lang-' + lang) ? 'inline-block' : 'none';
-    });
-
+    // Заголовок вопроса
     const frageDiv = document.createElement('div');
     frageDiv.classList.add('frage');
     const children = Array.from(clone.childNodes);
@@ -1251,36 +1245,47 @@ function printAllQuestions() {
     }
     clone.insertBefore(frageDiv, clone.querySelector('label'));
 
-    let i = 0;
-    clone.querySelectorAll('input[type="radio"]').forEach(input => {
-      const label = input.closest('label');
-      if (label) {
-        const questionDiv = label.closest('.question');
-const checkBtn = questionDiv?.querySelector('button[onclick^="checkQuestion"]');
-const match = checkBtn?.getAttribute('onclick')?.match(/'([^']+)'/g);
-const correctValue = match?.[1]?.replace(/'/g, '');
+    // Определяем правильный ответ из кнопки "checkQuestion('q77','3')"
+    const checkBtn = clone.querySelector('button[onclick^="checkQuestion"]');
+    const match = checkBtn?.getAttribute('onclick')?.match(/'[^']*','([^']*)'/);
+    const correctValue = match?.[1] || null;
 
-if (input.value === correctValue) {
-  label.classList.add('correct');
-}
-        }
-        input.remove();
-        label.innerHTML = `<strong>${ABCD[i++]}. </strong>` + label.innerHTML;
+    // Удаляем кнопку и input'ы
+    if (checkBtn) checkBtn.remove();
+    clone.querySelectorAll('button').forEach(b => b.remove());
+    clone.querySelectorAll('input[type="radio"]').forEach(input => input.remove());
+
+    // Обрабатываем label'ы
+    let i = 0;
+    clone.querySelectorAll('label').forEach(label => {
+      const valMatch = label.innerHTML.match(/value="(\d)"/); // уже удалён input, ищем по очереди
+      const value = i.toString(); // используем индекс вместо value
+      if (value === correctValue) {
+        label.classList.add('correct');
       }
+      label.innerHTML = `<strong>${ABCD[i++]}. </strong>` + label.innerHTML;
+    });
+
+    // Переводы
+    clone.querySelectorAll('.translation').forEach(span => {
+      span.style.display = span.classList.contains('lang-' + lang) ? 'inline-block' : 'none';
     });
 
     html += `<div class="question">${clone.innerHTML}</div>`;
   });
 
-  html += `<script>window.onload = function() { window.print(); }<\/script>`;
-  html += '</body></html>';
+  html += `
+    <script>
+      window.onload = function() { window.print(); };
+    <\/script>
+    </body></html>
+  `;
 
   win.document.open();
   win.document.write(html);
   win.document.close();
 }
 </script>
-
 
 
 
