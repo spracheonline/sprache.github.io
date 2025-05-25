@@ -1294,8 +1294,7 @@ function printAllQuestions() {
 </script>
 
 
-<!-- печать без вар ответа -->
-
+<!-- печать без вариантов ответа -->
 <script>
 function printAllQuestionsWithoutAnswers() {
   const allQuestions = Array.from(document.querySelectorAll('.question'));
@@ -1320,14 +1319,11 @@ function printAllQuestionsWithoutAnswers() {
         @media print { body { margin: 0; } }
         body {
           font-family: Arial, sans-serif;
-          max-width: 850px;
-          margin: auto;
-          padding: 30px 40px;
-          position: relative;
+          max-width: 850px; margin: auto;
+          padding: 30px 40px; position: relative;
         }
         h1 {
-          text-align: center;
-          font-size: 24px;
+          text-align: center; font-size: 24px;
           margin-bottom: 30px;
         }
         .question {
@@ -1339,12 +1335,8 @@ function printAllQuestionsWithoutAnswers() {
           overflow: visible;
           white-space: normal;
         }
-        .frage {
-          margin-bottom: 4px;
-        }
-        .frage strong {
-          font-weight: bold;
-        }
+        .frage { margin-bottom: 4px; }
+        .frage strong { font-weight: bold; }
         .translation {
           display: inline-block;
           margin-left: 10px;
@@ -1379,57 +1371,60 @@ function printAllQuestionsWithoutAnswers() {
     const clone = q.cloneNode(true);
     const qNum = parseInt(clone.id.replace('q',''),10);
 
-    // Показываем только нужный перевод
-    clone.querySelectorAll('.translation').forEach(span=>{
-      span.style.display = span.classList.contains('lang-'+lang)
-                          ? 'inline-block'
-                          : 'none';
+    // показать только нужный перевод
+    clone.querySelectorAll('.translation').forEach(span => {
+      span.style.display = span.classList.contains('lang-' + lang)
+        ? 'inline-block'
+        : 'none';
     });
 
-    // Вырезаем текст вопроса в .frage
+    // вынести вопрос в .frage
     const frageDiv = document.createElement('div');
     frageDiv.classList.add('frage');
-    Array.from(clone.childNodes).forEach(node=>{
-      if (node.nodeName==='LABEL') return;
+    Array.from(clone.childNodes).forEach(node => {
+      if (node.nodeName === 'LABEL') return;
       frageDiv.appendChild(node);
     });
     clone.insertBefore(frageDiv, clone.querySelector('label'));
 
-    // Отступ –80px только для 1–65, 189–199 и ≥201
+    // вычислить margin-top для первого label
     let mt = '0';
-    if ((qNum>=1 && qNum<=65) || (qNum>=189 && qNum<=199) || qNum>=201) {
+    if ((qNum >= 1 && qNum <= 65) || (qNum >= 189 && qNum <= 199) || qNum >= 201) {
       mt = '-80px';
     }
 
-    // Удаляем кнопки и input, добавляем ABCD и квадратик
-    let i=0;
-    clone.querySelectorAll('button').forEach(b=>b.remove());
-    clone.querySelectorAll('label').forEach(label=>{
+    // удалить кнопки, инпуты, префикс ABCD + квадратик
+    let i = 0;
+    clone.querySelectorAll('button').forEach(b => b.remove());
+    clone.querySelectorAll('label').forEach(label => {
       const inp = label.querySelector('input[type="radio"]');
       if (inp) inp.remove();
-      // префикс: буква + квадратик
-      label.innerHTML = 
-        `<strong>${ABCD[i]}. </strong>`+
-        `<span style="display:inline-block; width:1em;">☐</span> `+
+      label.innerHTML =
+        `<strong>${ABCD[i]}. </strong>` +
+        `<span style="display:inline-block; width:1em;">☐</span> ` +
         label.innerHTML;
-      if(i===0) {
-        label.style.marginTop = mt;
-      }
+      if (i === 0) label.style.marginTop = mt;
       i++;
     });
 
     html += `<div class="question">${clone.innerHTML}</div>`;
   });
 
-  html += `</body></html>`;
+  html += `
+    </body>
+  </html>`;
 
+  // вот здесь — правильно вызываем печать
   printWindow.document.open();
   printWindow.document.write(html);
   printWindow.document.close();
-  printWindow.onload = ()=>printWindow.print();
+
+  printWindow.focus();
+  printWindow.addEventListener('load', () => {
+    printWindow.print();
+  });
 }
 </script>
-
 
 
 <script>
