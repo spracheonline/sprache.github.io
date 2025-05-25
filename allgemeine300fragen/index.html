@@ -1151,6 +1151,7 @@ body.dark .site-footer a:visited {
 
 </header>
 <!-- правильыне -->
+
 <script>
 function printAllQuestions() {
   const allQuestions = Array.from(document.querySelectorAll('.question'));
@@ -1160,147 +1161,8 @@ function printAllQuestions() {
   }
 
   const lang = document.getElementById('lang-dropdown')?.value || 'de';
-  const ABCD = ['A', 'B', 'C', 'D'];
-  const win = window.open('', '_blank');
-  if (!win) {
-    alert("Pop-up Blocker aktiv. Bitte deaktivieren und erneut versuchen.");
-    return;
-  }
-
-  let html = '';
-  html += '<html><head><title>Alle Fragen – Sprache.online</title>';
-  html += `
-    <style>
-      @media print { body { margin: 0; } }
-      body {
-        font-family: Arial, sans-serif;
-        padding: 30px 40px;
-        max-width: 850px;
-        margin: auto;
-        position: relative;
-      }
-      h1 {
-        text-align: center;
-        font-size: 24px;
-        margin-bottom: 30px;
-      }
-      .question {
-        margin-bottom: 24px;
-        border-bottom: 1px solid #ccc;
-        padding-bottom: 10px;
-      }
-      .frage {
-        margin-bottom: 4px;
-      }
-      .frage strong {
-        font-weight: bold;
-      }
-      .translation {
-        display: inline-block;
-        margin-left: 10px;
-        color: #555;
-        font-style: italic;
-      }
-      label {
-        display: block;
-        margin: 2px 0;
-      }
-      label.correct {
-        font-weight: bold;
-        color: #0a0;
-      }
-      .watermark {
-        position: fixed;
-        top: 50%;
-        right: -60px;
-        transform: rotate(-90deg);
-        font-size: 48px;
-        color: rgba(0, 0, 0, 0.06);
-        z-index: 0;
-        pointer-events: none;
-        user-select: none;
-      }
-      .question:nth-child(-n+65) label:first-of-type {
-        margin-top: -80px !important;
-      }
-      .question:nth-child(n+66) label:first-of-type {
-        margin-top: 0 !important;
-      }
-    </style>
-  `;
-  html += '</head><body>';
-  html += '<h1>Allgemeine 300 Fragen</h1>';
-  html += '<div class="watermark">sprache.online</div>';
-
-  allQuestions.forEach((q) => {
-    const clone = q.cloneNode(true);
-
-    // Заголовок вопроса
-    const frageDiv = document.createElement('div');
-    frageDiv.classList.add('frage');
-    const children = Array.from(clone.childNodes);
-    for (let node of children) {
-      if (node.nodeName === 'LABEL') break;
-      frageDiv.appendChild(node);
-    }
-    clone.insertBefore(frageDiv, clone.querySelector('label'));
-
-    // Определяем правильный ответ из кнопки "checkQuestion('q77','3')"
-    const checkBtn = clone.querySelector('button[onclick^="checkQuestion"]');
-    const match = checkBtn?.getAttribute('onclick')?.match(/'[^']*','([^']*)'/);
-    const correctValue = match?.[1] || null;
-
-    // Удаляем кнопку и input'ы
-    if (checkBtn) checkBtn.remove();
-    clone.querySelectorAll('button').forEach(b => b.remove());
-    clone.querySelectorAll('input[type="radio"]').forEach(input => input.remove());
-
-    // Обрабатываем label'ы
-    let i = 0;
-    clone.querySelectorAll('label').forEach(label => {
-      const valMatch = label.innerHTML.match(/value="(\d)"/); // уже удалён input, ищем по очереди
-      const value = i.toString(); // используем индекс вместо value
-      if (value === correctValue) {
-        label.classList.add('correct');
-      }
-      label.innerHTML = `<strong>${ABCD[i++]}. </strong>` + label.innerHTML;
-    });
-
-    // Переводы
-    clone.querySelectorAll('.translation').forEach(span => {
-      span.style.display = span.classList.contains('lang-' + lang) ? 'inline-block' : 'none';
-    });
-
-    html += `<div class="question">${clone.innerHTML}</div>`;
-  });
-
-  html += `
-    <script>
-      window.onload = function() { window.print(); };
-    <\/script>
-    </body></html>
-  `;
-
-  win.document.open();
-  win.document.write(html);
-  win.document.close();
-}
-</script>
-
-
-
-
-<script>
-function printAllQuestionsWithoutAnswers() {
-  const allQuestions = Array.from(document.querySelectorAll('.question'));
-  if (!allQuestions.length) {
-    alert("Keine Fragen gefunden.");
-    return;
-  }
-
-  const lang = document.getElementById('lang-dropdown')?.value || 'de';
-  const win = window.open('', '_blank');
-  if (!win) {
+  const printWindow = window.open('', '_blank');
+  if (!printWindow) {
     alert("Pop-up Blocker aktiv. Bitte deaktivieren und erneut versuchen.");
     return;
   }
@@ -1348,10 +1210,9 @@ function printAllQuestionsWithoutAnswers() {
           display: block;
           margin: 2px 0;
         }
-        .answer-label::before {
-          content: "☐ ";
-          margin-right: 6px;
-          color: #000;
+        label.correct {
+          font-weight: bold;
+          color: #0a0;
         }
         .watermark {
           position: fixed;
@@ -1367,7 +1228,6 @@ function printAllQuestionsWithoutAnswers() {
         .question:nth-child(-n+65) label:first-of-type {
           margin-top: -80px !important;
         }
-
         .question:nth-child(n+66) label:first-of-type {
           margin-top: 0 !important;
         }
@@ -1378,10 +1238,21 @@ function printAllQuestionsWithoutAnswers() {
       <div class="watermark">sprache.online</div>
   `;
 
-  allQuestions.forEach((q) => {
+  allQuestions.forEach((q, index) => {
     const clone = q.cloneNode(true);
 
-    // Удаляем кнопку Prüfen
+    // Получаем ID вопроса, например "q77"
+    const questionId = clone.id;
+
+    // Получаем правильное значение из кнопки: checkQuestion('q77','3')
+    const checkBtn = clone.querySelector("button[onclick^='checkQuestion']");
+    let correctValue = null;
+    if (checkBtn) {
+      const match = checkBtn.getAttribute('onclick').match(/checkQuestion\('.*?','(\d)'\)/);
+      if (match) correctValue = match[1];
+    }
+
+    // Удалить кнопку Prüfen
     clone.querySelectorAll('button').forEach(b => b.remove());
 
     // Показать только нужный перевод
@@ -1389,7 +1260,7 @@ function printAllQuestionsWithoutAnswers() {
       span.style.display = span.classList.contains('lang-' + lang) ? 'inline-block' : 'none';
     });
 
-    // Извлечь вопрос
+    // Объединить <strong> и <span> в .frage
     const frageDiv = document.createElement('div');
     frageDiv.classList.add('frage');
     const children = Array.from(clone.childNodes);
@@ -1399,12 +1270,17 @@ function printAllQuestionsWithoutAnswers() {
     }
     clone.insertBefore(frageDiv, clone.querySelector('label'));
 
-    // Удалить input и убрать class correct
+    // Удалить input и пометить правильный
     let i = 0;
-    clone.querySelectorAll('input[type="radio"]').forEach(input => input.remove());
     clone.querySelectorAll('label').forEach(label => {
-      label.classList.remove('correct');
-      label.classList.add('answer-label');
+      const input = label.querySelector('input[type="radio"]');
+      const value = input?.value;
+      if (input) input.remove();
+
+      if (value === correctValue) {
+        label.classList.add('correct');
+      }
+
       label.innerHTML = `<strong>${ABCD[i++]}. </strong>` + label.innerHTML;
     });
 
@@ -1413,14 +1289,13 @@ function printAllQuestionsWithoutAnswers() {
 
   html += `</body></html>`;
 
-  win.document.open();
-  win.document.write(html);
-  win.document.close();
+  printWindow.document.open();
+  printWindow.document.write(html);
+  printWindow.document.close();
 
-  win.onload = () => win.print();
+  printWindow.onload = () => printWindow.print();
 }
 </script>
-
 
 
 
