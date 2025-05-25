@@ -36,45 +36,80 @@
     gtag('config','G-Y58Z6NYLLT',{ 'anonymize_ip': true });
   </script>
 
-  <!-- 4) CSS für Cookie-Banner -->
-  <style>
-    .cookie-banner {
-      position: fixed;
-      bottom: 20px; left: 20px; right: 20px;
-      background: #fff; color: #333;
-      border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      padding: 1.5rem;
-      padding-bottom: 4rem; /* Platz für Einstellungen-Panel */
-      font-size: 0.95rem;
-      z-index: 10000;
-      overflow: visible; /* Panel darf herausragen */
-    }
-    .cookie-banner.hidden { display: none; }
-    .banner-content {
-      max-width: 940px; margin: auto;
-      display: flex; flex-direction: column; gap: 0.75rem;
-    }
-    .banner-buttons {
-      display: flex; align-items: center; gap: 0.75rem;
-    }
-    .btn {
-      padding: 0.5em 1em; border: none;
-      cursor: pointer; font-size: 0.9rem;
-      border-radius: 4px;
-    }
-    .btn-primary { background: #007bff; color: #fff; }
-    .btn-secondary { background: #6c757d; color: #fff; }
-    .settings-panel {
-      position: absolute;
-      bottom: 1.5rem; /* oberhalb des Banner-Fußbereichs */
-      left: 1.5rem;
-      right: 1.5rem;
-      background: #f9f9f9; padding: 1rem;
-      border-radius: 4px; border: 1px solid #ddd;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    }
-    .settings-panel.hidden { display: none; }
-  </style>
+  
+<style>
+  .cookiebanner-links a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.cookiebanner-links a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+a { text-decoration:none; color:inherit }
+ .ucb-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: #fff;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    z-index: 9999;
+    font-family: system-ui, sans-serif;
+    display: none;
+  }
+
+  .ucb-text {
+    margin-bottom: 1rem;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .ucb-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .ucb-btn {
+    padding: 0.5em 1.2em;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .ucb-btn-primary {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .ucb-btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+
+  .ucb-panel {
+    margin-top: 1rem;
+    background: #f8f8f8;
+    border-radius: 6px;
+    padding: 1rem;
+    border: 1px solid #ddd;
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
+
+
 <style>
   /* ==== Скрываем все <em> (переводы) во всём контейнере с вопросами ==== */
   .test-container em {
@@ -969,81 +1004,69 @@ body.dark .site-footer a:visited {
 </head>
 <body>
 
-<!-- HTML des Cookie-Banners -->
-  <div id="cookie-banner" class="cookie-banner hidden">
-    <div class="banner-content">
-      <p>
-        Wir verwenden Cookies, um die Funktionalität der Website zu gewährleisten, das Nutzererlebnis zu verbessern und Werbung zu personalisieren. Weitere Informationen finden Sie in unserer 
-        <a href="https://sprache.online/datenschutz/" target="_blank" rel="noopener">Datenschutzerklärung</a>, 
-        <a href="https://sprache.online/impressum/" target="_blank" rel="noopener">Impressum</a> und 
-        <a href="https://sprache.online/kontakt/" target="_blank" rel="noopener">Kontakt</a>.
-      </p>
-      <div class="banner-buttons">
-        <button type="button" id="btn-reject" class="btn btn-secondary">Alle ablehnen</button>
-        <button type="button" id="btn-settings" class="btn btn-secondary">Einstellungen</button>
-        <button type="button" id="btn-accept" class="btn btn-primary">Alle akzeptieren</button>
-      </div>
-    </div>
-    <div id="cookie-settings" class="settings-panel hidden">
-      <h4>Cookie-Einstellungen</h4>
-      <label><input type="checkbox" id="chk-analytics"> Statistik-Cookies (Google Analytics)</label><br>
-      <label><input type="checkbox" id="chk-ads"> Werbe-Cookies (Google AdSense)</label><br>
-      <button type="button" id="btn-save" class="btn btn-primary">Speichern</button>
-    </div>
+<!-- Cookie Banner HTML -->
+<div id="unique-cookie-banner" class="ucb-container">
+  <div class="ucb-text">
+    Wir verwenden Cookies, um die Funktionalität der Website zu gewährleisten, das Nutzererlebnis zu verbessern und Werbung zu personalisieren. Weitere Informationen finden Sie in unserer
+    <a href="/datenschutz" target="_blank">Datenschutzerklärung</a>,
+    <a href="/impressum" target="_blank">Impressum</a> und
+    <a href="/kontakt" target="_blank">Kontakt</a>.
   </div>
+  <div class="ucb-buttons">
+    <button id="ucb-reject" class="ucb-btn ucb-btn-secondary">Alle ablehnen</button>
+    <button id="ucb-settings" class="ucb-btn ucb-btn-secondary">Einstellungen</button>
+    <button id="ucb-accept" class="ucb-btn ucb-btn-primary">Alle akzeptieren</button>
+  </div>
+  <div id="ucb-panel" class="ucb-panel hidden">
+    <label><input type="checkbox" id="ucb-analytics"> Statistik-Cookies</label><br>
+    <label><input type="checkbox" id="ucb-ads"> Werbe-Cookies</label><br>
+    <button id="ucb-save" class="ucb-btn ucb-btn-primary">Speichern</button>
+  </div>
+</div>
+
+
 
 <!-- JavaScript für Banner-Logik -->
 <script>
-(function(){
-  // 1) Ищем элементы
-  const banner   = document.getElementById('cookie-banner');
-  const panel    = document.getElementById('cookie-settings');
-  const btnAcc   = document.getElementById('btn-accept');
-  const btnRej   = document.getElementById('btn-reject');
-  const btnSet   = document.getElementById('btn-settings');
-  const btnSave  = document.getElementById('btn-save');
-  const chkA     = document.getElementById('chk-analytics');
-  const chkAds   = document.getElementById('chk-ads');
+  document.addEventListener('DOMContentLoaded', () => {
+    const banner   = document.getElementById('unique-cookie-banner');
+    const panel    = document.getElementById('ucb-panel');
+    const btnAcc   = document.getElementById('ucb-accept');
+    const btnRej   = document.getElementById('ucb-reject');
+    const btnSet   = document.getElementById('ucb-settings');
+    const btnSave  = document.getElementById('ucb-save');
+    const chkA     = document.getElementById('ucb-analytics');
+    const chkAds   = document.getElementById('ucb-ads');
 
-  // Если баннера нет — выходим
-  if (!banner) return;
+    // Название куки уникальное
+    const storageKey = 'ucbCookieConsent_v1';
 
-  // 2) Показываем баннер один раз при первом заходе
-  if (!localStorage.getItem('cookieConsent')) {
-    banner.style.display = 'block';
-  }
-
-  // 3) Функция применения согласия и удаления баннера
-  function applyConsent(consent) {
-    if (typeof gtag === 'function') {
-      gtag('consent','update',{
-        ad_storage:        consent.ads        ? 'granted' : 'denied',
-        analytics_storage: consent.analytics ? 'granted' : 'denied'
-      });
+    if (!localStorage.getItem(storageKey)) {
+      banner.style.display = 'block';
     }
-    localStorage.setItem('cookieConsent', JSON.stringify(consent));
-    banner.remove();
-  }
 
-  // 4) Навешиваем обработчики
-  btnAcc.addEventListener('click', () => applyConsent({ analytics: true,  ads: true  }));
-  btnRej.addEventListener('click', () => applyConsent({ analytics: false, ads: false }));
+    function applyConsent(consent) {
+      localStorage.setItem(storageKey, JSON.stringify(consent));
+      banner.remove();
+    }
 
-  btnSet.addEventListener('click', () => {
-    // переключаем видимость панели
-    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-    // подтягиваем прошлый выбор
-    const saved = JSON.parse(localStorage.getItem('cookieConsent') || '{}');
-    chkA.checked   = !!saved.analytics;
-    chkAds.checked = !!saved.ads;
+    btnAcc.addEventListener('click', () => applyConsent({ analytics: true,  ads: true }));
+    btnRej.addEventListener('click', () => applyConsent({ analytics: false, ads: false }));
+
+    btnSet.addEventListener('click', () => {
+      panel.classList.toggle('hidden');
+      const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+      chkA.checked  = !!saved.analytics;
+      chkAds.checked = !!saved.ads;
+    });
+
+    btnSave.addEventListener('click', e => {
+      e.preventDefault();
+      applyConsent({ analytics: chkA.checked, ads: chkAds.checked });
+    });
   });
-
-  btnSave.addEventListener('click', e => {
-    e.preventDefault();
-    applyConsent({ analytics: chkA.checked, ads: chkAds.checked });
-  });
-})();
 </script>
+
 
 
 
