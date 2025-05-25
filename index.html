@@ -14,19 +14,109 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2756865893493273"
-     crossorigin="anonymous"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y58Z6NYLLT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- 1) Consent Mode default auf 'denied' -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent','default',{
+      'ad_storage':'denied',
+      'analytics_storage':'denied'
+    });
+  </script>
 
-  gtag('config', 'G-Y58Z6NYLLT');
-</script>
-<meta name="google-adsense-account" content="ca-pub-2756865893493273">
+  <!-- 2) Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2756865893493273" crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-2756865893493273">
+
+  <!-- 3) Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y58Z6NYLLT"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config','G-Y58Z6NYLLT',{ 'anonymize_ip': true });
+  </script>
+
+  <!-- 4) CSS für Cookie-Banner -->
+
+ <style>
+.cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: #fff;
+  color: #333;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  padding-bottom: 4rem;
+  font-size: 0.95rem;
+  z-index: 10000;
+  overflow: visible;
+}
+
+.cookie-banner.hidden {
+  display: none;
+}
+
+.banner-content {
+  max-width: 940px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.banner-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.cookie-btn {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  background: #6c757d;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.cookie-btn.btn-primary {
+  background: #007bff;
+}
+
+.cookie-btn.btn-secondary {
+  background: #6c757d;
+}
+
+.settings-panel {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.settings-panel.hidden {
+  display: none;
+}
+.banner-content {
+  max-width: 940px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-bottom: 2rem; /* ← это добавь */
+}
+
+</style>
+
+
   <title>Sprache Online</title>
   <meta name="description" content="Kostenloser 'Leben in Deutschland'- und Einbürgerungstest-Trainer auf 13 Sprachen: Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano und हिन्दी.">
   <style>
@@ -548,6 +638,86 @@ body.dark .site-footer a:visited {
   </style>
 </head>
 <body>
+
+<!-- HTML des Cookie-Banners -->
+<div id="cookie-banner" class="cookie-banner hidden">
+  <div class="banner-content">
+    <p>
+      Wir verwenden Cookies, um die Funktionalität der Website zu gewährleisten, das Nutzererlebnis zu verbessern und Werbung zu personalisieren. Weitere Informationen finden Sie in unserer
+      <a href="https://sprache.online/datenschutz/" target="_blank" rel="noopener">Datenschutzerklärung</a>,
+      <a href="https://sprache.online/impressum/" target="_blank" rel="noopener">Impressum</a> und
+      <a href="https://sprache.online/kontakt/" target="_blank" rel="noopener">Kontakt</a>.
+    </p>
+    <div class="banner-buttons">
+      <button type="button" id="btn-reject" class="cookie-btn btn-secondary">Alle ablehnen</button>
+      <button type="button" id="btn-settings" class="cookie-btn btn-secondary">Einstellungen</button>
+      <button type="button" id="btn-accept" class="cookie-btn btn-primary">Alle akzeptieren</button>
+    </div>
+    <div id="cookie-settings" class="settings-panel hidden">
+      <h4>Cookie-Einstellungen</h4>
+      <label><input type="checkbox" id="chk-analytics"> Statistik-Cookies (Google Analytics)</label><br>
+      <label><input type="checkbox" id="chk-ads"> Werbe-Cookies (Google AdSense)</label><br>
+      <button type="button" id="btn-save" class="cookie-btn btn-primary">Speichern</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Мгновенно самодостаточный скрипт, без DOMContentLoaded -->
+<!-- Мгновенно самодостаточный скрипт, без DOMContentLoaded -->
+<!-- JavaScript für Banner-Logik -->
+<script>
+(function(){
+  // 1) Ищем элементы
+  const banner   = document.getElementById('cookie-banner');
+  const panel    = document.getElementById('cookie-settings');
+  const btnAcc   = document.getElementById('btn-accept');
+  const btnRej   = document.getElementById('btn-reject');
+  const btnSet   = document.getElementById('btn-settings');
+  const btnSave  = document.getElementById('btn-save');
+  const chkA     = document.getElementById('chk-analytics');
+  const chkAds   = document.getElementById('chk-ads');
+
+  // Если баннера нет — выходим
+  if (!banner) return;
+
+  // 2) Показываем баннер один раз при первом заходе
+  if (!localStorage.getItem('cookieConsent')) {
+    banner.style.display = 'block';
+  }
+
+  // 3) Функция применения согласия и удаления баннера
+  function applyConsent(consent) {
+    if (typeof gtag === 'function') {
+      gtag('consent','update',{
+        ad_storage:        consent.ads        ? 'granted' : 'denied',
+        analytics_storage: consent.analytics ? 'granted' : 'denied'
+      });
+    }
+    localStorage.setItem('cookieConsent', JSON.stringify(consent));
+    banner.remove();
+  }
+
+  // 4) Навешиваем обработчики
+  btnAcc.addEventListener('click', () => applyConsent({ analytics: true,  ads: true  }));
+  btnRej.addEventListener('click', () => applyConsent({ analytics: false, ads: false }));
+
+  btnSet.addEventListener('click', () => {
+    // переключаем видимость панели
+    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    // подтягиваем прошлый выбор
+    const saved = JSON.parse(localStorage.getItem('cookieConsent') || '{}');
+    chkA.checked   = !!saved.analytics;
+    chkAds.checked = !!saved.ads;
+  });
+
+  btnSave.addEventListener('click', e => {
+    e.preventDefault();
+    applyConsent({ analytics: chkA.checked, ads: chkAds.checked });
+  });
+})();
+</script>
+
 
 <center>
 <div class="header-bar">
