@@ -1000,6 +1000,48 @@ body.dark .site-footer a:hover {
 body.dark .site-footer a:visited {
   color: #ccc;
 }
+.language-hint-wrapper {
+  position: relative;
+  margin: 1.5rem auto;
+  padding: 1rem 2.5rem 1rem 1rem;
+  max-width: 900px;
+  background-color: #fffbe6; /* ніжно-жовтий */
+  border: 1px solid #ffe58f;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.3s ease;
+}
+
+.language-hint-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #888;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.language-hint-close:hover {
+  color: #c00;
+}
+
+/* Темна тема */
+body.dark .language-hint-wrapper {
+  background-color: #2e2e2e;
+  border: 1px solid #444;
+  color: #eee;
+}
+body.dark .language-hint-close {
+  color: #aaa;
+}
+body.dark .language-hint-close:hover {
+  color: #f44;
+}
 
   </style>
 
@@ -1569,9 +1611,13 @@ function renderPage(page) {
   <p align="center">Stand: <a href="https://www.bamf.de/SharedDocs/Anlagen/DE/Integration/Einbuergerung/gesamtfragenkatalog-lebenindeutschland.pdf?__blob=publicationFile&v=19" style="text-decoration: none; color: gray;" target="_blank">07.05.2025</a></p>
   
 
+  <div class="language-hint-wrapper">
   <p class="language-hint" align="center">
-  <strong>Sprache auswählen:</strong> Bitte wählen Sie Ihre Sprache über das Zahnrad-Symbol (⚙️) oben rechts auf der Seite aus.
-</p>
+    <strong>Sprache auswählen:</strong> Bitte wählen Sie Ihre Sprache über das Zahnrad-Symbol (⚙️) oben rechts auf der Seite aus.
+  </p>
+  <button class="language-hint-close" onclick="document.querySelector('.language-hint-wrapper').style.display='none'">✖</button>
+</div>
+
     <div id="cookie-banner" role="dialog" aria-live="polite">
 
 <div class="test-container">
