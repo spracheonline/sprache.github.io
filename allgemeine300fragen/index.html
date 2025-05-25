@@ -1077,11 +1077,12 @@ body.dark .site-footer a:visited {
     });
   </script> -->
   <header class="topbar">
-  <div class="topbar-container">
-   <a href="../"> <img src="logo_5.png" alt="sprache.online Logo" class="logo"></a>
-    <button id="settings-btn" class="settings-icon" aria-label="Einstellungen">⚙️</button>
-  </div>
-  <!-- Модальное окно -->
+ <div class="topbar-container">
+  <a href="../"> <img src="logo_5.png" alt="sprache.online Logo" class="logo"></a>
+  <button id="settings-btn" class="settings-icon" aria-label="Einstellungen">⚙️</button>
+</div>
+
+<!-- Модальное окно -->
 <div id="settings-modal" class="modal">
   <div class="modal-content">
     <h3>Einstellungen</h3>
@@ -1106,14 +1107,305 @@ body.dark .site-footer a:visited {
     <br><br>
 
     <label><input type="checkbox" id="darkmode-toggle"> Nachtmodus</label>
-    <label><input type="checkbox" id="shuffle-once"> Fragen mischen (einmalig)</label>
+   <label>
+  <input type="checkbox" id="shuffle-once">
+  Fragen mischen (einmalig)
+</label>
+<label>
+  <input type="checkbox" id="cancel-shuffle">
+  Mischung zurücksetzen
+</label>
+<label>
+  <button onclick="printAllQuestions()" id="print-btn" style="margin-top: 4px; display: flex; align-items: center; gap: 6px; padding: 5px 10px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9; cursor: pointer;">
+    <span>Alle Fragen (mit Antworten) drucken (PDF)</span>
+  </button>
+</label>
+
+<label>
+  <button onclick="printAllQuestionsWithoutAnswers()" id="print-blank" style="margin-top: 4px; display: flex; align-items: center; gap: 6px; padding: 5px 10px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9; cursor: pointer;">
+    <span>Alle Fragen (ohne Antworten) drucken (PDF)</span>
+  </button>
+</label>
+
+
+
+
+
+
 
     <br><br>
     <button id="close-settings">Schließen</button>
   </div>
 </div>
 
+
 </header>
+<script>
+function printAllQuestions() {
+  const allQuestions = Array.from(document.querySelectorAll('.question'));
+  if (!allQuestions.length) {
+    alert("Keine Fragen gefunden.");
+    return;
+  }
+
+  const lang = document.getElementById('lang-dropdown')?.value || 'de';
+  const win = window.open('', '_blank');
+  if (!win) {
+    alert("Pop-up Blocker aktiv. Bitte deaktivieren und erneut versuchen.");
+    return;
+  }
+
+  const ABCD = ['A', 'B', 'C', 'D'];
+
+  let html = `
+  <html>
+    <head>
+      <title>Alle Fragen – Sprache.online</title>
+      <style>
+        @media print {
+          body { margin: 0; }
+        }
+        body {
+          font-family: Arial, sans-serif;
+          padding: 30px 40px;
+          max-width: 850px;
+          margin: auto;
+          position: relative;
+        }
+        h1 {
+          text-align: center;
+          font-size: 24px;
+          margin-bottom: 30px;
+        }
+        .question {
+          margin-bottom: 24px;
+          border-bottom: 1px solid #ccc;
+          padding-bottom: 10px;
+        }
+        .frage {
+          margin-bottom: 4px;
+        }
+        .frage strong {
+          font-weight: bold;
+        }
+        .translation {
+          display: inline-block;
+          margin-left: 10px;
+          color: #555;
+          font-style: italic;
+        }
+        label {
+          display: block;
+          margin: 2px 0;
+        }
+        label.correct {
+          font-weight: bold;
+          color: #0a0;
+        }
+        .watermark {
+          position: fixed;
+          top: 50%;
+          right: -60px;
+          transform: rotate(-90deg);
+          font-size: 48px;
+          color: rgba(0, 0, 0, 0.06);
+          z-index: 0;
+          pointer-events: none;
+          user-select: none;
+        }
+        .question:nth-child(-n+65) label:first-of-type {
+          margin-top: -80px !important;
+        }
+        .question:nth-child(n+66) label:first-of-type {
+          margin-top: 0 !important;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Allgemeine 300 Fragen</h1>
+      <div class="watermark">sprache.online</div>
+  `;
+
+  allQuestions.forEach((q) => {
+    const clone = q.cloneNode(true);
+
+    // Удалить кнопку Prüfen
+    clone.querySelectorAll('button').forEach(b => b.remove());
+
+    // Показать только нужный перевод
+    clone.querySelectorAll('.translation').forEach(span => {
+      span.style.display = span.classList.contains('lang-' + lang) ? 'inline-block' : 'none';
+    });
+
+    // Объединить <strong> и <span> в .frage
+    const frageDiv = document.createElement('div');
+    frageDiv.classList.add('frage');
+    const children = Array.from(clone.childNodes);
+    for (let node of children) {
+      if (node.nodeName === 'LABEL') break;
+      frageDiv.appendChild(node);
+    }
+    clone.insertBefore(frageDiv, clone.querySelector('label'));
+
+    // Удалить input'ы и выделить правильные ответы
+    let i = 0;
+    clone.querySelectorAll('input[type="radio"]').forEach(input => input.remove());
+
+    clone.querySelectorAll('label').forEach(label => {
+      if (label.querySelector('input')) label.querySelector('input').remove();
+      if (label.innerHTML.trim().length > 0) {
+        label.innerHTML = `<strong>${ABCD[i++]}. </strong>` + label.innerHTML;
+      }
+    });
+
+    html += `<div class="question">${clone.innerHTML}</div>`;
+  });
+
+  html += `</body></html>`;
+
+  win.document.open();
+  win.document.write(html);
+  win.document.close();
+
+  win.onload = () => win.print();
+}
+</script>
+
+
+
+<script>
+function printAllQuestionsWithoutAnswers() {
+  const allQuestions = Array.from(document.querySelectorAll('.question'));
+  if (!allQuestions.length) {
+    alert("Keine Fragen gefunden.");
+    return;
+  }
+
+  const lang = document.getElementById('lang-dropdown')?.value || 'de';
+  const win = window.open('', '_blank');
+  if (!win) {
+    alert("Pop-up Blocker aktiv. Bitte deaktivieren und erneut versuchen.");
+    return;
+  }
+
+  const ABCD = ['A', 'B', 'C', 'D'];
+
+  let html = `
+  <html>
+    <head>
+      <title>Alle Fragen – Sprache.online</title>
+      <style>
+        @media print {
+          body { margin: 0; }
+        }
+        body {
+          font-family: Arial, sans-serif;
+          padding: 30px 40px;
+          max-width: 850px;
+          margin: auto;
+          position: relative;
+        }
+        h1 {
+          text-align: center;
+          font-size: 24px;
+          margin-bottom: 30px;
+        }
+        .question {
+          margin-bottom: 24px;
+          border-bottom: 1px solid #ccc;
+          padding-bottom: 10px;
+        }
+        .frage {
+          margin-bottom: 4px;
+        }
+        .frage strong {
+          font-weight: bold;
+        }
+        .translation {
+          display: inline-block;
+          margin-left: 10px;
+          color: #555;
+          font-style: italic;
+        }
+        label {
+          display: block;
+          margin: 2px 0;
+        }
+        .answer-label::before {
+          content: "☐ ";
+          margin-right: 6px;
+          color: #000;
+        }
+        .watermark {
+          position: fixed;
+          top: 50%;
+          right: -60px;
+          transform: rotate(-90deg);
+          font-size: 48px;
+          color: rgba(0, 0, 0, 0.06);
+          z-index: 0;
+          pointer-events: none;
+          user-select: none;
+        }
+        .question:nth-child(-n+65) label:first-of-type {
+          margin-top: -80px !important;
+        }
+
+        .question:nth-child(n+66) label:first-of-type {
+          margin-top: 0 !important;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Allgemeine 300 Fragen</h1>
+      <div class="watermark">sprache.online</div>
+  `;
+
+  allQuestions.forEach((q) => {
+    const clone = q.cloneNode(true);
+
+    // Удаляем кнопку Prüfen
+    clone.querySelectorAll('button').forEach(b => b.remove());
+
+    // Показать только нужный перевод
+    clone.querySelectorAll('.translation').forEach(span => {
+      span.style.display = span.classList.contains('lang-' + lang) ? 'inline-block' : 'none';
+    });
+
+    // Извлечь вопрос
+    const frageDiv = document.createElement('div');
+    frageDiv.classList.add('frage');
+    const children = Array.from(clone.childNodes);
+    for (let node of children) {
+      if (node.nodeName === 'LABEL') break;
+      frageDiv.appendChild(node);
+    }
+    clone.insertBefore(frageDiv, clone.querySelector('label'));
+
+    // Удалить input и убрать class correct
+    let i = 0;
+    clone.querySelectorAll('input[type="radio"]').forEach(input => input.remove());
+    clone.querySelectorAll('label').forEach(label => {
+      label.classList.remove('correct');
+      label.classList.add('answer-label');
+      label.innerHTML = `<strong>${ABCD[i++]}. </strong>` + label.innerHTML;
+    });
+
+    html += `<div class="question">${clone.innerHTML}</div>`;
+  });
+
+  html += `</body></html>`;
+
+  win.document.open();
+  win.document.write(html);
+  win.document.close();
+
+  win.onload = () => win.print();
+}
+</script>
+
+
+
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -1125,7 +1417,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
   openBtn.addEventListener('click', () => {
     modal.style.display = 'block';
-    setTimeout(() => modal.classList.add('show'), 10); // позволяет применить анимацию
+    setTimeout(() => modal.classList.add('show'), 10);
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('show');
+    setTimeout(() => modal.style.display = 'none', 300);
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target == modal) {
+      modal.classList.remove('show');
+      setTimeout(() => modal.style.display = 'none', 300);
+    }
+  });
+
+  darkToggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark', darkToggle.checked);
+  });
+
+  
+
+  // Если обёртки нет, создать <div id="questions-wrapper"> и поместить в неё все вопросы + пагинацию
+  function createWrapper() {
+    const container = document.querySelector('.test-container');
+    const wrapper = document.createElement('div');
+    wrapper.id = 'questions-wrapper';
+
+    const questions = Array.from(container.querySelectorAll('.question'));
+    const pagination = container.querySelector('.pagination');
+
+    questions.forEach(q => wrapper.appendChild(q));
+    if (pagination) wrapper.appendChild(pagination);
+
+    container.innerHTML = ''; // очищаем .test-container
+    container.appendChild(wrapper);
+    return wrapper;
+  }
+});
+</script>
+
+<script>
+let originalQuestions = []; // Сохраняем вне DOMContentLoaded, чтобы он жил глобально
+
+// === ИСХОДНЫЙ ВАРИАНТ: только перемешивание текущих 30 вопросов на странице и сохранение кнопок ===
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('settings-modal');
+  const openBtn = document.getElementById('settings-btn');
+  const closeBtn = document.getElementById('close-settings');
+  const darkToggle = document.getElementById('darkmode-toggle');
+  const shuffleCheckbox = document.getElementById('shuffle-once');
+
+  let originalOrder = [];
+  let isShuffled = false;
+
+  openBtn.addEventListener('click', () => {
+    modal.style.display = 'block';
+    setTimeout(() => modal.classList.add('show'), 10);
   });
 
   closeBtn.addEventListener('click', () => {
@@ -1145,23 +1493,68 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   shuffleCheckbox.addEventListener('change', () => {
-    if (shuffleCheckbox.checked) {
-      const container = document.querySelector('.test-container');
-      if (container) {
-        const questions = Array.from(container.querySelectorAll('.question'));
-        for (let i = questions.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [questions[i], questions[j]] = [questions[j], questions[i]];
-        }
-        container.innerHTML = '';
-        questions.forEach(q => container.appendChild(q));
+    const container = document.querySelector('.test-container');
+    if (shuffleCheckbox.checked && container) {
+      const questions = Array.from(container.querySelectorAll('.question'));
+      const pagination = container.querySelector('.pagination');
+
+      // Сохраняем оригинальный порядок, если ещё не сохраняли
+      if (!isShuffled) {
+        originalOrder = [...questions];
+        isShuffled = true;
       }
+
+      // Перемешиваем вопросы
+      for (let i = questions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [questions[i], questions[j]] = [questions[j], questions[i]];
+      }
+
+      container.innerHTML = '';
+      questions.forEach(q => container.appendChild(q));
+      if (pagination) container.appendChild(pagination);
+
       shuffleCheckbox.checked = false;
     }
   });
+
+  const cancelCheckbox = document.getElementById('cancel-shuffle');
+if (cancelCheckbox) {
+  cancelCheckbox.addEventListener('change', () => {
+    const container = document.querySelector('.test-container');
+    const pagination = container.querySelector('.pagination');
+
+    if (isShuffled && originalOrder.length > 0) {
+      container.innerHTML = '';
+      originalOrder.forEach(q => container.appendChild(q));
+      if (pagination) container.appendChild(pagination);
+      isShuffled = false;
+    }
+
+    cancelCheckbox.checked = false; // сбрасываем галочку обратно
+  });
+}
+
+
+  // Добавляем кнопку отмены в модалку или рядом с чекбоксом
+  const shuffleBoxLabel = document.querySelector('label[for="shuffle-once"]');
+  if (shuffleBoxLabel && shuffleBoxLabel.parentElement) {
+    shuffleBoxLabel.parentElement.appendChild(cancelShuffleBtn);
+  }
 });
+function renderPage(page) {
+  const start = (page - 1) * 30;
+  const end = start + 30;
+
+  allQuestions.forEach((q, i) => {
+    q.style.display = (i >= start && i < end) ? 'block' : 'none';
+  });
+
+  document.getElementById('page-indicator').innerText = `Seite ${page} / ${Math.ceil(allQuestions.length / 30)}`;
+}
 
 </script>
+
 
 
 <script>
@@ -19708,21 +20101,7 @@ document.addEventListener('DOMContentLoaded', () => {
       icon.src = isDark ? 'da.png' : 'ni.png';
     });
 
-    // Перемешать вопросы
-    const shuffleButton = document.getElementById('shuffle-btn');
-    shuffleButton.addEventListener('click', () => {
-      const container = document.querySelector('.test-container');
-      const questions = Array.from(container.querySelectorAll('.question'));
-      // Перемешиваем вопросы
-      for (let i = questions.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [questions[i], questions[j]] = [questions[j], questions[i]];
-      }
-      // Перерисовываем порядок
-      container.innerHTML = '';
-      questions.forEach(q => container.appendChild(q));
-    });
-  });
+    
 </script>
 
 
@@ -20052,7 +20431,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 </script>
-
+<script type="text/javascript">
+  
+</script>
 <div class="pagination">
   <div class="page-info">Seite 1 / 2</div>
   <button class="next-button" onclick="goNextPage()">Nächste →</button>
