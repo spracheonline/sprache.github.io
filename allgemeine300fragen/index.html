@@ -1255,8 +1255,14 @@ function printAllQuestions() {
     clone.querySelectorAll('input[type="radio"]').forEach(input => {
       const label = input.closest('label');
       if (label) {
-        if (input.value === "1") {
-          label.classList.add('correct');
+        const questionDiv = label.closest('.question');
+const checkBtn = questionDiv?.querySelector('button[onclick^="checkQuestion"]');
+const match = checkBtn?.getAttribute('onclick')?.match(/'([^']+)'/g);
+const correctValue = match?.[1]?.replace(/'/g, '');
+
+if (input.value === correctValue) {
+  label.classList.add('correct');
+}
         }
         input.remove();
         label.innerHTML = `<strong>${ABCD[i++]}. </strong>` + label.innerHTML;
