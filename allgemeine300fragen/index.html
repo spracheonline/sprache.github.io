@@ -1150,7 +1150,7 @@ body.dark .site-footer a:visited {
 
 
 </header>
-<!-- правильыне -->
+<!-- печать с прав. ответами -->
 
 <script>
 function printAllQuestions() {
@@ -1161,27 +1161,24 @@ function printAllQuestions() {
   }
 
   const lang = document.getElementById('lang-dropdown')?.value || 'de';
-  const printWindow = window.open('', '_blank');
-  if (!printWindow) {
+  const ABCD = ['A', 'B', 'C', 'D'];
+  const win = window.open('', '_blank');
+  if (!win) {
     alert("Pop-up Blocker aktiv. Bitte deaktivieren und erneut versuchen.");
     return;
   }
-
-  const ABCD = ['A', 'B', 'C', 'D'];
 
   let html = `
   <html>
     <head>
       <title>Alle Fragen – Sprache.online</title>
       <style>
-        @media print {
-          body { margin: 0; }
-        }
+        @media print { body { margin: 0; } }
         body {
           font-family: Arial, sans-serif;
-          padding: 30px 40px;
           max-width: 850px;
           margin: auto;
+          padding: 30px 40px;
           position: relative;
         }
         h1 {
@@ -1193,6 +1190,10 @@ function printAllQuestions() {
           margin-bottom: 24px;
           border-bottom: 1px solid #ccc;
           padding-bottom: 10px;
+          page-break-inside: avoid;
+          break-inside: avoid;
+          overflow: visible;
+          white-space: normal;
         }
         .frage {
           margin-bottom: 4px;
@@ -1203,12 +1204,14 @@ function printAllQuestions() {
         .translation {
           display: inline-block;
           margin-left: 10px;
-          color: #555;
           font-style: italic;
+          color: #555;
         }
         label {
           display: block;
           margin: 2px 0;
+          white-space: normal;
+          word-break: break-word;
         }
         label.correct {
           font-weight: bold;
@@ -1220,16 +1223,10 @@ function printAllQuestions() {
           right: -60px;
           transform: rotate(-90deg);
           font-size: 48px;
-          color: rgba(0, 0, 0, 0.06);
-          z-index: 0;
+          color: rgba(0,0,0,0.06);
           pointer-events: none;
           user-select: none;
-        }
-        .question:nth-child(-n+65) label:first-of-type {
-          margin-top: -80px !important;
-        }
-        .question:nth-child(n+66) label:first-of-type {
-          margin-top: 0 !important;
+          z-index: 0;
         }
       </style>
     </head>
@@ -1238,50 +1235,187 @@ function printAllQuestions() {
       <div class="watermark">sprache.online</div>
   `;
 
-  allQuestions.forEach((q, index) => {
+  allQuestions.forEach(q => {
     const clone = q.cloneNode(true);
 
-    // Получаем ID вопроса, например "q77"
-    const questionId = clone.id;
+    // extract question number
+    const qNum = parseInt(clone.id.replace('q',''), 10);
 
-    // Получаем правильное значение из кнопки: checkQuestion('q77','3')
-    const checkBtn = clone.querySelector("button[onclick^='checkQuestion']");
+    // find correct value from Prüfen button
     let correctValue = null;
-    if (checkBtn) {
-      const match = checkBtn.getAttribute('onclick').match(/checkQuestion\('.*?','(\d)'\)/);
-      if (match) correctValue = match[1];
+    const btn = clone.querySelector("button[onclick^='checkQuestion']");
+    if (btn) {
+      const m = btn.getAttribute('onclick').match(/checkQuestion\('.*?','(\d)'\)/);
+      if (m) correctValue = m[1];
     }
-
-    // Удалить кнопку Prüfen
     clone.querySelectorAll('button').forEach(b => b.remove());
 
-    // Показать только нужный перевод
+    // show only selected translation
     clone.querySelectorAll('.translation').forEach(span => {
       span.style.display = span.classList.contains('lang-' + lang) ? 'inline-block' : 'none';
     });
 
-    // Объединить <strong> и <span> в .frage
+    // wrap question text into .frage
     const frageDiv = document.createElement('div');
     frageDiv.classList.add('frage');
-    const children = Array.from(clone.childNodes);
-    for (let node of children) {
-      if (node.nodeName === 'LABEL') break;
+    Array.from(clone.childNodes).forEach(node => {
+      if (node.nodeName === 'LABEL') return;
       frageDiv.appendChild(node);
-    }
+    });
     clone.insertBefore(frageDiv, clone.querySelector('label'));
 
-    // Удалить input и пометить правильный
+    // determine negative margin for first label
+    let mt = '0';
+    if ((qNum >= 1 && qNum <= 65) || (qNum >= 189 && qNum <= 199) || qNum >= 201) {
+      mt = '-80px';
+    }
+
+    // process labels: remove inputs, prefix ABCD, mark correct
     let i = 0;
     clone.querySelectorAll('label').forEach(label => {
-      const input = label.querySelector('input[type="radio"]');
-      const value = input?.value;
-      if (input) input.remove();
-
-      if (value === correctValue) {
-        label.classList.add('correct');
-      }
-
+      const inp = label.querySelector('input[type="radio"]');
+      const val = inp?.value;
+      if (inp) inp.remove();
+      if (val === correctValue) label.classList.add('correct');
       label.innerHTML = `<strong>${ABCD[i++]}. </strong>` + label.innerHTML;
+      if (i === 1) label.style.marginTop = mt;
+    });
+
+    html += `<div class="question">${clone.innerHTML}</div>`;
+  });
+
+  html += `</body></html>`;
+
+  win.document.open();
+  win.document.write(html);
+  win.document.close();
+  win.onload = () => win.print();
+}
+</script>
+
+
+<!-- печать без вар ответа -->
+
+<script>
+function printAllQuestionsWithoutAnswers() {
+  const allQuestions = Array.from(document.querySelectorAll('.question'));
+  if (!allQuestions.length) {
+    alert("Keine Fragen gefunden.");
+    return;
+  }
+
+  const lang = document.getElementById('lang-dropdown')?.value || 'de';
+  const ABCD = ['A','B','C','D'];
+  const printWindow = window.open('', '_blank');
+  if (!printWindow) {
+    alert("Pop-up Blocker aktiv. Bitte deaktivieren und erneut versuchen.");
+    return;
+  }
+
+  let html = `
+  <html>
+    <head>
+      <title>Alle Fragen (ohne Antworten) – Sprache.online</title>
+      <style>
+        @media print { body { margin: 0; } }
+        body {
+          font-family: Arial, sans-serif;
+          max-width: 850px;
+          margin: auto;
+          padding: 30px 40px;
+          position: relative;
+        }
+        h1 {
+          text-align: center;
+          font-size: 24px;
+          margin-bottom: 30px;
+        }
+        .question {
+          margin-bottom: 24px;
+          border-bottom: 1px solid #ccc;
+          padding-bottom: 10px;
+          page-break-inside: avoid;
+          break-inside: avoid;
+          overflow: visible;
+          white-space: normal;
+        }
+        .frage {
+          margin-bottom: 4px;
+        }
+        .frage strong {
+          font-weight: bold;
+        }
+        .translation {
+          display: inline-block;
+          margin-left: 10px;
+          font-style: italic;
+          color: #555;
+        }
+        label {
+          display: block;
+          margin: 2px 0;
+          white-space: normal;
+          word-break: break-word;
+        }
+        .watermark {
+          position: fixed;
+          top: 50%;
+          right: -60px;
+          transform: rotate(-90deg);
+          font-size: 48px;
+          color: rgba(0,0,0,0.06);
+          pointer-events: none;
+          user-select: none;
+          z-index: 0;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Allgemeine 300 Fragen</h1>
+      <div class="watermark">sprache.online</div>
+  `;
+
+  allQuestions.forEach(q => {
+    const clone = q.cloneNode(true);
+    const qNum = parseInt(clone.id.replace('q',''),10);
+
+    // Показываем только нужный перевод
+    clone.querySelectorAll('.translation').forEach(span=>{
+      span.style.display = span.classList.contains('lang-'+lang)
+                          ? 'inline-block'
+                          : 'none';
+    });
+
+    // Вырезаем текст вопроса в .frage
+    const frageDiv = document.createElement('div');
+    frageDiv.classList.add('frage');
+    Array.from(clone.childNodes).forEach(node=>{
+      if (node.nodeName==='LABEL') return;
+      frageDiv.appendChild(node);
+    });
+    clone.insertBefore(frageDiv, clone.querySelector('label'));
+
+    // Отступ –80px только для 1–65, 189–199 и ≥201
+    let mt = '0';
+    if ((qNum>=1 && qNum<=65) || (qNum>=189 && qNum<=199) || qNum>=201) {
+      mt = '-80px';
+    }
+
+    // Удаляем кнопки и input, добавляем ABCD и квадратик
+    let i=0;
+    clone.querySelectorAll('button').forEach(b=>b.remove());
+    clone.querySelectorAll('label').forEach(label=>{
+      const inp = label.querySelector('input[type="radio"]');
+      if (inp) inp.remove();
+      // префикс: буква + квадратик
+      label.innerHTML = 
+        `<strong>${ABCD[i]}. </strong>`+
+        `<span style="display:inline-block; width:1em;">☐</span> `+
+        label.innerHTML;
+      if(i===0) {
+        label.style.marginTop = mt;
+      }
+      i++;
     });
 
     html += `<div class="question">${clone.innerHTML}</div>`;
@@ -1292,62 +1426,11 @@ function printAllQuestions() {
   printWindow.document.open();
   printWindow.document.write(html);
   printWindow.document.close();
-
-  printWindow.onload = () => printWindow.print();
+  printWindow.onload = ()=>printWindow.print();
 }
 </script>
 
 
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('settings-modal');
-  const openBtn = document.getElementById('settings-btn');
-  const closeBtn = document.getElementById('close-settings');
-  const darkToggle = document.getElementById('darkmode-toggle');
-  const shuffleCheckbox = document.getElementById('shuffle-once');
-
-  openBtn.addEventListener('click', () => {
-    modal.style.display = 'block';
-    setTimeout(() => modal.classList.add('show'), 10);
-  });
-
-  closeBtn.addEventListener('click', () => {
-    modal.classList.remove('show');
-    setTimeout(() => modal.style.display = 'none', 300);
-  });
-
-  window.addEventListener('click', (e) => {
-    if (e.target == modal) {
-      modal.classList.remove('show');
-      setTimeout(() => modal.style.display = 'none', 300);
-    }
-  });
-
-  darkToggle.addEventListener('change', () => {
-    document.body.classList.toggle('dark', darkToggle.checked);
-  });
-
-  
-
-  // Если обёртки нет, создать <div id="questions-wrapper"> и поместить в неё все вопросы + пагинацию
-  function createWrapper() {
-    const container = document.querySelector('.test-container');
-    const wrapper = document.createElement('div');
-    wrapper.id = 'questions-wrapper';
-
-    const questions = Array.from(container.querySelectorAll('.question'));
-    const pagination = container.querySelector('.pagination');
-
-    questions.forEach(q => wrapper.appendChild(q));
-    if (pagination) wrapper.appendChild(pagination);
-
-    container.innerHTML = ''; // очищаем .test-container
-    container.appendChild(wrapper);
-    return wrapper;
-  }
-});
-</script>
 
 <script>
 let originalQuestions = []; // Сохраняем вне DOMContentLoaded, чтобы он жил глобально
@@ -19725,7 +19808,7 @@ function renderPage(page) {
     <span class="translation lang-hi">जर्मन डेमोक्रेटिक रिपब्लिक का प्रतीक चिन्ह कौन सा था?</span>
   </p>
 
-  <img src="img/209.png" alt="Frage 209 Bild"><br><br>
+  <img src="209.png" alt="Frage 209 Bild"><br><br>
 
   <label><input type="radio" name="q209" value="0"> Bild 1
     <span class="translation lang-uk">Зображення 1</span>
