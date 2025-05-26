@@ -2127,6 +2127,93 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 </script>
+<script>
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Остановить автоматическое окно
+    e.preventDefault();
+    deferredPrompt = e;
+
+    // Показываем кнопку
+    const installBtn = document.createElement('button');
+    installBtn.textContent = 'App installieren';
+    installBtn.style = 'position: fixed; bottom: 20px; left: 20px; z-index: 9999;';
+    document.body.appendChild(installBtn);
+
+    installBtn.addEventListener('click', () => {
+      installBtn.remove();
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+        deferredPrompt = null;
+      });
+    });
+  });
+</script>
+<style>
+  #install-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: white;
+    color: #333;
+    padding: 10px 16px;
+    font-size: 15px;
+    border: 2px solid #007bff;
+    border-radius: 12px;
+    z-index: 9999;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  #install-btn:hover {
+    background-color: #f2f2f2;
+  }
+
+  #install-btn img {
+    width: 20px;
+    height: 20px;
+  }
+</style>
+
+<script>
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    const installBtn = document.createElement('div');
+    installBtn.id = 'install-btn';
+    installBtn.innerHTML = `
+      <img src="logo_s.png" alt="App Icon">
+      App installieren
+    `;
+    document.body.appendChild(installBtn);
+
+    installBtn.addEventListener('click', () => {
+      installBtn.remove();
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('PWA wurde installiert');
+        } else {
+          console.log('PWA-Installation wurde abgelehnt');
+        }
+        deferredPrompt = null;
+      });
+    });
+  });
+</script>
 
 
 </body>
