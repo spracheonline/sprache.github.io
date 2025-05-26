@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Головна сторінка -->
+  <url>
+    <loc>https://sprache.online/</loc>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Загальні 300 запитань -->
+  <url>
+    <loc>https://sprache.online/allgemeine300fragen/</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Тест симуляція -->
+  <url>
+    <loc>https://sprache.online/testsimulation/</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Землі -->
+  <url><loc>https://sprache.online/baw/</loc></url>
+  <url><loc>https://sprache.online/bay/</loc></url>
+  <url><loc>https://sprache.online/be/</loc></url>
+  <url><loc>https://sprache.online/br/</loc></url>
+  <url><loc>https://sprache.online/ha/</loc></url>
+  <url><loc>https://sprache.online/he/</loc></url>
+  <url><loc>https://sprache.online/mv/</loc></url>
+  <url><loc>https://sprache.online/ni/</loc></url>
+  <url><loc>https://sprache.online/nrw/</loc></url>
+  <url><loc>https://sprache.online/rp/</loc></url>
+  <url><loc>https://sprache.online/sa/</loc></url>
+  <url><loc>https://sprache.online/sy/</loc></url>
+  <url><loc>https://sprache.online/st/</loc></url>
+  <url><loc>https://sprache.online/sh/</loc></url>
+  <url><loc>https://sprache.online/th/</loc></url>
+
+  <!-- Impressum, Datenschutz -->
+  <url><loc>https://sprache.online/impressum/</loc></url>
+  <url><loc>https://sprache.online/datenschutz/</loc></url>
+  <url><loc>https://sprache.online/kontakt/</loc></url>
+
+</urlset>
