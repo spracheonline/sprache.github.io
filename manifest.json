@@ -1,16 +1,39 @@
 {
-  "name": "Sprache.online – LiD Test",
-  "short_name": "Sprache.online",
-  "start_url": "/",
+  "name": "Sprache.online",
+  "short_name": "Sprache",
+  "id": "/",
+  "start_url": "/?source=pwa",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#121212",
-  "orientation": "portrait",
+  "theme_color": "#0d47a1",
+  "description": "Trainiere für den Einbürgerungstest und den Test „Leben in Deutschland“ – kostenlos, mehrsprachig (Deutsch, Ukrainisch, Englisch, Arabisch, Türkisch, Bulgarisch, Persisch, Bosnisch, Mazedonisch, Polnisch, Rumänisch, Italienisch, Hindi) und ohne Registrierung.",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "192x192",
-      "type": "image/x-icon"
+      "src": "logo_s.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo_s.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "scr_1.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    },
+    {
+      "src": "scr_2.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ],
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
+  "lang": "de-DE",
+  "orientation": "portrait"
 }
