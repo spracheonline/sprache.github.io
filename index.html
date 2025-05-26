@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#121212">
+
   <!-- Базові favicon для браузерів -->
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -2115,6 +2118,15 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
   <div class="footer-copy">© 2025 sprache.online — Alle Rechte vorbehalten</div>
 </footer>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js').then(() => {
+      console.log('Service Worker зарегистрирован');
+    }).catch((error) => {
+      console.warn('Ошибка регистрации Service Worker:', error);
+    });
+  }
+</script>
 
 </body>
 </html>
