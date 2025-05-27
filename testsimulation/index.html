@@ -1908,6 +1908,35 @@ function restartSimulation() {
     `;
   }
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Примитивная проверка: поддержка современных JS-методов
+    const supported = typeof Promise !== "undefined"
+                  && typeof fetch !== "undefined"
+                  && typeof Symbol !== "undefined"
+                  && "querySelector" in document
+                  && "addEventListener" in window;
+
+    if (!supported) {
+      // Показываем баннер
+      const warning = document.createElement('div');
+      warning.style.position = 'fixed';
+      warning.style.top = '0';
+      warning.style.left = '0';
+      warning.style.right = '0';
+      warning.style.backgroundColor = '#f44336';
+      warning.style.color = 'white';
+      warning.style.padding = '12px';
+      warning.style.zIndex = '10000';
+      warning.style.textAlign = 'center';
+      warning.style.fontSize = '16px';
+      warning.style.fontFamily = 'sans-serif';
+      warning.innerHTML = `Ihr Browser ist veraltet oder inkompatibel. Bitte verwenden Sie einen modernen Browser wie <a href="https://www.mozilla.org/de/firefox/new/" target="_blank" style="color: #fff; text-decoration: underline;">Firefox</a> oder <a href="https://www.google.com/chrome/" target="_blank" style="color: #fff; text-decoration: underline;">Chrome</a>.`;
+
+      document.body.appendChild(warning);
+    }
+  });
+</script>
 
 
 
