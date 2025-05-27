@@ -1824,7 +1824,6 @@ function startSimulationTest() {
   selected.forEach(q => {
     q.style.display = 'block';
     q.style.border = '1px solid transparent';
-    q.querySelectorAll('button').forEach(b => b.remove());
     q.querySelectorAll('label').forEach(l => l.style.backgroundColor = '');
   });
 
@@ -1848,23 +1847,20 @@ function finishSimulation(questions) {
     const name = q.querySelector('input[type="radio"]')?.name;
     const selectedInput = q.querySelector(`input[name="${name}"]:checked`);
 
-    // Найти правильный ответ из checkQuestion()
-    const checkFn = q.querySelector('button[onclick^="checkQuestion"]');
+    // Найти правильный value из checkQuestion('qX','Y')
+    const checkBtn = q.querySelector('button[onclick*="checkQuestion"]');
     let correctValue = null;
 
-    if (checkFn) {
-      const match = checkFn.getAttribute('onclick').match(/checkQuestion\(['"]([^'"]+)['"],\s*['"]([^'"]+)['"]\)/);
-      if (match && match[1] === q.id) {
-        correctValue = match[2];
-      }
+    if (checkBtn) {
+      const match = checkBtn.getAttribute('onclick').match(/checkQuestion\(['"]q\d+['"],\s*['"](\d)['"]\)/);
+      if (match) correctValue = match[1];
     }
 
     const correctInput = q.querySelector(`input[type="radio"][value="${correctValue}"]`);
-
     if (correctInput) {
       const correctLabel = correctInput.closest('label');
       if (correctLabel) {
-        correctLabel.style.backgroundColor = '#d1fae5';
+        correctLabel.style.backgroundColor = '#d1fae5'; // зелёный
         correctLabel.style.borderRadius = '5px';
       }
     }
@@ -1893,6 +1889,9 @@ function restartSimulation() {
   document.getElementById('sim-modal').style.display = 'block';
 }
 </script>
+
+
+
 
   <div class="language-hint-wrapper">
   <p class="language-hint" align="center">
