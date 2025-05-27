@@ -1460,7 +1460,7 @@ function printAllQuestionsWithoutAnswers() {
 
     // вычислить margin-top для первого label
     let mt = '0';
-    if ((qNum >= 1 && qNum <= 65) || (qNum >= 189 && qNum <= 199) || qNum >= 201) {
+    if ((qNum >= 1 && qNum <= 66) || (qNum >= 189 && qNum <= 199) || qNum >= 201) {
       mt = '-80px';
     }
 
@@ -4805,7 +4805,7 @@ function renderPage(page) {
 </div>
 <div class="question" id="q37">
   <p>
-    <strong>37. Wie werden die Regierungschefs/Regierungschefinnen der meisten Bundesländer in Deutschland genannt?</strong>
+    <strong>37. Wie werden die Regierungschefs/ Regierungschefinnen der meisten Bundesländer in Deutschland genannt?</strong>
     <span class="translation lang-uk">Як називаються глави урядів більшості федеральних земель у Німеччині?</span>
     <span class="translation lang-en">What are the heads of government of most federal states in Germany called?</span>
     <span class="translation lang-ar">بأي اسم يُطلق على رؤساء حكومات معظم الولايات الفدرالية في ألمانيا؟</span>
@@ -5686,7 +5686,7 @@ function renderPage(page) {
 </div>
 <div class="question" id="q47">
   <p>
-    <strong>47. Der deutsche Staat hat viele Aufgaben. Welche Aufgabe gehört **nicht** dazu?</strong>
+    <strong>47. Der deutsche Staat hat viele Aufgaben. Welche Aufgabe gehört nicht dazu?</strong>
     <span class="translation lang-uk">Німецька держава має багато завдань. Яке завдання **не** належить до них?</span>
     <span class="translation lang-en">The German state has many duties. Which duty **does not** belong to it?</span>
     <span class="translation lang-ar">الدولة الألمانية لديها العديد من المهام. أي مهمة **لا** تنتمي إليها؟</span>
@@ -7202,96 +7202,83 @@ function renderPage(page) {
   <button onclick="checkQuestion('q63','1')">Prüfen</button>
   <div class="feedback" id="fb-q63"></div>
 </div>
-<div class="question" id="q63">
-  <p>
-    <strong>63. Was gehört in Deutschland nicht zur Exekutive?</strong>
-    <span class="translation lang-uk">Що в Німеччині не належить до виконавчої влади?</span>
-    <span class="translation lang-en">What does not belong to the executive branch in Germany?</span>
-    <span class="translation lang-ar">ما الذي لا ينتمي إلى السلطة التنفيذية في ألمانيا؟</span>
-    <span class="translation lang-tr">Almanya’da yürütme yetkisine ne dahil değildir?</span>
-    <span class="translation lang-bg">Какво не принадлежи към изпълнителната власт в Германия?</span>
-    <span class="translation lang-fa">چه چیزی در آلمان متعلق به قوه مجریه نیست؟</span>
-    <span class="translation lang-bs">Šta ne pripada izvršnoj vlasti u Njemačkoj?</span>
-    <span class="translation lang-mk">Што не припаѓа на извршната власт во Германија?</span>
-    <span class="translation lang-pl">Co nie należy do władzy wykonawczej w Niemczech?</span>
-    <span class="translation lang-ro">Ce nu aparține puterii executive în Germania?</span>
-    <span class="translation lang-it">Cosa non appartiene al potere esecutivo in Germania?</span>
-    <span class="translation lang-hi">जर्मनी में कार्यकारी शाखा में क्या शामिल नहीं है?</span>
-  </p>
-
-  <label>
-    <input type="radio" name="q63" value="0">
-    die Polizei
-    <span class="translation lang-uk">поліція</span>
-    <span class="translation lang-en">the police</span>
-    <span class="translation lang-ar">الشرطة</span>
-    <span class="translation lang-tr">polis</span>
-    <span class="translation lang-bg">полицията</span>
-    <span class="translation lang-fa">پلیس</span>
-    <span class="translation lang-bs">policija</span>
-    <span class="translation lang-mk">полицијата</span>
-    <span class="translation lang-pl">policja</span>
-    <span class="translation lang-ro">poliția</span>
-    <span class="translation lang-it">la polizia</span>
-    <span class="translation lang-hi">पुलिस</span>
+<div class="question" id="q64">
+  <p><strong>64. Die Bundesrepublik Deutschland ist heute gegliedert in …</strong>
+  <span class="translation lang-uk">Федеративна Республіка Німеччина сьогодні поділена на …</span>
+  <span class="translation lang-en">The Federal Republic of Germany is today divided into …</span>
+  <span class="translation lang-ar">تنقسم جمهورية ألمانيا الاتحادية اليوم إلى …</span>
+  <span class="translation lang-tr">Almanya Federal Cumhuriyeti bugün şu şekilde bölünmüştür …</span>
+  <span class="translation lang-bg">Федерална република Германия днес е разделена на …</span>
+  <span class="translation lang-fa">جمهوری فدرال آلمان امروزه به … تقسیم شده است</span>
+  <span class="translation lang-bs">Savezna Republika Njemačka je danas podijeljena na …</span>
+  <span class="translation lang-mk">Сојузната Република Германија денес е поделена на …</span>
+  <span class="translation lang-pl">Republika Federalna Niemiec dzisiaj jest podzielona na …</span>
+  <span class="translation lang-ro">Republica Federală Germania este astăzi împărțită în …</span>
+  <span class="translation lang-it">La Repubblica Federale di Germania è oggi suddivisa in …</span>
+  <span class="translation lang-hi">आज जर्मन संघीय गणराज्य में विभाजन है …</span></p>
+  <br>
+  <label><input type="radio" name="q64" value="0"> vier Besatzungszonen
+    <span class="translation lang-uk">чотири окупаційні зони</span>
+    <span class="translation lang-en">four occupation zones</span>
+    <span class="translation lang-ar">أربع مناطق احتلال</span>
+    <span class="translation lang-tr">dört işgal bölgesi</span>
+    <span class="translation lang-bg">четири окупационни зони</span>
+    <span class="translation lang-fa">چهار منطقه اشغالی</span>
+    <span class="translation lang-bs">četiri okupacione zone</span>
+    <span class="translation lang-mk">четири окупациски зони</span>
+    <span class="translation lang-pl">cztery strefy okupacyjne</span>
+    <span class="translation lang-ro">patru zone de ocupație</span>
+    <span class="translation lang-it">quattro zone di occupazione</span>
+    <span class="translation lang-hi">चार अधिग्रहण क्षेत्र</span>
   </label><br>
-
-  <label>
-    <input type="radio" name="q63" value="1">
-    die Gerichte
-    <span class="translation lang-uk">суди</span>
-    <span class="translation lang-en">the courts</span>
-    <span class="translation lang-ar">المحاكم</span>
-    <span class="translation lang-tr">mahkemeler</span>
-    <span class="translation lang-bg">съдилищата</span>
-    <span class="translation lang-fa">دادگاه‌ها</span>
-    <span class="translation lang-bs">sudovi</span>
-    <span class="translation lang-mk">судовите</span>
-    <span class="translation lang-pl">sądy</span>
-    <span class="translation lang-ro">instanțele</span>
-    <span class="translation lang-it">i tribunali</span>
-    <span class="translation lang-hi">अदालतें</span>
+  <label><input type="radio" name="q64" value="1"> einen Oststaat und einen Weststaat
+    <span class="translation lang-uk">східну та західну державу</span>
+    <span class="translation lang-en">an eastern and a western state</span>
+    <span class="translation lang-ar">دولة شرقية ودولة غربية</span>
+    <span class="translation lang-tr">doğu ve batı devleti</span>
+    <span class="translation lang-bg">източна и западна държава</span>
+    <span class="translation lang-fa">یک ایالت شرقی و یک ایالت غربی</span>
+    <span class="translation lang-bs">istočnu i zapadnu državu</span>
+    <span class="translation lang-mk">источна и западна држава</span>
+    <span class="translation lang-pl">państwo wschodnie i zachodnie</span>
+    <span class="translation lang-ro">un stat estic și un stat vestic</span>
+    <span class="translation lang-it">uno stato orientale e uno occidentale</span>
+    <span class="translation lang-hi">एक पूर्वी और एक पश्चिमी राज्य</span>
   </label><br>
-
-  <label>
-    <input type="radio" name="q63" value="2">
-    das Finanzamt
-    <span class="translation lang-uk">податкова інспекція</span>
-    <span class="translation lang-en">the tax office</span>
-    <span class="translation lang-ar">مكتب الضرائب</span>
-    <span class="translation lang-tr">vergi dairesi</span>
-    <span class="translation lang-bg">данъчната служба</span>
-    <span class="translation lang-fa">اداره مالیات</span>
-    <span class="translation lang-bs">porezna uprava</span>
-    <span class="translation lang-mk">финансиска управа</span>
-    <span class="translation lang-pl">urząd skarbowy</span>
-    <span class="translation lang-ro">oficiul fiscal</span>
-    <span class="translation lang-it">l’agenzia delle entrate</span>
-    <span class="translation lang-hi">कर कार्यालय</span>
+  <label><input type="radio" name="q64" value="2"> 16 Kantone
+    <span class="translation lang-uk">16 кантонів</span>
+    <span class="translation lang-en">16 cantons</span>
+    <span class="translation lang-ar">16 كانتونًا</span>
+    <span class="translation lang-tr">16 kanton</span>
+    <span class="translation lang-bg">16 кантона</span>
+    <span class="translation lang-fa">۱۶ کانتون</span>
+    <span class="translation lang-bs">16 kantona</span>
+    <span class="translation lang-mk">16 кантони</span>
+    <span class="translation lang-pl">16 kantonów</span>
+    <span class="translation lang-ro">16 cantoane</span>
+    <span class="translation lang-it">16 cantoni</span>
+    <span class="translation lang-hi">१६ कैंटन</span>
+  </label>
+  <label><input type="radio" name="q64" value="3"> Bund, Länder und Kommunen
+    <span class="translation lang-uk">федерація, землі та громади</span>
+    <span class="translation lang-en">federal government, states and municipalities</span>
+    <span class="translation lang-ar">الاتحاد، الولايات والبلديات</span>
+    <span class="translation lang-tr">federal hükümet, eyaletler ve belediyeler</span>
+    <span class="translation lang-bg">федерация, провинции и общини</span>
+    <span class="translation lang-fa">دولت فدرال، ایالت‌ها و شهرداری‌ها</span>
+    <span class="translation lang-bs">savez, pokrajine i općine</span>
+    <span class="translation lang-mk">сојуз, покраини и општини</span>
+    <span class="translation lang-pl">federacja, kraje związkowe i gminy</span>
+    <span class="translation lang-ro">federal, landuri și comune</span>
+    <span class="translation lang-it">federazione, stati e comuni</span>
+    <span class="translation lang-hi">संघ, राज्य और नगर पालिकाएं</span>
   </label><br>
-
-  <label>
-    <input type="radio" name="q63" value="3">
-    die Ministerien
-    <span class="translation lang-uk">міністерства</span>
-    <span class="translation lang-en">the ministries</span>
-    <span class="translation lang-ar">الوزارات</span>
-    <span class="translation lang-tr">bakanlıklar</span>
-    <span class="translation lang-bg">министерствата</span>
-    <span class="translation lang-fa">وزارتخانه‌ها</span>
-    <span class="translation lang-bs">ministarstva</span>
-    <span class="translation lang-mk">министерствата</span>
-    <span class="translation lang-pl">ministerstwa</span>
-    <span class="translation lang-ro">ministerele</span>
-    <span class="translation lang-it">i ministeri</span>
-    <span class="translation lang-hi">मंत्रालय</span>
-  </label><br>
-
-  <button onclick="checkQuestion('q63','1')">Prüfen</button>
-  <div class="feedback" id="fb-q63"></div>
+  <button onclick="checkQuestion('q64','3')">Prüfen</button>
+  <div id="fb-q64"></div>
 </div>
+
 <div class="question" id="q65">
-  <p>
+<p>
     <strong>65. Es gehört nicht zu den Aufgaben des Deutschen Bundestages, …</strong>
     <span class="translation lang-uk">Це не входить до завдань Німецького Бундестагу, …</span>
     <span class="translation lang-en">This is not one of the tasks of the German Bundestag, …</span>
@@ -7305,8 +7292,8 @@ function renderPage(page) {
     <span class="translation lang-ro">Acesta nu este una dintre atribuțiile Bundestag-ului german, …</span>
     <span class="translation lang-it">Questo non rientra tra i compiti del Bundestag tedesco, …</span>
     <span class="translation lang-hi">यह जर्मन बुंडेस्टाग के कार्यों में से एक नहीं है, …</span>
-  </p>
 
+</p>
   <label>
     <input type="radio" name="q65" value="0">
     Gesetze zu entwerfen
