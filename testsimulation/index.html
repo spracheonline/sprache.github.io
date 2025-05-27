@@ -1,3 +1,26 @@
+<script>
+(function(){
+  try {
+    // Проверка поддержки ES6: let, стрелочные функции, Array.from
+    new Function("let x = ()=>Array.from([])");
+  } catch(e) {
+    // Полная остановка парсинга: заменяем всё содержимое страницы
+    document.write(`
+      <html><head><title>Browser nicht unterstützt</title></head>
+      <body style="font-family:sans-serif; background:#fff0f0; color:#600; padding:2rem;">
+        <h2>⚠️ Ihr Browser wird nicht unterstützt</h2>
+        <p>Bitte verwenden Sie einen modernen Browser wie 
+          <a href="https://www.mozilla.org/firefox/" target="_blank">Firefox</a> oder 
+          <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>.
+        </p>
+      </body></html>
+    `);
+    // Остановка выполнения остального JS
+    throw new Error("Browser nicht unterstützt");
+  }
+})();
+</script>
+
 <!DOCTYPE html>
 <html lang="de">
 <script>
