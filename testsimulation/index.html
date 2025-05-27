@@ -88,6 +88,51 @@
 </script>
 
 <head>
+  <script>
+(function(){
+  try {
+    // Блок, який ламає старі браузери — тут використано ES6-функцію
+    new Function("let x = ()=>Array.from([])");
+  } catch(e) {
+    // Повна заміна всього DOM у разі старого браузера
+    document.open();
+    document.write(`
+      <!DOCTYPE html>
+      <html lang="de">
+      <head>
+        <meta charset="UTF-8">
+        <title>Browser nicht unterstützt</title>
+        <style>
+          body {
+            font-family: sans-serif;
+            background: #fff0f0;
+            color: #660000;
+            padding: 2rem;
+            text-align: center;
+          }
+          a {
+            color: #0066cc;
+            text-decoration: underline;
+          }
+        </style>
+      </head>
+      <body>
+        <h2>⚠️ Ihr Browser wird nicht unterstützt</h2>
+        <p>Bitte verwenden Sie einen modernen Browser:</p>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="https://www.mozilla.org/firefox/new/" target="_blank">Firefox</a></li>
+          <li><a href="https://www.google.com/chrome/" target="_blank">Google Chrome</a></li>
+          <li><a href="https://brave.com/" target="_blank">Brave Browser</a></li>
+        </ul>
+      </body>
+      </html>
+    `);
+    document.close();
+    throw new Error("Browser nicht unterstützt");
+  }
+})();
+</script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 
