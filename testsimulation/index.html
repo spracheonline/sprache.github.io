@@ -42,6 +42,7 @@
 
   
 <style>
+  
   .cookiebanner-links a {
   color: #007bff;
   text-decoration: underline;
@@ -708,6 +709,12 @@ body.show-trans em {
 body.dark .settings-icon {
   background: #444;
   color: #fff;
+}
+@media (max-width: 768px) {
+  #sim-modal .modal-content {
+    top: 20vh !important;
+    transform: translate(-50%, 0) !important;
+  }
 }
 
 /* Модальное окно */
