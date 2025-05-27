@@ -281,6 +281,11 @@ a { text-decoration:none; color:inherit }
     text-decoration: underline;
   }
 </style>
+<style type="text/css">
+  img {
+    width: 40%;
+  }
+</style>
   <style>
     /* ————————————————————————————————————————————
        Theme variables
@@ -1890,10 +1895,14 @@ function checkAccessCode() {
 
     // ❗ Всі питання мають залишатися прихованими
     document.querySelectorAll('.question').forEach(q => q.style.display = 'none');
+
+    // 👉 Розгортання на повний екран
+    document.documentElement.requestFullscreen?.();
   } else {
     document.getElementById('wrong-code').style.display = 'block';
   }
 }
+
 
 </script>
 
@@ -2159,53 +2168,7 @@ body.dark .page-btn {
   background: #3b82f6;
   color: white;
 }
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #0f172a;
-    color: #f8fafc;
-  }
 
-  .sidebar {
-    background: #1e293b;
-    color: #f8fafc;
-  }
-
-  .range-btn {
-    background: #334155;
-    color: #f1f5f9;
-  }
-
-  .range-btn.active {
-    background: #3b82f6;
-    color: #fff;
-  }
-
-  .card-nav-btn {
-    background-color: #334155;
-    color: #f8fafc;
-    border: 1px solid #475569;
-  }
-
-  .card-nav-btn:hover {
-    background-color: #475569;
-  }
-
-  .flip-card-front,
-  .flip-card-back {
-    background: #1e293b;
-    color: #f8fafc;
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
-  }
-
-  .flip-card-back {
-    color: #22c55e;
-  }
-
-  .page-btn {
-    background: #3b82f6;
-    color: white;
-  }
-}
 
   </style>
 
