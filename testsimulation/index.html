@@ -1889,6 +1889,25 @@ function restartSimulation() {
   document.getElementById('sim-modal').style.display = 'block';
 }
 </script>
+<noscript>
+  <div style="background: #fee; color: #900; padding: 1rem; border: 1px solid #f00; margin: 1rem; font-family: sans-serif; border-radius: 8px;">
+    ⚠️ Ihr Browser unterstützt kein JavaScript oder es ist deaktiviert.<br>
+    Bitte aktivieren Sie JavaScript oder verwenden Sie einen modernen Browser.
+  </div>
+</noscript>
+<script>
+  try {
+    // Проверка поддержки ES6
+    new Function("let a = 1; const b = 2; () => {}; Array.from([]);");
+  } catch (e) {
+    document.body.innerHTML = `
+      <div style="background: #fee; color: #900; padding: 1rem; border: 1px solid #f00; margin: 1rem; font-family: sans-serif; border-radius: 8px;">
+        ⚠️ Ihr Browser ist veraltet und wird nicht unterstützt.<br>
+        Bitte aktualisieren Sie ihn oder verwenden Sie <a href="https://www.mozilla.org/firefox/" target="_blank">einen modernen Browser</a>.
+      </div>
+    `;
+  }
+</script>
 
 
 
