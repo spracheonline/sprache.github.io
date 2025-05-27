@@ -1,5 +1,23 @@
 <!DOCTYPE html>
 <html lang="de">
+<script>
+  try {
+    // мінімальна перевірка: let + стрілка + Array.from
+    new Function("let x = ()=>Array.from([])");
+  } catch(e) {
+    document.write(`
+      <div style="background: #ffdddd; color: #900; padding: 1rem; font-family: sans-serif; border: 2px solid #c00; border-radius: 8px; margin: 1rem;">
+        ⚠️ Ihr Browser ist veraltet und wird nicht unterstützt.<br>
+        Bitte verwenden Sie einen modernen Browser wie
+        <a href="https://www.mozilla.org/de/firefox/new/" target="_blank" style="color: #d00; text-decoration: underline;">Firefox</a>
+        oder
+        <a href="https://www.google.com/chrome/" target="_blank" style="color: #d00; text-decoration: underline;">Chrome</a>.
+      </div>
+    `);
+    throw new Error("Unsupported browser");
+  }
+</script>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
