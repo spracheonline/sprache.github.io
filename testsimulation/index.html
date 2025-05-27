@@ -20,7 +20,53 @@
   }
 })();
 </script>
-
+<script>
+(function(){
+  try {
+    new Function("let x = ()=>Array.from([])");
+  } catch(e) {
+    document.open();
+    document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Browser nicht unterstützt</title>
+        <style>
+          body {
+            font-family: sans-serif;
+            background: #fff0f0;
+            color: #660000;
+            padding: 2rem;
+          }
+          .warning {
+            max-width: 600px;
+            margin: auto;
+            background: #ffeaea;
+            border: 1px solid #cc0000;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+          }
+          a {
+            color: #0033cc;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="warning">
+          <h2>⚠️ Ihr Browser wird nicht unterstützt</h2>
+          <p>Diese Seite erfordert moderne Browserfunktionen.</p>
+          <p>Bitte verwenden Sie z. B. <a href="https://www.mozilla.org/firefox/" target="_blank">Firefox</a>, 
+          <a href="https://www.google.com/chrome/" target="_blank">Chrome</a> oder 
+          <a href="https://brave.com/" target="_blank">Brave</a>.</p>
+        </div>
+      </body>
+      </html>
+    `);
+    document.close();
+  }
+})();
+</script>
 <!DOCTYPE html>
 <html lang="de">
 <script>
