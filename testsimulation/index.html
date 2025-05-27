@@ -1847,18 +1847,32 @@ function finishSimulation(questions) {
   questions.forEach(q => {
     const name = q.querySelector('input[type="radio"]')?.name;
     const selectedInput = q.querySelector(`input[name="${name}"]:checked`);
-    const inputs = Array.from(q.querySelectorAll('input'));
-    const correctInput = inputs.find(i => i.value === "1");
 
-    if (selectedInput && selectedInput === correctInput) {
-      correct++;
-    } else {
-      q.style.border = '2px solid red';
-      const correctLabel = correctInput?.closest('label');
+    // Найти правильный ответ из checkQuestion()
+    const checkFn = q.querySelector('button[onclick^="checkQuestion"]');
+    let correctValue = null;
+
+    if (checkFn) {
+      const match = checkFn.getAttribute('onclick').match(/checkQuestion\(['"]([^'"]+)['"],\s*['"]([^'"]+)['"]\)/);
+      if (match && match[1] === q.id) {
+        correctValue = match[2];
+      }
+    }
+
+    const correctInput = q.querySelector(`input[type="radio"][value="${correctValue}"]`);
+
+    if (correctInput) {
+      const correctLabel = correctInput.closest('label');
       if (correctLabel) {
         correctLabel.style.backgroundColor = '#d1fae5';
         correctLabel.style.borderRadius = '5px';
       }
+    }
+
+    if (selectedInput && selectedInput.value === correctValue) {
+      correct++;
+    } else {
+      q.style.border = '2px solid red';
       errors.push(q);
     }
   });
