@@ -244,9 +244,9 @@
     /* Drei-Spalten-Layout */
     main#welcome {
       display:flex; justify-content:space-between; align-items:flex-start;
-      gap:1.5rem; max-width:1200px; margin:2rem auto; padding:0 1rem;
+      gap:1.5rem; max-width:1500px; margin:2rem auto; padding:0 1rem;
     }
-    #allgemeine-300-fragen, #test-simulation { flex:0 0 280px; }
+    #allgemeine-300-fragen, #test-simulation, #orient, #lehrkraefte, { flex:0 0 280px; }
     #fragen-nach-bundesland {
       flex:1; background:#fff; padding:1.5rem;
       border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.05);
@@ -284,7 +284,7 @@
     padding: 1rem;
   }
   #allgemeine-300-fragen,
-  #test-simulation,
+  #test-simulation, #orient, #lehrkraefte,
   #fragen-nach-bundesland {
     flex: 1 1 100%;        /* каждая секция на всю ширину */
     max-width: none;
@@ -344,7 +344,7 @@
   /* Карточки, секции и сам info-блок */
   #allgemeine-300-fragen,
   #fragen-nach-bundesland,
-  #test-simulation,
+  #test-simulation, #lehrkraefte,
   .info-card {
     max-width: 100%;      /* не шире экрана */
     margin: 1rem;         /* 1rem со всех сторон */
@@ -382,7 +382,7 @@ body {
   /* карточки и секции */
   #allgemeine-300-fragen,
   #fragen-nach-bundesland,
-  #test-simulation,
+  #test-simulation, #lehrkraefte,
   #info-section {
     width: 100%;         /* на всю доступную ширину */
     margin: 1rem 0;      /* по 1rem сверху/снизу и по бокам body уже даёт 1rem */
@@ -726,7 +726,7 @@ body.dark .site-footer a:visited {
   color: #ccc;
 }
 #welcome > section {
-  flex: 1 1 600px;          /* однакова мінімальна ширина */
+  flex: 1 1 650px;          /* однакова мінімальна ширина */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -832,10 +832,26 @@ body.dark .site-footer a:visited {
     </ul>
   </div>
 </div>
+<div>
+  <h2 style="margin-top: -25px;">
+    Leben in Deutschland
+  </h2>
+  <i>Einbürgerungstest 2025 <br> </i><p>in 13 Sprachen verfügbar</p><br>
+  
+
+</div>
+  <main id="welcome" style="margin-top:-10px;">
 
 
 
-  <main id="welcome">
+    <section id="orient">
+      <a href="#" class="btn">
+        <img class="btn-logo" src="orient.png" alt="">
+        <span class="btn-de">Orientierungskurs</span>
+        <span class="btn-trans"></span>
+      </a>
+    </section>
+
     <!-- Allgemeine 300 Fragen -->
     <section id="allgemeine-300-fragen">
       <a href="allgemeine300fragen/" class="btn">
@@ -903,7 +919,7 @@ body.dark .site-footer a:visited {
     <li>
       <a href="mvp/" class="btn-state" data-state="Mecklenburg-Vorpommern">
         <img class="state-emblem" src="mv.png" alt="">
-        <span class="state-de">Mecklenburg-Vorpom.</span>
+        <span class="state-de">Mecklenburg-Vorp.</span>
         <span class="state-trans"></span>
       </a>
     </li>
@@ -986,7 +1002,7 @@ body.dark .site-footer a:visited {
 </section>
 
   </main>
-
+</div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const toggle = document.getElementById('language-toggle');
@@ -1001,7 +1017,8 @@ body.dark .site-footer a:visited {
             'Mecklenburg-Vorpommern':'Мекленбург-Передня Померанія','Niedersachsen':'Нижня Саксонія',
             'Nordrhein-Westfalen':'Північний Рейн-Вестфалія','Rheinland-Pfalz':'Рейнланд-Пфальц',
             'Saarland':'Саар','Sachsen':'Саксонія','Sachsen-Anhalt':'Саксонія-Анхалт',
-            'Schleswig-Holstein':'Шлезвіг-Гольштейн','Thüringen':'Тюрингія'}
+            'Schleswig-Holstein':'Шлезвіг-Гольштейн','Thüringen':'Тюрингія'}, btnOrient: 'Орієнтаційний курс',
+    btnLehrer: 'Для викладачів',
         },
         en:{ btnAll:'General 300 Questions', btnTest:'Test Simulation', header:'Questions by Federal State',
           states:{ 'Baden-Württemberg':'Baden-Württemberg','Bayern':'Bavaria','Berlin':'Berlin',
@@ -1009,7 +1026,8 @@ body.dark .site-footer a:visited {
             'Mecklenburg-Vorpommern':'Mecklenburg-Western Pomerania','Niedersachsen':'Lower Saxony',
             'Nordrhein-Westfalen':'North Rhine-Westphalia','Rheinland-Pfalz':'Rhineland-Palatinate',
             'Saarland':'Saarland','Sachsen':'Saxony','Sachsen-Anhalt':'Saxony-Anhalt',
-            'Schleswig-Holstein':'Schleswig-Holstein','Thüringen':'Thuringia'}
+            'Schleswig-Holstein':'Schleswig-Holstein','Thüringen':'Thuringia'}, btnOrient: 'Orientation Course',
+    btnLehrer: 'For Teachers',
         },
         ar:{ btnAll:'الأسئلة العامة 300', btnTest:'محاكاة اختبار', header:'الأسئلة حسب الولاية',
           states:{ 'Baden-Württemberg':'بادن-فورتمبيرغ','Bayern':'بافاريا','Berlin':'برلين',
@@ -1017,7 +1035,8 @@ body.dark .site-footer a:visited {
             'Mecklenburg-Vorpommern':'ميكلنبورغ-فوربومرن','Niedersachsen':'سكسونيا السفلى',
             'Nordrhein-Westfalen':'شمال الراين-وستفاليا','Rheinland-Pfalz':'راينلاند-بفالز',
             'Saarland':'سارلاند','Sachsen':'ساكسونيا','Sachsen-Anhalt':'ساكسونيا-أنهالت',
-            'Schleswig-Holstein':'شليسفيغ-هولشتاين','Thüringen':'تورينغن'}
+            'Schleswig-Holstein':'شليسفيغ-هولشتاين','Thüringen':'تورينغن'}, btnOrient: 'دورة التوجيه',
+    btnLehrer: 'للمعلمين',
         },
         tr:{ btnAll:'Genel 300 Soru', btnTest:'Test Simülasyonu', header:'Eyalete Göre Sorular',
           states:{ 'Baden-Württemberg':'Baden-Württemberg','Bayern':'Bavyera','Berlin':'Berlin',
@@ -1025,7 +1044,8 @@ body.dark .site-footer a:visited {
             'Mecklenburg-Vorpommern':'Mecklenburg-Vorpommern','Niedersachsen':'Aşağı Saksonya',
             'Nordrhein-Westfalen':'Kuzey Ren-Vestfalya','Rheinland-Pfalz':'Renanya-Palatina',
             'Saarland':'Saarland','Sachsen':'Saksonya','Sachsen-Anhalt':'Saksonya-Anhalt',
-            'Schleswig-Holstein':'Schlesvig-Holştayn','Thüringen':'Turingiya'}
+            'Schleswig-Holstein':'Schlesvig-Holştayn','Thüringen':'Turingiya'}, btnOrient: 'Uyum Kursu',
+    btnLehrer: 'Öğretmenler İçin',
         },
         bg:{ btnAll:'Общи 300 въпроса', btnTest:'Тестов симулатор', header:'Въпроси по федерална провинция',
           states:{ 'Baden-Württemberg':'Баден-Вюртемберг','Bayern':'Бавария','Berlin':'Берлин',
@@ -1033,7 +1053,8 @@ body.dark .site-footer a:visited {
             'Mecklenburg-Vorpommern':'Мекленбург-Предна Померания','Niedersachsen':'Долна Саксония',
             'Nordrhein-Westfalen':'Северен Рейн–Вестфалия','Rheinland-Pfalz':'Рейнланд-Пфалц',
             'Saarland':'Саар','Sachsen':'Саксоня','Sachsen-Anhalt':'Саксоня-Анхалт',
-            'Schleswig-Holstein':'Шлезвиг-Холщайн','Thüringen':'Тюрингия'}
+            'Schleswig-Holstein':'Шлезвиг-Холщайн','Thüringen':'Тюрингия'}, btnOrient: 'Ориентационен курс',
+    btnLehrer: 'За преподаватели',
         },
         fa:{ btnAll:'۳۰۰ سؤال عمومی', btnTest:'شبیه‌ساز آزمون', header:'سؤالات بر اساس ایالت',
           states:{ 'Baden-Württemberg':'بادن-وورتمبرگ','Bayern':'باواریا','Berlin':'برلین',
@@ -1041,7 +1062,8 @@ body.dark .site-footer a:visited {
             'Mecklenburg-Vorpommern':'مکلنبورگ-فورپومرن','Niedersachsen':'نیدرزاکسن',
             'Nordrhein-Westfalen':'شمال راین-وستفالن','Rheinland-Pfalz':'راینلاند-پلاتس',
             'Saarland':'سارلند','Sachsen':'زاکسن','Sachsen-Anhalt':'زاکسن-أنهالت',
-            'Schleswig-Holstein':'شلشویگ-هولشتاین','Thüringen':'تورینگن'}
+            'Schleswig-Holstein':'شلشویگ-هولشتاین','Thüringen':'تورینگن'}, btnOrient: 'دوره سازگاری',
+    btnLehrer: 'برای معلمان',
         },
         bs:{ btnAll:'Opća 300 pitanja', btnTest:'Simulacija testa', header:'Pitanja po saveznoj državi',
           states:{ 'Baden-Württemberg':'Baden-Württember','Bayern':'Bavarska','Berlin':'Berlin',
@@ -1049,7 +1071,8 @@ body.dark .site-footer a:visited {
             'Mecklenburg-Vorpommern':'Mecklenburg-Zapadna Pomeranija','Niedersachsen':'Donja Saska',
             'Nordrhein-Westfalen':'Sjeverna Rajna-Vestfalija','Rheinland-Pfalz':'Rajna-Palatinat',
             'Saarland':'Saarland','Sachsen':'Saksonija','Sachsen-Anhalt':'Saksonija-Anhalt',
-            'Schleswig-Holstein':'Šlezvig-Holštajn','Thüringen':'Tiringija'}
+            'Schleswig-Holstein':'Šlezvig-Holštajn','Thüringen':'Tiringija'},  btnOrient: 'Orijentacijski kurs',
+    btnLehrer: 'Za nastavnike',
         },
         mk:{ btnAll:'Општи 300 прашања', btnTest:'Симулација на тест', header:'Прашања по сојузни земји',
           states:{ 'Baden-Württemberg':'Баден-Виртемберг','Bayern':'Баварија','Berlin':'Берлин',
@@ -1057,7 +1080,8 @@ body.dark .site-footer a:visited {
             'Mecklenburg-Vorpommern':'Мекленбург-Приморје','Niedersachsen':'Долна Саксонија',
             'Nordrhein-Westfalen':'Северна Рајна-Вестфалија','Rheinland-Pfalz':'Рајнланд-Палатинат',
             'Saarland':'Сар','Sachsen':'Саксонија','Sachsen-Anhalt':'Саксонија-Анхалт',
-            'Schleswig-Holstein':'Шлезвиг-Холштајн','Thüringen':'Тирингија'}
+            'Schleswig-Holstein':'Шлезвиг-Холштајн','Thüringen':'Тирингија'}, btnOrient: 'Ориентациски курс',
+    btnLehrer: 'За наставници',
         },
         pl:{ btnAll:'Ogólne 300 pytań', btnTest:'Symulacja testu', header:'Pytania według landu',
           states:{ 'Baden-Württemberg':'Badenia-Wirtembergia','Bayern':'Bawaria','Berlin':'Berlin',
@@ -1065,7 +1089,8 @@ body.dark .site-footer a:visited {
             'Mecklenburg-Vorpommern':'Meklemburgia-Pomorze Przednie','Niedersachsen':'Dolna Saksonia',
             'Nordrhein-Westfalen':'Nadrenia Północna-Westfalia','Rheinland-Pfalz':'Rheinland-Palatynat',
             'Saarland':'Saarland','Sachsen':'Saksonia','Sachsen-Anhalt':'Saksonia-Anhalt',
-            'Schleswig-Holstein':'Szlezwik-Holsztyn','Thüringen':'Turyngia'}
+            'Schleswig-Holstein':'Szlezwik-Holsztyn','Thüringen':'Turyngia'}, btnOrient: 'Kurs orientacyjny',
+    btnLehrer: 'Dla nauczycieli',
         },
         ro:{ btnAll:'300 întrebări generale', btnTest:'Simulare test', header:'Întrebări după land',
           states:{ 'Baden-Württemberg':'Baden-Wurttemberg','Bayern':'Bavaria','Berlin':'Berlin',
@@ -1073,7 +1098,8 @@ body.dark .site-footer a:visited {
             'Mecklenburg-Vorpommern':'Mecklenburg-Pomerania Inferioară','Niedersachsen':'Saxonia Inferioară',
             'Nordrhein-Westfalen':'Renania de Nord-Westfalia','Rheinland-Pfalz':'Renania-Palatinat',
             'Saarland':'Saarland','Sachsen':'Saxonia','Sachsen-Anhalt':'Saxonia-Anhalt',
-            'Schleswig-Holstein':'Schleswig-Holstein','Thüringen':'Turingia'}
+            'Schleswig-Holstein':'Schleswig-Holstein','Thüringen':'Turingia'}, btnOrient: 'Curs de orientare',
+    btnLehrer: 'Pentru profesori',
         },
         it:{ btnAll:'300 Domande Generali', btnTest:'Simulazione Test', header:'Domande per Stato Federale',
           states:{ 'Baden-Württemberg':'Baden-Württemberga','Bayern':'Baviera','Berlin':'Berlino',
@@ -1081,7 +1107,7 @@ body.dark .site-footer a:visited {
             'Mecklenburg-Vorpommern':'Mecklenburg-Vorpommern','Niedersachsen':'Bassa Sassonia',
             'Nordrhein-Westfalen':'Renania Settentrionale-Vestfalia','Rheinland-Pfalz':'Renania-Palatinato',
             'Saarland':'Saarland','Sachsen':'Sassonia','Sachsen-Anhalt':'Sassonia-Anhalt',
-            'Schleswig-Holstein':'Schleswig-Holstein','Thüringen':'Turingia'}
+            'Schleswig-Holstein':'Schleswig-Holstein','Thüringen':'Turingia'},  btnOrient: 'Corso di orientamento', btnLehrer: 'Per insegnanti',
         },
         hi:{ btnAll:'सामान्य 300 प्रश्न', btnTest:'टेस्ट सिमुलेशन', header:'राज्य के अनुसार प्रश्न',
           states:{ 'Baden-Württemberg':'बाडेन-वुर्टेमबर्ग','Bayern':'बवाड़िया','Berlin':'बर्लिन',
@@ -1089,7 +1115,8 @@ body.dark .site-footer a:visited {
             'Mecklenburg-Vorpommern':'मेcklenburg-वॉर्पोमर्न','Niedersachsen':'लोअर सैक्सनी',
             'Nordrhein-Westfalen':'नॉर्थ राइन-वेस्टफेलिया','Rheinland-Pfalz':'राइनलैंड-पैलटिनेट',
             'Saarland':'सारलैंड','Sachsen':'सैक्सनी','Sachsen-Anhalt':'सैक्सनी-आनहाल्ट',
-            'Schleswig-Holstein':'श्लेस्विग-होल्सटीन','Thüringen':'थ्यूरिंगिया'}
+            'Schleswig-Holstein':'श्लेस्विग-होल्सटीन','Thüringen':'थ्यूरिंगिया'}, btnOrient: 'ओरिएंटेशन कोर्स',
+    btnLehrer: 'शिक्षकों के लिए'
         }
       };
 // ——— Новая информативная строка на всех языках ———
@@ -2069,6 +2096,7 @@ applyLanguage('de');
       function applyLanguage(code) {
         const dict = translations[code] || translations.de;
         // Buttons
+        document.querySelector('#orient .btn-trans').textContent    = code==='de' ? '' : dict.btnOrient;
         document.querySelector('#allgemeine-300-fragen .btn-trans').textContent = code==='de' ? '' : dict.btnAll;
         document.querySelector('#test-simulation .btn-trans').textContent    = code==='de' ? '' : dict.btnTest;
         // Header
@@ -2078,6 +2106,7 @@ applyLanguage('de');
           const orig = a.dataset.state;
           const tr = dict.states[orig] || '';
           a.querySelector('.state-trans').textContent = code==='de' || !tr ? '' : tr;
+        document.querySelector('#lehrkraefte .btn-trans').textContent = code==='de' ? '' : dict.btnLehrer;
         });
         // Dropdown-Label
         const name = list.querySelector(`li[data-lang="${code}"] button`).textContent;
@@ -2126,105 +2155,8 @@ applyLanguage('de');
     }
   </style>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // … ваш старый код …
-
-      // Дополняем объект переводов:
-      const moreTranslations = {
-        de: {
-          infoTitle: 'Was ist dieser Test?',
-          infoContent: 'Dies ist eine Simulation des Integrationszertifikat-Tests. ' +
-                       'Sie können alle 300 Fragen üben, nach Bundesland filtern oder eine komplette Test-Simulation durchführen. ' +
-                       'Wählen Sie oben Ihre Sprache, um alle Texte in Ihre Muttersprache zu übersetzen.'
-        },
-        uk: {
-          infoTitle: 'Що це за тест?',
-          infoContent: 'Це симуляція тесту на інтеграційний сертифікат. ' +
-                       'Ви можете практикувати всі 300 запитань, відфільтрувати за землею або пройти повне тестове моделювання. ' +
-                       'Виберіть вище вашу мову, щоб перевести тексти на рідну мову.'
-        },
-        en: {
-          infoTitle: 'What is this test?',
-          infoContent: 'This is a simulation of the German integration certificate exam. ' +
-                       'You can practice all 300 questions, filter by federal state, or run a full test simulation. ' +
-                       'Select your language above to translate all text into your native language.'
-        }
-        // … остальные языки по аналогии …
-      };
-
-      // Смешиваем новые переводы в общий объект
-      Object.keys(moreTranslations).forEach(lang => {
-        translations[lang] = {
-          ...translations[lang],
-          infoTitle: moreTranslations[lang].infoTitle,
-          infoContent: moreTranslations[lang].infoContent
-        };
-      });
-
-      // Расширяем функцию applyLanguage
-      const oldApply = applyLanguage;
-      applyLanguage = code => {
-        oldApply(code);
-
-        // Обновляем инфо-блок
-        const dict = translations[code] || translations.de;
-        document.querySelector('.info-title').textContent   = dict.infoTitle;
-        document.querySelector('.info-content').textContent = dict.infoContent;
-      };
-
-      // После определения applyLanguage — сразу заполнить для de
-      applyLanguage('de');
-    });
-
-
-  </script>
-<script type="text/javascript">
-  <script>
-document.addEventListener('DOMContentLoaded', () => {
-  // … ваш уже существующий translations с основными ключами …
-  const translations = {
-    de: { /* … */ },
-    uk: { /* … */ },
-    en: { /* … */ },
-    // … остальные языки …
-  };
-
-  // Добавляем переводы для инфо-блока
-  translations.de.infoTitle   = 'Was ist dieser Test?';
-  translations.de.infoContent = 'Dies ist eine Simulation des Integrationszertifikat-Tests. …';
   
-  translations.uk.infoTitle   = 'Що це за тест?';
-  translations.uk.infoContent = 'Це симуляція тесту на інтеграційний сертифікат. …';
-  
-  translations.en.infoTitle   = 'What is this test?';
-  translations.en.infoContent = 'This is a simulation of the German integration certificate exam. …';
-  
-  // … и так далее для остальных языков …
 
-  // Ваша существующая applyLanguage, немного дополненная
-  function applyLanguage(code) {
-    const dict = translations[code] || translations.de;
-
-    // 1) обновляем кнопки и заголовки (ваш старый код)
-    //    например:
-    // document.querySelector('#allgemeine-300-fragen .btn-de').textContent = dict.btnAll;
-    // …
-
-    // 2) обновляем инфо-блок
-    document.querySelector('#info-section .info-title').textContent   = dict.infoTitle;
-    document.querySelector('#info-section .info-content').textContent = dict.infoContent;
-  }
-
-  // dropdown-логика (ваш старый код), при выборе языка вызывает applyLanguage(langCode)
-  // …
-
-  // Инициализируем страницу сразу на немецком
-  applyLanguage('de');
-});
-</script>
-
-</script>
 <footer class="site-footer">
   <div class="footer-links">
     <a href="impressum/">Impressum</a> |
