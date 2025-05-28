@@ -1892,8 +1892,10 @@ function renderPage(page) {
 <div id="sim-modal" class="modal show">
   <div class="modal-content">
     <h3>Zugangscode erforderlich</h3>
-    <p>Bitte geben Sie das Passwort ein, um diese Seite zu betreten:</p>
-    <p>  <a href="mailto:help@sprache.online "><u>Ich habe kein Passwort</u></a></p>
+    <p>Bitte geben Sie den Zugangscode ein, um diese Seite zu betreten:</p>
+    <p>  <a href = '#'onclick="alert('Nutzen Sie die kostenlose Probeversion mit dem Code:\n\nlehrer2025 \n\nverfügbar bis zum 31.12.2025');
+"><u>Ich besitze keinen Zugangscode</u></a></p>
+
     <input type="password" id="access-code" placeholder="Passwort..." style="padding:8px;width:100%;margin-top:10px;border:1px solid #ccc;border-radius:6px">
     <br>
     <br>
@@ -1979,43 +1981,7 @@ function checkAccessCode() {
   });
 </script>
 
-<div id="lehrer-panel" class="lehrer-panel">
-  <h2>Lehrer-Bereich</h2>
 
-  <div class="lehrer-grid">
-    
-    <!-- Fragen als Flashcards -->
-    <button class="lehrer-btn" onclick="startFlashcardMode()">
-      <img src="card.png" alt="Flashcards" class="btn-icon">
-      Fragen als Lernkarten
-    </button>
-
-    <!-- Gruppenspiel -->
-    <button class="lehrer-btn" onclick="startGroupMode()">
-      <img src="group.png" alt="Gruppenspiel" class="btn-icon">
-      Gruppenspiel
-    </button>
-
-    <!-- Fragen nach Thema -->
-    <button class="lehrer-btn" onclick="openTopicFilter()">
-      <img src="learn.png" alt="Nach Thema" class="btn-icon">
-      Fragen nach Thema
-    </button>
-
-    <!-- Simulationstest -->
-    <button class="lehrer-btn" onclick="openSimulationSettings()">
-      <img src="simulation.png" alt="Simulationstest" class="btn-icon">
-      Simulationstest
-    </button>
-
-    <!-- Hausaufgabe -->
-    <button class="lehrer-btn" onclick="openHomeworkSettings()">
-      <img src="hausaufgabe.png" alt="Hausaufgabe" class="btn-icon">
-      Hausaufgabe
-    </button>
-
-  </div>
-</div>
 
 
 <!--
