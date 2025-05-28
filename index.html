@@ -278,27 +278,10 @@
     .state-trans { font-size:.85rem; color:#666; margin-left:.5rem; }
 
     /* === Responsive für mobile Geräte === */
+
 @media (max-width: 768px) {
-  main#welcome {
-    flex-wrap: wrap;       /* колонки переносятся */
-    padding: 1rem;
-  }
-  #allgemeine-300-fragen,
-  #test-simulation, #orient, #lehrkraefte,
-  #fragen-nach-bundesland {
-    flex: 1 1 100%;        /* каждая секция на всю ширину */
-    max-width: none;
-    margin-bottom: 1rem;
-  }
-  .btn,
-  .btn-state {
-    width: 100%;           /* кнопки растянуты на 100% контейнера */
-  }
-  /* Уменьшим отступы для компактности */
-  .btn, .btn-state {
-    padding: 1rem;
-  }
-}
+
+ 
 #language-selector {
   display: inline-flex;
   align-items: center;
@@ -340,22 +323,7 @@
 #language-list {
   /* ваши стили для dropdown */
 }
-@media (max-width: 768px) {
-  /* Карточки, секции и сам info-блок */
-  #allgemeine-300-fragen,
-  #fragen-nach-bundesland,
-  #test-simulation, #lehrkraefte,
-  .info-card {
-    max-width: 100%;      /* не шире экрана */
-    margin: 1rem;         /* 1rem со всех сторон */
-    padding: 1rem;        /* чуть меньше внутреннего отступа */
-    box-sizing: border-box;
-  }
 
-  /* Опционально чуть уменьшить текст */
-  .info-title { font-size: 1.1rem; }
-  .info-content { font-size: .95rem; line-height: 1.4; }
-}
 /* === Базовый box-sizing и отключаем горизонтальный скролл === */
 html {
   box-sizing: border-box;
@@ -378,16 +346,7 @@ body {
 }
 
 /* === Мобильные до 768px: растягиваем всё по ширине контейнера === */
-@media (max-width: 768px) {
-  /* карточки и секции */
-  #allgemeine-300-fragen,
-  #fragen-nach-bundesland,
-  #test-simulation, #lehrkraefte,
-  #info-section {
-    width: 100%;         /* на всю доступную ширину */
-    margin: 1rem 0;      /* по 1rem сверху/снизу и по бокам body уже даёт 1rem */
-    padding: 1rem;       /* чуть компактнее, чем на десктопе */
-  }
+
 
   /* при необходимости чуть уменьшить текст */
   .info-title { font-size: 1.1rem; }
@@ -643,21 +602,7 @@ body.dark .test-info {
   gap: 0.5rem;
 }
 
-/* Адаптация для телефонов */
-@media (max-width: 600px) {
-  .header-bar {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  .header-left, .header-right {
-    width: 100%;
-    justify-content: space-between;
-    display: flex;
-  }
-  .header-right {
-    margin-top: 0.5rem;
-  }
-}
+
 
 .footer-links {
   text-align: center;
@@ -737,6 +682,96 @@ body.dark .site-footer a:visited {
   width: 100%;
   max-width: 600px;         /* фіксована ширина всередині */
   box-sizing: border-box;
+}
+/* 📱 Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  main#welcome {
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+
+  #allgemeine-300-fragen,
+  #test-simulation,
+  #orient,
+  #lehrkraefte,
+  #fragen-nach-bundesland,
+  .info-card,
+  #info-section {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+    margin: 1rem 0;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .btn,
+  .btn-state {
+    width: 100%;
+    padding: 1.25rem 1rem;
+    box-sizing: border-box;
+    min-height: 140px;
+  }
+
+  .info-title {
+    font-size: 1.1rem;
+  }
+
+  .info-content {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .header-bar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .header-left,
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  .header-right {
+    margin-top: 0.5rem;
+  }
+}
+
+/* 🌐 Языковой селектор */
+#language-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem auto;
+}
+
+.lang-prompt {
+  font-size: 1rem;
+  color: #444;
+}
+
+#language-toggle {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.lang-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+  object-fit: contain;
+}
+
+#language-list {
+  /* Стили dropdown по необходимости */
 }
 
   </style>
