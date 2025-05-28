@@ -282,9 +282,32 @@ a { text-decoration:none; color:inherit }
   }
 </style>
 <style type="text/css">
-  img {
-    width: 40%;
-  }
+.question {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.question .text-part {
+  flex: 1 1 60%;
+}
+
+.question img {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin: 0;
+  border-radius: 6px;
+}
+img{
+  width: 30%;
+}
+
 </style>
   <style>
     /* ————————————————————————————————————————————
@@ -1870,6 +1893,7 @@ function renderPage(page) {
   <div class="modal-content">
     <h3>Zugangscode erforderlich</h3>
     <p>Bitte geben Sie das Passwort ein, um diese Seite zu betreten:</p>
+    <p>  <a href="mailto:help@sprache.online "><u>Ich habe kein Passwort</u></a></p>
     <input type="password" id="access-code" placeholder="Passwort..." style="padding:8px;width:100%;margin-top:10px;border:1px solid #ccc;border-radius:6px">
     <br>
     <br>
@@ -1994,14 +2018,14 @@ function checkAccessCode() {
 </div>
 
 
-
+<!--
   <div class="language-hint-wrapper">
   <p class="language-hint" align="center">
     <strong>Sprache auswählen:</strong> Bitte wählen Sie Ihre Sprache über das Zahnrad-Symbol (⚙️) oben rechts auf der Seite aus.
   </p>
   <button class="language-hint-close" onclick="document.querySelector('.language-hint-wrapper').style.display='none'">✖</button>
 </div>
-
+-->
     <div id="cookie-banner" role="dialog" aria-live="polite">
 <div id="protected-content" style="display: none;">
 
@@ -2176,6 +2200,8 @@ body.dark .page-btn {
     <div class="sidebar">
       <div style="margin-bottom:1rem;">
         <label><input type="checkbox" id="shuffle-toggle" onchange="toggleShuffle(this.checked)" checked> Fragen mischen</label>
+        
+
       </div>
       <div id="nav-ranges"></div>
     </div>
