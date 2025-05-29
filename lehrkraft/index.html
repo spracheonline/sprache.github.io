@@ -152,117 +152,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
   <meta name="description" content="Kostenloser 'Leben in Deutschland'- und Einbürgerungstest-Trainer auf 13 Sprachen: Deutsch, Українська, English, العربية, Türkçe, Български, فارسی, Bosanski, Македонски, Polski, Română, Italiano und हिन्दी.">
-  <script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('groleegni.net',9382647,document.createElement('script'))</script>
-  <!-- 1) Consent Mode default auf 'denied' -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('consent','default',{
-      'ad_storage':'denied',
-      'analytics_storage':'denied'
-    });
-  </script>
-
-  <!-- 2) Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2756865893493273" crossorigin="anonymous"></script>
-  <meta name="google-adsense-account" content="ca-pub-2756865893493273">
-
-  <!-- 3) Google Analytics (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y58Z6NYLLT"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config','G-Y58Z6NYLLT',{ 'anonymize_ip': true });
-  </script>
-
-  
-<style>
-
-  .cookiebanner-links a {
-  color: #007bff;
-  text-decoration: underline;
-}
-
-.cookiebanner-links a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-a { text-decoration:none; color:inherit }
- .ucb-container {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    background: #fff;
-    color: #333;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    padding: 1.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    z-index: 9999;
-    font-family: system-ui, sans-serif;
-    display: none;
-  }
-
-  .ucb-text {
-    margin-bottom: 1rem;
-    font-size: 15px;
-    line-height: 1.5;
-  }
-
-  .ucb-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .ucb-btn {
-    padding: 0.5em 1.2em;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-    font-weight: 500;
-  }
-
-  .ucb-btn-primary {
-    background-color: #007bff;
-    color: white;
-  }
-
-  .ucb-btn-secondary {
-    background-color: #6c757d;
-    color: white;
-  }
-
-  .ucb-panel {
-    margin-top: 1rem;
-    background: #f8f8f8;
-    border-radius: 6px;
-    padding: 1rem;
-    border: 1px solid #ddd;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-.start-btn {
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.start-btn:hover {
-  background-color: #1d4ed8;
-}
-
-</style>
-
+ 
 
 <style>
   /* ==== Скрываем все <em> (переводы) во всём контейнере с вопросами ==== */
@@ -1346,112 +1236,35 @@ body.dark .modal-content {
 
 </head>
 <body>
-
-<!-- Cookie Banner HTML -->
-<div id="unique-cookie-banner" class="ucb-container">
-  <div class="ucb-text">
-    Wir verwenden Cookies, um die Funktionalität der Website zu gewährleisten, das Nutzererlebnis zu verbessern und Werbung zu personalisieren. Weitere Informationen finden Sie in unserer
-    <a href="/datenschutz" target="_blank">Datenschutzerklärung</a>,
-    <a href="/impressum" target="_blank">Impressum</a> und
-    <a href="/kontakt" target="_blank">Kontakt</a>.
-  </div>
-  <div class="ucb-buttons">
-    <button id="ucb-reject" class="ucb-btn ucb-btn-secondary">Alle ablehnen</button>
-    <button id="ucb-settings" class="ucb-btn ucb-btn-secondary">Einstellungen</button>
-    <button id="ucb-accept" class="ucb-btn ucb-btn-primary">Alle akzeptieren</button>
-  </div>
-  <div id="ucb-panel" class="ucb-panel hidden">
-    <label><input type="checkbox" id="ucb-analytics"> Statistik-Cookies</label><br>
-    <label><input type="checkbox" id="ucb-ads"> Werbe-Cookies</label><br>
-    <button id="ucb-save" class="ucb-btn ucb-btn-primary">Speichern</button>
-  </div>
-</div>
-
-
-
-<!-- JavaScript für Banner-Logik -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const banner   = document.getElementById('unique-cookie-banner');
-    const panel    = document.getElementById('ucb-panel');
-    const btnAcc   = document.getElementById('ucb-accept');
-    const btnRej   = document.getElementById('ucb-reject');
-    const btnSet   = document.getElementById('ucb-settings');
-    const btnSave  = document.getElementById('ucb-save');
-    const chkA     = document.getElementById('ucb-analytics');
-    const chkAds   = document.getElementById('ucb-ads');
-
-    // Название куки уникальное
-    const storageKey = 'ucbCookieConsent_v1';
-
-    if (!localStorage.getItem(storageKey)) {
-      banner.style.display = 'block';
-    }
-
-    function applyConsent(consent) {
-      localStorage.setItem(storageKey, JSON.stringify(consent));
-      banner.remove();
-    }
-
-    btnAcc.addEventListener('click', () => applyConsent({ analytics: true,  ads: true }));
-    btnRej.addEventListener('click', () => applyConsent({ analytics: false, ads: false }));
-
-    btnSet.addEventListener('click', () => {
-      panel.classList.toggle('hidden');
-      const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
-      chkA.checked  = !!saved.analytics;
-      chkAds.checked = !!saved.ads;
-    });
-
-    btnSave.addEventListener('click', e => {
-      e.preventDefault();
-      applyConsent({ analytics: chkA.checked, ads: chkAds.checked });
-    });
-  });
+<!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+<script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({"notice_banner_type":"interstitial","consent_type":"express","palette":"light","language":"de","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"sprache.online"});
+});
 </script>
 
+<!-- Google Analytics  -->
 
+<!-- Google tag (gtag.js) -->
+<script type="text/plain" data-cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-Y58Z6NYLLT"></script>
+<script type="text/plain" data-cookie-consent="tracking">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-
-<!-- Cookie Consent Banner
-<div id="cookie-banner" class="cookie-banner" style="display:none;">
-  <p>
-    Diese Website verwendet Cookies, um Inhalte zu personalisieren und Zugriffe zu analysieren. 
-    <a href="/datenschutz.html">Mehr erfahren</a>
-  </p>
-  <div class="cookie-buttons">
-    <button id="accept-cookies">Alle akzeptieren</button>
-    <button id="reject-cookies">Alle ablehnen</button>
-    <button id="settings-cookies">Einstellungen</button>
-  </div>
-</div>
-
-<script>
-  // Сразу скрываем все <em> на странице
-  document.querySelectorAll('em').forEach(node => node.style.display = 'none');
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // Навешиваем переключатель
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.preventDefault();
-        const show = btn.dataset.lang !== 'de';
-        document.querySelectorAll('em').forEach(node => {
-          node.style.display = show ? 'inline' : 'none';
-        });
-        // отметить активность кнопок, если нужно
-        document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-  });
+  gtag('config', 'G-Y58Z6NYLLT');
 </script>
- <script>
-    // Этот код выполнится до отрисовки остального <body>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('em').forEach(el => el.style.display = 'none');
-    });
-  </script> -->
+
+<!-- end of Google Analytics -->
+
+<!-- Google AdSense  -->
+<script type="text/plain" data-cookie-consent="tracking" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2756865893493273"
+     crossorigin="anonymous"></script>
+<!-- end of Google AdSense -->
+
+<noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+<!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
   <header class="topbar">
  <div class="topbar-container">
   <a href="../"> <img src="../logo_5.png" alt="sprache.online Logo" class="logo"></a>
@@ -40543,9 +40356,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 </script>
 </div>
-  <footer>
-<div class="site-footer">
+<footer class="site-footer">
   <div class="footer-links">
+    <a href="#" id="open_preferences_center">Cookie-Einstellungen ändern</a> |
     <a href="../impressum/">Impressum</a> |
     <a href="../datenschutz/">Datenschutzerklärung</a> |
     <a href="../kontakt/">Kontakt</a>
