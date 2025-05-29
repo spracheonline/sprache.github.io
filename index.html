@@ -153,7 +153,7 @@
       display:flex; justify-content:space-between; align-items:flex-start;
       gap:1.5rem; max-width:1500px; margin:2rem auto; padding:0 1rem;
     }
-    #allgemeine-300-fragen, #test-simulation, #orient, #lehrkraefte, { flex:0 0 280px; }
+    #allgemeine-300-fragen, #test-simulation, #orient, #lehrkraefte { flex:0 0 280px; }
     #fragen-nach-bundesland {
       flex:1; background:#fff; padding:1.5rem;
       border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.05);
@@ -183,8 +183,53 @@
     .state-emblem { width:32px; height:32px; margin-right:.75rem; object-fit:contain; }
     .state-de { font-size:1rem; font-weight:500; color:#111; }
     .state-trans { font-size:.85rem; color:#666; margin-left:.5rem; }
+#fragen-nach-bundesland {
+  padding: 19px;
+  flex: 10; 
+  /*background:#fff; padding:1.5rem;  These are now in .btn */
+  /*border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.05);*/
+}
 
+#bundesland-toggle {
+  text-align: center;
+  /*margin-bottom: 20px;  Not needed, spacing from .btn padding */
+  cursor: pointer;
+  display: flex;         /* For vertical centering */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Vertically center content */
+  height: 100%;           /* Take full height of the section */
+}
     /* === Responsive für mobile Geräte === */
+@media (max-width: 768px) {
+  .btn,
+  .btn-state {
+    width: 100%;
+    padding: 1.25rem 1rem;
+    box-sizing: border-box;
+    min-height: 140px;  /* Apply min-height here */
+
+  }
+}
+@media (max-width: 768px) {
+  #welcome {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  #fragen-nach-bundesland {
+    flex: 0 0 auto !important;
+    width: 93% !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+  }
+
+  #fragen-nach-bundesland .btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+}
 
 @media (max-width: 768px) {
 
@@ -708,6 +753,11 @@ body.dark .site-footer a:visited {
 #app-install-btn {
   animation: fadeInUp 0.5s ease forwards;
 }
+.card-button {
+  flex: 0 0 280px;
+  display: flex;
+  justify-content: center;
+}
 
   </style>
 </head>
@@ -805,14 +855,13 @@ cookieconsent.run({"notice_banner_type":"interstitial","consent_type":"express",
       </a>
     </section>
 
-   <section id="fragen-nach-bundesland" class="question-card">
-  <div class="title-text" style="text-align: center; margin-bottom: 20px;">
-    <img class="btn-logo" src="bundesland.webp" alt="Bundesländer Logo" style="margin-bottom: 10px;"><br>
-   <span class="btn-de">Fragen nach Bundesland</span>
+
+<section id="fragen-nach-bundesland" class="card-button btn">  <div id="bundesland-toggle" class="title-text">  <img class="btn-logo" src="bundesland.webp" alt="Bundesländer Logo" style="margin-bottom: 10px;"><br>
+    <span class="btn-de">Fragen nach Bundesland</span>
     <div class="header-trans"></div>
   </div>
-    <ul class="states-list">
-      <a href="baw/" class="btn-state" data-state="Baden-Württemberg">
+  <ul class="states-list" id="bundesland-list" style="display: none;">
+   <a href="baw/" class="btn-state" data-state="Baden-Württemberg">
         <img class="state-emblem" src="bw.png" alt="">
         <span class="state-de">Baden-Württemberg</span>
         <span class="state-trans"></span>
@@ -925,6 +974,7 @@ cookieconsent.run({"notice_banner_type":"interstitial","consent_type":"express",
     </li>
   </ul>
 </section>
+
 
 
     <!-- Test Simulation -->
@@ -2169,6 +2219,17 @@ applyLanguage('de');
 
 
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("bundesland-toggle");
+  const list = document.getElementById("bundesland-list");
+
+  toggle.addEventListener("click", () => {
+    const isVisible = list.style.display === "block";
+    list.style.display = isVisible ? "none" : "block";
+  });
+});
+</script>
 
 
 
