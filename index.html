@@ -112,100 +112,7 @@
 }
 </script>
 
-  <!-- 1) Consent Mode default auf 'denied' -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('consent','default',{
-      'ad_storage':'denied',
-      'analytics_storage':'denied'
-    });
-  </script>
-
-  <!-- 2) Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2756865893493273" crossorigin="anonymous"></script>
-  <meta name="google-adsense-account" content="ca-pub-2756865893493273">
-
-  <!-- 3) Google Analytics (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y58Z6NYLLT"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config','G-Y58Z6NYLLT',{ 'anonymize_ip': true });
-  </script>
-
-  <!-- 4) CSS für Cookie-Banner -->
-
-<style>
-  .cookiebanner-links a {
-  color: #007bff;
-  text-decoration: underline;
-}
-
-.cookiebanner-links a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-
- .ucb-container {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    background: #fff;
-    color: #333;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    padding: 1.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    z-index: 9999;
-    font-family: system-ui, sans-serif;
-    display: none;
-  }
-
-  .ucb-text {
-    margin-bottom: 1rem;
-    font-size: 15px;
-    line-height: 1.5;
-  }
-
-  .ucb-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .ucb-btn {
-    padding: 0.5em 1.2em;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-    font-weight: 500;
-  }
-
-  .ucb-btn-primary {
-    background-color: #007bff;
-    color: white;
-  }
-
-  .ucb-btn-secondary {
-    background-color: #6c757d;
-    color: white;
-  }
-
-  .ucb-panel {
-    margin-top: 1rem;
-    background: #f8f8f8;
-    border-radius: 6px;
-    padding: 1rem;
-    border: 1px solid #ddd;
-  }
-
-  .hidden {
-    display: none;
-  }
-</style>
+ 
 
 
   <title>Sprache Online</title>
@@ -778,89 +685,46 @@ body.dark .site-footer a:visited {
 </head>
 <body>
 
-<!-- Cookie Banner HTML -->
-<div id="unique-cookie-banner" class="ucb-container">
-  <div class="ucb-text">
-    Wir verwenden Cookies, um die Funktionalität der Website zu gewährleisten, das Nutzererlebnis zu verbessern und Werbung zu personalisieren. Weitere Informationen finden Sie in unserer
-    <a href="/datenschutz" target="_blank">Datenschutzerklärung</a>,
-    <a href="/impressum" target="_blank">Impressum</a> und
-    <a href="/kontakt" target="_blank">Kontakt</a>.
-  </div>
-  <div class="ucb-buttons">
-    <button id="ucb-reject" class="ucb-btn ucb-btn-secondary">Alle ablehnen</button>
-    <button id="ucb-settings" class="ucb-btn ucb-btn-secondary">Einstellungen</button>
-    <button id="ucb-accept" class="ucb-btn ucb-btn-primary">Alle akzeptieren</button>
-  </div>
-  <div id="ucb-panel" class="ucb-panel hidden">
-    <label><input type="checkbox" id="ucb-analytics"> Statistik-Cookies</label><br>
-    <label><input type="checkbox" id="ucb-ads"> Werbe-Cookies</label><br>
-    <button id="ucb-save" class="ucb-btn ucb-btn-primary">Speichern</button>
-  </div>
-</div>
-
-
-
-
-<!-- JavaScript für Banner-Logik -->
-<script>
- <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const banner   = document.getElementById('unique-cookie-banner');
-    const panel    = document.getElementById('ucb-panel');
-    const btnAcc   = document.getElementById('ucb-accept');
-    const btnRej   = document.getElementById('ucb-reject');
-    const btnSet   = document.getElementById('ucb-settings');
-    const btnSave  = document.getElementById('ucb-save');
-    const chkA     = document.getElementById('ucb-analytics');
-    const chkAds   = document.getElementById('ucb-ads');
-
-    const storageKey = 'ucbCookieConsent_v1';
-
-    // Показати банер, якщо немає збережених налаштувань
-    if (!localStorage.getItem(storageKey)) {
-      banner.style.display = 'block';
-    } else {
-      const saved = JSON.parse(localStorage.getItem(storageKey));
-      updateConsent(saved);
-    }
-
-    // Основна функція оновлення Consent Mode
-    function updateConsent(consent) {
-      gtag('consent', 'update', {
-        'analytics_storage': consent.analytics ? 'granted' : 'denied',
-        'ad_storage': consent.ads ? 'granted' : 'denied'
-      });
-    }
-
-    // Зберегти вибір і оновити gtag
-    function applyConsent(consent) {
-      localStorage.setItem(storageKey, JSON.stringify(consent));
-      updateConsent(consent);
-      banner.remove();
-    }
-
-    // Кнопки дій
-    btnAcc.addEventListener('click', () => applyConsent({ analytics: true, ads: true }));
-    btnRej.addEventListener('click', () => applyConsent({ analytics: false, ads: false }));
-
-    btnSet.addEventListener('click', () => {
-      panel.classList.toggle('hidden');
-      const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
-      chkA.checked = !!saved.analytics;
-      chkAds.checked = !!saved.ads;
-    });
-
-    btnSave.addEventListener('click', e => {
-      e.preventDefault();
-      applyConsent({
-        analytics: chkA.checked,
-        ads: chkAds.checked
-      });
-    });
-  });
+<!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+<script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({"notice_banner_type":"interstitial","consent_type":"express","palette":"light","language":"de","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"sprache.online"});
+});
 </script>
 
+<!-- Google Analytics  -->
+
+<!-- Google tag (gtag.js) -->
+<script type="text/plain" data-cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-Y58Z6NYLLT"></script>
+<script type="text/plain" data-cookie-consent="tracking">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y58Z6NYLLT');
 </script>
+
+<!-- end of Google Analytics -->
+
+<!-- Google AdSense  -->
+<script type="text/plain" data-cookie-consent="tracking" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2756865893493273"
+     crossorigin="anonymous"></script>
+<!-- end of Google AdSense -->
+
+<noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+<!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+
+
+
+
+
+<!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
+
+<a href="#" id="open_preferences_center"
+   style="position: fixed; bottom: 10px; right: 10px; font-size: 0.85rem; color:#666;">
+   Cookie-Einstellungen ändern
+</a>
 
 
 
