@@ -680,6 +680,34 @@ body.dark .site-footer a:visited {
 #language-list {
   /* Стили dropdown по необходимости */
 }
+#app-install-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+#app-install-btn:hover {
+  transform: scale(1.05);
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#app-install-btn {
+  animation: fadeInUp 0.5s ease forwards;
+}
 
   </style>
 </head>
@@ -2095,31 +2123,73 @@ applyLanguage('de');
   let deferredPrompt;
 
   window.addEventListener('beforeinstallprompt', (e) => {
-    // Остановить автоматическое окно
     e.preventDefault();
     deferredPrompt = e;
 
-    // Показываем кнопку
+    // Якщо кнопка вже існує – не створюємо нову
+    if (document.getElementById('app-install-btn')) return;
+
+    // Створюємо кнопку
     const installBtn = document.createElement('button');
-    installBtn.textContent = 'App installieren';
-    installBtn.style = 'position: fixed; bottom: 20px; left: 20px; z-index: 9999;';
+    installBtn.id = 'app-install-btn';
+    installBtn.innerHTML = `
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+           alt="App installieren" style="height: 40px;">
+    `;
+    installBtn.style.position = 'fixed';
+    installBtn.style.bottom = '20px';
+    installBtn.style.left = '20px';
+    installBtn.style.zIndex = '9999';
+    installBtn.style.border = 'none';
+    installBtn.style.background = 'none';
+    installBtn.style.padding = '0';
+    installBtn.style.cursor = 'pointer';
+    installBtn.style.transition = 'transform 0.2s ease';
+
+    installBtn.onmouseover = () => installBtn.style.transform = 'scale(1.05)';
+    installBtn.onmouseout = () => installBtn.style.transform = 'scale(1)';
+
     document.body.appendChild(installBtn);
 
-    installBtn.addEventListener('click', () => {
+    installBtn.addEventListener('click', async () => {
       installBtn.remove();
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
           console.log('User accepted the A2HS prompt');
         } else {
           console.log('User dismissed the A2HS prompt');
         }
         deferredPrompt = null;
-      });
+      }
     });
   });
 </script>
 
+
+<div id="ios-install-hint" style="display:none;">
+  <div style="position: fixed; bottom: 20px; left: 20px; background: #fff; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; z-index: 9999; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 300px;">
+    <strong>App installieren:</strong><br>
+    Öffne das <b>Teilen-Menü</b> <span style="font-size:1.2em;">🔗</span> und wähle<br><b>„Zum Home-Bildschirm“</b> 📲
+    <br><br>
+    <button onclick="this.parentElement.remove()" style="margin-top: 0.5rem; background: #eee; border: none; padding: 0.3rem 0.7rem; border-radius: 4px;">Schließen</button>
+  </div>
+</div>
+
+<script>
+  // Safari на iOS не підтримує beforeinstallprompt
+  function isIosSafari() {
+    const ua = window.navigator.userAgent;
+    return /iPhone|iPad|iPod/.test(ua) && /Safari/.test(ua) && !/CriOS|FxiOS/.test(ua);
+  }
+
+  window.addEventListener('load', () => {
+    if (isIosSafari() && !window.matchMedia('(display-mode: standalone)').matches) {
+      document.getElementById('ios-install-hint').style.display = 'block';
+    }
+  });
+</script>
 
 
 
