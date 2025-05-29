@@ -2170,38 +2170,6 @@ applyLanguage('de');
 
 
 
-<!-- Кнопка (відображається тільки на iOS) -->
-<button id="show-ios-hint" class="apple-install-btn" style="display:none;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="" style="height: 20px; vertical-align: middle; margin-right: 8px;">
-  Auf iPhone installieren
-</button>
-
-<!-- Підказка -->
-<div id="ios-install-hint" style="display:none;">
-  <div style="position: fixed; bottom: 20px; left: 20px; background: #fff; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; z-index: 9999; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 300px;">
-    <strong>App installieren:</strong><br>
-    Öffne das <b>Teilen-Menü</b> <span style="font-size:1.2em;">🔗</span> und wähle<br><b>„Zum Home-Bildschirm“</b> 📲
-    <br><br>
-    <button onclick="this.parentElement.parentElement.style.display='none'" style="margin-top: 0.5rem; background: #eee; border: none; padding: 0.3rem 0.7rem; border-radius: 4px;">Schließen</button>
-  </div>
-</div>
-<script>
-  function isIosSafari() {
-    const ua = window.navigator.userAgent;
-    return /iPhone|iPad|iPod/.test(ua) && /Safari/.test(ua) && !/CriOS|FxiOS/.test(ua);
-  }
-
-  function showIosHint() {
-    document.getElementById('ios-install-hint').style.display = 'block';
-  }
-
-  window.addEventListener('load', () => {
-    // Показати кнопку лише на iOS Safari
-    if (isIosSafari() && !window.matchMedia('(display-mode: standalone)').matches) {
-      document.getElementById('show-ios-hint').style.display = 'inline-block';
-    }
-  });
-</script>
 
 
 
