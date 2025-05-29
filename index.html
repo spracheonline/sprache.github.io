@@ -803,6 +803,7 @@ body.dark .site-footer a:visited {
 
 <!-- JavaScript für Banner-Logik -->
 <script>
+ <script>
   document.addEventListener('DOMContentLoaded', () => {
     const banner   = document.getElementById('unique-cookie-banner');
     const panel    = document.getElementById('ucb-panel');
@@ -813,33 +814,52 @@ body.dark .site-footer a:visited {
     const chkA     = document.getElementById('ucb-analytics');
     const chkAds   = document.getElementById('ucb-ads');
 
-    // Название куки уникальное
     const storageKey = 'ucbCookieConsent_v1';
 
+    // Показати банер, якщо немає збережених налаштувань
     if (!localStorage.getItem(storageKey)) {
       banner.style.display = 'block';
+    } else {
+      const saved = JSON.parse(localStorage.getItem(storageKey));
+      updateConsent(saved);
     }
 
+    // Основна функція оновлення Consent Mode
+    function updateConsent(consent) {
+      gtag('consent', 'update', {
+        'analytics_storage': consent.analytics ? 'granted' : 'denied',
+        'ad_storage': consent.ads ? 'granted' : 'denied'
+      });
+    }
+
+    // Зберегти вибір і оновити gtag
     function applyConsent(consent) {
       localStorage.setItem(storageKey, JSON.stringify(consent));
+      updateConsent(consent);
       banner.remove();
     }
 
-    btnAcc.addEventListener('click', () => applyConsent({ analytics: true,  ads: true }));
+    // Кнопки дій
+    btnAcc.addEventListener('click', () => applyConsent({ analytics: true, ads: true }));
     btnRej.addEventListener('click', () => applyConsent({ analytics: false, ads: false }));
 
     btnSet.addEventListener('click', () => {
       panel.classList.toggle('hidden');
       const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
-      chkA.checked  = !!saved.analytics;
+      chkA.checked = !!saved.analytics;
       chkAds.checked = !!saved.ads;
     });
 
     btnSave.addEventListener('click', e => {
       e.preventDefault();
-      applyConsent({ analytics: chkA.checked, ads: chkAds.checked });
+      applyConsent({
+        analytics: chkA.checked,
+        ads: chkAds.checked
+      });
     });
   });
+</script>
+
 </script>
 
 
