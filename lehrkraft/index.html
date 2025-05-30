@@ -170,6 +170,77 @@
     font-weight: bold;
     text-decoration: underline;
   }
+
+  /* Гамбургер кнопка */
+.sidebar-toggle-btn {
+  display: none;
+  position: absolute;
+  top: 4rem;
+  left: 1rem;
+  z-index: 2000;
+  font-size: 1.5rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Адаптація сайдбару та кнопки */
+@media (max-width: 768px) {
+  .sidebar-toggle-btn {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background: #f8fafc;
+    z-index: 1500;
+    transition: left 0.3s ease;
+    box-shadow: 4px 0 12px rgba(0,0,0,0.1);
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  #flashcard-wrapper {
+    flex-direction: column;
+  }
+
+  .main-area {
+    width: 100%;
+    padding: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .flip-card {
+    width: 90%;
+    height: auto;
+    min-height: 320px;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  button.page-btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
 </style>
 <style type="text/css">
 .question {
@@ -391,6 +462,53 @@ body.dark .question p em {
 .question br {
   display: none !important;
 }
+/* Кнопка-гамбургер */
+.sidebar-toggle-btn {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2000;
+  font-size: 1.5rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Только на мобильных */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    width: 80%;
+    background: #f8fafc;
+    z-index: 1500;
+    transition: left 0.3s ease;
+    box-shadow: 4px 0 12px rgba(0,0,0,0.1);
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .sidebar-toggle-btn {
+    display: block;
+  }
+
+  #flashcard-wrapper {
+    flex-direction: column;
+  }
+
+  .main-area {
+    padding-top: 4rem;
+  }
+}
 
 /* —————— Topbar (Site + Language switcher) —————— */
 .topbar {
@@ -403,7 +521,139 @@ body.dark .question p em {
   box-shadow: 0 2px 4px var(--card-shadow);
   padding: 0.5rem 1rem;
   z-index: 1002;
+  height: 10%;
 }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: auto;
+}
+
+/*.scale-container {
+  transform-origin: top left;
+  transform: scale(var(--scale-factor));
+  width: calc(100vw / var(--scale-factor));
+  height: calc(100vh / var(--scale-factor));
+}*/
+/* Основна структура */
+#flashcard-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Сайдбар */
+.sidebar {
+  width: 260px;
+  min-width: 240px;
+  background: #f8fafc;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Основна область */
+.main-area {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.flip-card {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+}
+
+.flip-card-front,
+.flip-card-back {
+  padding: 1.5rem;
+  font-size: 1.1rem;
+}
+
+/* Кнопка-гамбургер */
+.sidebar-toggle-btn {
+  display: none;
+  position: absolute;
+  top: 4rem;
+  left: 1rem;
+  z-index: 2000;
+  font-size: 1.5rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* 📱 Мобільна адаптація */
+@media (max-width: 768px) {
+  #flashcard-wrapper {
+    flex-direction: column;
+  }
+
+  .sidebar-toggle-btn {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background: #f8fafc;
+    z-index: 1500;
+    transition: left 0.3s ease;
+    box-shadow: 4px 0 12px rgba(0,0,0,0.1);
+    overflow-y: auto;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .main-area {
+    width: 100%;
+    padding: 1rem;
+    padding-top: 5rem;
+  }
+
+  .flip-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  button.page-btn {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+
+/* Додаткове — щоб футер не прилипав */
+footer {
+  padding: 2rem;
+  text-align: center;
+  background: #f2f2f2;
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
 .site-info {
   font-weight: bold;
   font-size: 1rem;
@@ -1265,11 +1515,62 @@ cookieconsent.run({"notice_banner_type":"interstitial","consent_type":"express",
 
 <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
 <!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+  <div class="scale-container">
   <header class="topbar">
- <div class="topbar-container">
-  <a href="../"> <img src="../logo_5.png" alt="sprache.online Logo" class="logo"></a>
-  <button id="settings-btn" class="settings-icon" aria-label="Einstellungen">⚙️</button>
+<div class="topbar-container">
+  <a href="../">
+    <img src="../logo_5.png" alt="sprache.online Logo" class="logo">
+  </a>
+  <div class="topbar-buttons">
+<button id="sidebar-toggle" class="icon-btn" aria-label="Menü öffnen">
+  <span id="menu-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#2563eb" viewBox="0 0 24 24">
+      <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
+    </svg>
+  </span>
+</button>
+
+    <button id="settings-btn" class="settings-icon icon-btn" aria-label="Einstellungen">⚙️</button>
+  </div>
 </div>
+<style type="text/css">
+  .topbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.topbar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Стиль кнопки меню/настроек */
+.icon-btn {
+  background: #e0e7ff;
+  border: none;
+  border-radius: 0.75rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: #c7d2fe;
+}
+
+.icon-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+</style>
 
 <!-- Модальное окно -->
 <div id="settings-modal" class="modal">
@@ -1312,9 +1613,9 @@ cookieconsent.run({"notice_banner_type":"interstitial","consent_type":"express",
   </div>
 </div>
 
+  
 
 </header>
-<!-- печать с прав. ответами -->
 
 <script>
 function printAllQuestions() {
@@ -1701,49 +2002,7 @@ function renderPage(page) {
 </script>
 
 
-<!-- 🔐 Модальне вікно з паролем -->
-<div id="sim-modal" class="modal show">
-  <div class="modal-content">
-    <h3>Zugangscode erforderlich</h3>
-    <p>Bitte geben Sie den Zugangscode ein, um diese Seite zu betreten:</p>
-    <p>  <a href = '#'onclick="alert('Nutzen Sie die kostenlose Probeversion mit dem Code:\n\nlehrer2025 \n\nverfügbar bis zum 31.07.2025');
-"><u>Ich besitze keinen Zugangscode</u></a></p>
 
-    <input type="password" id="access-code" placeholder="Passwort..." style="padding:8px;width:100%;margin-top:10px;border:1px solid #ccc;border-radius:6px">
-    <br>
-    <br>
-    <button onclick="checkAccessCode()" class="start-btn">Zugriff</button>
-    <p id="wrong-code" style="color:red;display:none;margin-top:10px;">Falsches Passwort.</p>
-  </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('sim-modal');
-  if (modal) modal.style.display = 'block';
-  document.querySelectorAll('.question').forEach(q => q.style.display = 'none');
-});
-
-function checkAccessCode() {
-  const input = document.getElementById('access-code').value.trim();
-  const correctPassword = 'lehrer2025';
-
-  if (input === correctPassword) {
-    document.getElementById('sim-modal').style.display = 'none';
-    document.getElementById('protected-content').style.display = 'block';
-
-    // ❗ Всі питання мають залишатися прихованими
-    document.querySelectorAll('.question').forEach(q => q.style.display = 'none');
-
-    // 👉 Розгортання на повний екран
-    document.documentElement.requestFullscreen?.();
-  } else {
-    document.getElementById('wrong-code').style.display = 'block';
-  }
-}
-
-
-</script>
 
 <noscript>
   <div style="background: #fee; color: #900; padding: 1rem; border: 1px solid #f00; margin: 1rem; font-family: sans-serif; border-radius: 8px;">
@@ -1806,7 +2065,7 @@ function checkAccessCode() {
 </div>
 -->
     <div id="cookie-banner" role="dialog" aria-live="polite">
-<div id="protected-content" style="display: none;">
+<div id="protected-content" style="display: block;">
 
   <style>
     body {
@@ -1977,8 +2236,11 @@ body.dark .page-btn {
 
   <div id="flashcard-wrapper">
     <div class="sidebar">
+      <!-- печать с прав. ответами -->
+
+
       <div style="margin-bottom:1rem;">
-        <label><input type="checkbox" id="shuffle-toggle" onchange="toggleShuffle(this.checked)" checked> Fragen mischen</label>
+        <label><input type="checkbox" id="shuffle-toggle" onchange="toggleShuffle(this.checked)"> Fragen mischen</label>
         
 
       </div>
@@ -1991,6 +2253,7 @@ body.dark .page-btn {
           <div class="flip-card-back" id="flashcard-back">Antwort...</div>
         </div>
       </div>
+      
       <button class="page-btn" onclick="nextFlashcard()">Nächste Frage</button>
     </div>
   </div>
@@ -1999,9 +2262,10 @@ let flashcardIndex = 0;
 let flashcardPool = [];
 let cardFromNav = false;
 let allQuestions = [];
-let isShuffled = true;
+let isShuffled = false;
 
 function startFlashcardMode() {
+  document.getElementById('question-container').style.display = 'none';
   document.getElementById('lehrer-panel')?.remove();
   allQuestions = Array.from(document.querySelectorAll('.question'));
   flashcardPool = isShuffled ? shuffleArray([...allQuestions]) : [...allQuestions];
@@ -2011,6 +2275,7 @@ function startFlashcardMode() {
   renderCardNavigation();
   nextFlashcard();
 }
+  document.documentElement.requestFullscreen?.();
 
 function toggleShuffle(state) {
   isShuffled = state;
@@ -2154,7 +2419,7 @@ window.onload = startFlashcardMode;
 
 
 
-<div class="test-container">
+<div id="question-container" class="test-container">
 <!-- Початок єдиного блоку 1–50 питань -->
 <!-- Тут ідуть питання 1–5 (залишаємо як є)... -->
 <div class="question" data-qid="q1">
@@ -40380,6 +40645,71 @@ body.dark .site-footer .footer-copy {
   color: #888;
 }
 </style>
+<script>
+function applyScaleToFit() {
+  const baseWidth = 1366;
+  const baseHeight = 768;
 
+  const scaleX = window.innerWidth / baseWidth;
+  const scaleY = window.innerHeight / baseHeight;
+  const scale = Math.min(scaleX, scaleY);
+
+  document.documentElement.style.setProperty('--scale-factor', scale);
+}
+
+window.addEventListener('resize', applyScaleToFit);
+window.addEventListener('load', applyScaleToFit);
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById('sidebar-toggle');
+  const iconWrapper = document.getElementById('menu-icon');
+  const sidebar = document.querySelector('.sidebar');
+
+  const svgMenu = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#2563eb" viewBox="0 0 24 24">
+      <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
+    </svg>`;
+
+  const svgBack = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#2563eb" viewBox="0 0 24 24">
+      <path d="M15 6l-6 6 6 6"/>
+    </svg>`;
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    sidebar.classList.toggle('open');
+    iconWrapper.innerHTML = sidebar.classList.contains('open') ? svgBack : svgMenu;
+  });
+
+  // Закриття по кліку поза меню
+  document.addEventListener('click', (e) => {
+    if (sidebar.classList.contains('open') &&
+        !sidebar.contains(e.target) &&
+        !toggleBtn.contains(e.target)) {
+      sidebar.classList.remove('open');
+      iconWrapper.innerHTML = svgMenu;
+    }
+  });
+
+  // Закриття по натисканню на елемент
+  document.querySelectorAll('.range-btn, .card-nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      iconWrapper.innerHTML = svgMenu;
+    });
+  });
+});
+</script>
+<style type="text/css">
+  body.dark .icon-btn {
+  background: #1e3a8a;
+  color: #e0e7ff;
+}
+
+</style>
+
+
+</div>
 </body>
 </html>
